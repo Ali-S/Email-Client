@@ -33,6 +33,7 @@ public class getinbox{
 			emailfolder.open(Folder.READ_ONLY);
 			System.out.println("Vorder FORSCLEIFE");
 			Message[] mails = emailfolder.getMessages();
+			String [] subjects;
 			for (int i = 0; i < mails.length; i++) {
 				Message message = mails[i];
 					System.out.println("---------------------------------");  
@@ -40,6 +41,7 @@ public class getinbox{
 				    System.out.println("Subject: " + message.getSubject());  
 				    System.out.println("From: " + message.getFrom()[0]);  
 				    System.out.println("Text: " + message.getContent().toString()); 
+				    System.out.println("Subject wurder erfolgreich gespeichert\n");
 			}
 			
 		} catch (NoSuchProviderException e) {
