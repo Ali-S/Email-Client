@@ -127,20 +127,23 @@ public class HauptGUI {
 
 	    ListSelectionModel cellSelectionModel = table.getSelectionModel();
 	    cellSelectionModel.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		
+	    show_email = new JLabel();
+	    
 		table.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
 			
 			public void valueChanged(ListSelectionEvent event) {
-				int selectedrow = event.getFirstIndex();
+				int[] selectedrow = table.getSelectedRows();
 				if (!event.getValueIsAdjusting()) {
-					if (event.getFirstIndex() != event.getLastIndex()) {
+					for (int i = 0; i < selectedrow.length; i++) {
 						area.setVisible(false);
-			             show_email = new JLabel(get.getcontent(event.getLastIndex()));
-				 		 areaPanel.add(show_email);
+						show_email.setText(get.getcontent(selectedrow[i]));
+				 		areaPanel.add(show_email);
 				 		rightBorder.add(show_email);
-			             show_email.setVisible(true);
+			            show_email.setVisible(true);
+			            System.out.println(selectedrow[i]);
 						
-					} 
+					}
+						
 				}
 			} 	 
 		}
