@@ -83,6 +83,20 @@ public class getinbox{
 			return null; 
 		}
 	}
+	
+	public String getcontent(int i) {
+		Message message;
+		if(nachrichten[i] == null) {
+			System.out.println("Es befinden sich keine Nachrichten\n");
+		}
+		message = nachrichten[i];
+		try {
+			return message.getContent().toString();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
 }
 	
 

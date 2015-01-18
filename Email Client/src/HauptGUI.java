@@ -1,9 +1,13 @@
 
 import java.awt.*;
+import java.io.IOException;
 import java.util.Stack;
 import java.util.Vector;
 
+import javax.mail.MessagingException;
 import javax.swing.*;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.table.AbstractTableModel;
 import javax.swing.table.DefaultTableModel;
 
@@ -19,7 +23,7 @@ public class HauptGUI {
 	private JTabbedPane tabbed;
 	private JPanel tab1, tab2, tab3, areaPanel, rightBorder, labelPanel, backgr;
 	private JTextArea area;
-	private JLabel sender, receiver, subject, date;
+	private JLabel sender, receiver, subject, date,show_email;
 	
 	public String[] mail = null;
 	public String[] from = null;
@@ -117,10 +121,30 @@ public class HauptGUI {
 		
 		area = new JTextArea("\n Text entry here: ", 50, 100);
 		areaPanel = new JPanel(new GridLayout());
-		areaPanel.add(area);
+
 		
+		table.setCellSelectionEnabled(true);
+
+	    ListSelectionModel cellSelectionModel = table.getSelectionModel();
+	    cellSelectionModel.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		
+		table.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+			
+			public void valueChanged(ListSelectionEvent event) {
+				int selectedrow = table.getSelectedRow();
+					show_email = new JLabel(get.getcontent(selectedrow));
+					areaPanel.add(show_email);
+					rightBorder.add(show_email);
+					area.setVisible(false);
+					show_email.setVisible(true);
+					System.out.println("geandert");
+				}
+			});
+
+		areaPanel.add(area);
 		rightBorder = new JPanel(new BorderLayout());
 		labelPanel = new JPanel(new GridLayout(3,1));
+		
 		sender = new JLabel("   Sender: \t");
 //		receiver = new JLabel("   Receiver: \t");
 		subject = new JLabel("   Subject: \t");
@@ -142,6 +166,9 @@ public class HauptGUI {
 		frame.setLocationRelativeTo(null);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
+		
 	}
+	
+
 
 }
