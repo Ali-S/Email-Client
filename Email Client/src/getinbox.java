@@ -41,7 +41,6 @@ public class getinbox{
 				    System.out.println("Subject: " + message.getSubject());  
 				    System.out.println("From: " + message.getFrom()[0]);  
 				    System.out.println("Text: " + message.getContent().toString()); 
-				    System.out.println("Subject wurder erfolgreich gespeichert\n");
 			}
 			
 		} catch (NoSuchProviderException e) {
