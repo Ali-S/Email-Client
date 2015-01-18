@@ -29,7 +29,6 @@ public class HauptGUI {
 
 	filereader file = new filereader();	
 	getinbox get = new getinbox(file.imap,file.email,file.password);
-	TableModel tabledata = new TableModel();
 
 	@SuppressWarnings("unchecked")
 	public HauptGUI(String title){
@@ -57,13 +56,33 @@ public class HauptGUI {
 		String[] table2Column = {"subject"};
 		Object[][] table2Data = {subjects};
 		
+		
+		Vector subjectdata = new Vector();
 		for (int i = 0; i < get.nachrichten.length; i++) {
-			tabledata.setValueAt(subjects[i], i);
+			Vector row = new Vector();
+			row.add(get.getsubject(i));
+			subjectdata.add(row);
 		}
 		
-		table = new JTable(tableData, tableColumn);
-		table2 = new JTable(table2Data, table2Column);
-		table2.addRowSelectionInterval(0, get.nachrichten.length);
+		Vector fromdata = new Vector();
+		for (int i = 0; i < get.nachrichten.length; i++) {
+			Vector row = new Vector();
+			row.add(get.getfrom(i));
+			fromdata.add(row);
+		}
+		
+		
+		Vector sub = new Vector();
+		sub.add("Subject");
+		
+		
+		Vector fr = new Vector();
+		fr.add("From");
+		
+		
+		
+		table = new JTable(fromdata, fr);
+		table2 = new JTable(subjectdata, sub);
 		
 		for (int i = 0; i < get.nachrichten.length; i++) {
 			subjects[i] = get.getsubject(i);

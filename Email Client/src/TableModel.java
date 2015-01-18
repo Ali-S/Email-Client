@@ -8,7 +8,7 @@ public class TableModel extends AbstractTableModel{
 		
 	}
 	public void setValueAt (Object aValue, int rowIndex) {
-		tableData[rowIndex][0] = aValue;
+		tableData[rowIndex][1] = aValue;
 	}
 
 	public int getColumnCount() {
