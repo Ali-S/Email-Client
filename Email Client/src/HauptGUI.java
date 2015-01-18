@@ -67,7 +67,7 @@ public class HauptGUI {
 		tab3 = new JPanel();
 		tabbed.addTab("Inbox", tab1);
 		tabbed.addTab("Sent", tab2);
-		tabbed.addTab("Tab 3", tab3);
+		tabbed.addTab("Deleted", tab3);
 		
 		area = new JTextArea("\n Text entry here: ", 50, 100);
 		areaPanel = new JPanel(new GridLayout());

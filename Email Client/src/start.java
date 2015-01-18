@@ -16,8 +16,8 @@ public class start {
 		//new HauptGUI(title);
 		
 		filereader file = new filereader();
-		getinbox get = new getinbox(file.imap,file.email,file.password);
-		System.out.println("Subjects" + get.getsubject(0));
+		new getinbox(file.imap,file.email,file.password);
+		//System.out.println("Subjects" + get.getsubject(0));
 		
 		
 		System.out.println("LAUFT");
