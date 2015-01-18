@@ -4,9 +4,9 @@ import javax.swing.table.AbstractTableModel;
 public class TableModel extends AbstractTableModel{
 	
 	private Object[][] tableData;
-	
+	public TableModel(){
+	}
 	public void setValueAt (Object aValue, int rowIndex) {
-		
 		tableData[rowIndex][0] = aValue;
 	}
 
@@ -21,8 +21,7 @@ public class TableModel extends AbstractTableModel{
 	}
 
 	public Object getValueAt(int rowIndex, int columnIndex) {
-		// TODO Auto-generated method stub
-		return null;
+		return tableData[rowIndex] [columnIndex];
 	}
 
 }
