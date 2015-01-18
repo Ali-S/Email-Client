@@ -47,19 +47,13 @@ public class HauptGUI {
 		
 		subjects = new String[get.nachrichten.length];
 		getfrom = new String[get.nachrichten.length];
-		
-		
-		String [] table1C = {"sender"};
-		Object [][] table1D =  {getfrom};
-		
-		String [] table2C = {"subject"};
-		Object [][] table2D = {subjects};
+
 		
 		dtable1 = new DefaultTableModel(0,0);
 		dtable2 = new DefaultTableModel(0,0);
 		table = new JTable(dtable1);
 		table2 = new JTable(dtable2);
-		dtable1.addColumn("table1C");
+		dtable1.addColumn("Sender");
 		dtable2.addColumn("Subject");
 		Vector<String> drow1 = new Vector<String>();
 		Vector<String> drow2 = new Vector<String>();
