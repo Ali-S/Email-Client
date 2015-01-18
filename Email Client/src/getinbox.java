@@ -33,6 +33,7 @@ public class getinbox{
 			System.out.println("Vorder FORSCLEIFE");
 			Message[] mails = emailfolder.getMessages();
 			String [] subjects;
+			nachrichten = emailfolder.getMessages();
 			for (int i = 0; i < mails.length; i++) {
 				Message message = mails[i];
 					System.out.println("---------------------------------");  
