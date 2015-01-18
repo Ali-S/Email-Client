@@ -53,7 +53,7 @@ public class HauptGUI {
 		
 		for (int i = 0; i < get.nachrichten.length; i++) {
 			subjects[i] = get.getsubject(i);
-			table1D.
+			//table1D.
 			System.out.println(i+".Subject " + subjects[i]);
 		}
 		
