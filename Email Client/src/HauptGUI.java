@@ -122,6 +122,7 @@ public class HauptGUI {
 		area = new JTextArea("\n Text entry here: ", 50, 100);
 		areaPanel = new JPanel(new GridLayout());
 
+		areaPanel.add(area);
 		
 		table.setCellSelectionEnabled(true);
 
@@ -132,16 +133,23 @@ public class HauptGUI {
 			
 			public void valueChanged(ListSelectionEvent event) {
 				int selectedrow = table.getSelectedRow();
-					show_email = new JLabel(get.getcontent(selectedrow));
+				if (!event.getValueIsAdjusting()) {
+		             System.out.println(table.getSelectedRow());
+		             valueselected(selectedrow);
+				}
+					System.out.println("geandert");
+				}
+		
+			public void valueselected(int selectedrow){
+	             	show_email = new JLabel(get.getcontent(selectedrow));
 					areaPanel.add(show_email);
 					rightBorder.add(show_email);
 					area.setVisible(false);
 					show_email.setVisible(true);
-					System.out.println("geandert");
-				}
-			});
-
-		areaPanel.add(area);
+			}
+		}
+		);
+		area.setVisible(true);
 		rightBorder = new JPanel(new BorderLayout());
 		labelPanel = new JPanel(new GridLayout(3,1));
 		
