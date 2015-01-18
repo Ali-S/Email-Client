@@ -31,7 +31,7 @@ public class getinbox{
 			
 			Folder emailfolder = store.getFolder("[Gmail]/Spam");
 			emailfolder.open(Folder.READ_ONLY);
-			
+			System.out.println("Vorder FORSCLEIFE");
 			Message[] mails = emailfolder.getMessages();
 			for (int i = 0; i < mails.length; i++) {
 				Message message = mails[i];
@@ -54,30 +54,30 @@ public class getinbox{
 		
 	}
 	
-	public String getsubject(int i){
-		Message message;
-		if (nachrichten[i] == null) {
-			System.out.println("Es befinden sich keine Nachrichten"); 
-		} 
-		message = nachrichten[i];
-		try {
-			return message.getSubject();
-		} catch (MessagingException e) {
-			e.printStackTrace();
-			return "Fehlgeschlagen";
-		}
-	}
-	
-	public String getfrom(int i){
-		Message message;
-		message = nachrichten[i];
-		try {
-			return InternetAddress.toString(message.getFrom());
-		} catch (MessagingException e) {
-			e.printStackTrace();
-			return null; 
-		}
-	}
+//	public String getsubject(int i){
+//		Message message;
+//		if (nachrichten[i] == null) {
+//			System.out.println("Es befinden sich keine Nachrichten"); 
+//		} 
+//		message = nachrichten[i];
+//		try {
+//			return message.getSubject();
+//		} catch (MessagingException e) {
+//			e.printStackTrace();
+//			return "Fehlgeschlagen";
+//		}
+//	}
+//	
+//	public String getfrom(int i){
+//		Message message;
+//		message = nachrichten[i];
+//		try {
+//			return InternetAddress.toString(message.getFrom());
+//		} catch (MessagingException e) {
+//			e.printStackTrace();
+//			return null; 
+//		}
+//	}
 }
 	
 
