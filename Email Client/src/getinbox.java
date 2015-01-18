@@ -69,17 +69,20 @@ public class getinbox{
 			return "Fehlgeschlagen";
 		}
 	}
-//	
-//	public String getfrom(int i){
-//		Message message;
-//		message = nachrichten[i];
-//		try {
-//			return InternetAddress.toString(message.getFrom());
-//		} catch (MessagingException e) {
-//			e.printStackTrace();
-//			return null; 
-//		}
-//	}
+	
+	public String getfrom(int i){
+		Message message;
+		if (nachrichten[i] == null) {
+			System.out.println("Es befinden sich keine Nachrichten"); 
+		} 
+		message = nachrichten[i];
+		try {
+			return InternetAddress.toString(message.getFrom());
+		} catch (MessagingException e) {
+			e.printStackTrace();
+			return null; 
+		}
+	}
 }
 	
 

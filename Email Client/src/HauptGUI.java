@@ -1,5 +1,6 @@
 
 import java.awt.*;
+import java.util.Stack;
 
 import javax.swing.*;
 
@@ -18,7 +19,7 @@ public class HauptGUI {
 	
 	public String[] mail = null;
 	public String[] from = null;
-	public String [] subjects;
+	public String [] subjects,getfrom;
 	
 	
 
@@ -41,23 +42,23 @@ public class HauptGUI {
 		frame.add(bar, BorderLayout.NORTH);
 		
 		subjects = new String[get.nachrichten.length];
-		
+		getfrom = new String[get.nachrichten.length];
 		
 		for (int i = 0; i < get.nachrichten.length; i++) {
 			subjects[i] = get.getsubject(i);
 			System.out.println(i+".Subject " + subjects[i]);
 		}
-		/*
+		
 		for (int i = 0; i < get.nachrichten.length; i++) {
-			from[i] = get.getfrom(i);
+			getfrom[i] = get.getfrom(i);
 		}
-		*/
+		
 		
 		String [] table1C = {"sender"};
 		Object [][] table1D =  {{"test"}};
 		
 		String [] table2C = {"subject"};
-		Object [][] table2D = {{"email"}};
+		Object [][] table2D = {{subjects}};
 		
 		table = new JTable(table1D, table1C);
 		table2 = new JTable(table2D, table2C);
