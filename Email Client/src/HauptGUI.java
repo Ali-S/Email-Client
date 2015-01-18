@@ -55,10 +55,10 @@ public class HauptGUI {
 		
 		
 		String [] table1C = {"sender"};
-		Object [][] table1D =  {{"test"}};
+		Object [][] table1D =  {getfrom};
 		
 		String [] table2C = {"subject"};
-		Object [][] table2D = {{subjects}};
+		Object [][] table2D = {subjects};
 		
 		table = new JTable(table1D, table1C);
 		table2 = new JTable(table2D, table2C);
