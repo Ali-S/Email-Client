@@ -9,13 +9,12 @@ public class HauptGUI {
 	private JMenuBar bar;
 	private JMenu menu1, menu2;
 	private JMenuItem item1, item2;
-	private JTable table;
-	private JScrollPane scroll;
+	private JTable table, table2;
+	private JScrollPane scroll, scroll2;
 	private JTabbedPane tabbed;
 	private JPanel tab1, tab2, tab3, areaPanel, rightBorder, labelPanel, backgr;
 	private JTextArea area;
-	private JLabel sender, receiver, date;
-	JLabel subject;
+	private JLabel sender, receiver, subject, date;
 	
 	public String[] mail = null;
 	public String[] from = null;
@@ -54,19 +53,28 @@ public class HauptGUI {
 		}
 		*/
 		
-		String [] columns = {"sender", "subject"};
-		Object [][] data =  {{"test","test"},{"test", "email"}};
+		String [] table1C = {"sender"};
+		Object [][] table1D =  {{"test"}};
 		
-		table = new JTable(data, columns);
+		String [] table2C = {"subject"};
+		Object [][] table2D = {{"email"}};
+		
+		table = new JTable(table1D, table1C);
+		table2 = new JTable(table2D, table2C);
 		table.setRowSelectionAllowed(true);
+		table2.setRowSelectionAllowed(true);
 		scroll = new JScrollPane(table, ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED,
 				ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 		scroll.setPreferredSize(new Dimension(200, 650));
+		scroll2 = new JScrollPane(table2, ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED,
+				ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+		scroll2.setPreferredSize(new Dimension(200, 650));
 		
 		
 		tabbed = new JTabbedPane();
 		tab1 = new JPanel();
 		tab1.add(scroll);
+		tab1.add(scroll2);
 		tab2 = new JPanel();
 		tab3 = new JPanel();
 		tabbed.addTab("Inbox", tab1);
@@ -80,13 +88,13 @@ public class HauptGUI {
 		rightBorder = new JPanel(new BorderLayout());
 		labelPanel = new JPanel(new GridLayout(3,1));
 		sender = new JLabel("   Sender: \t");
-		receiver = new JLabel("   Receiver: \t");
+//		receiver = new JLabel("   Receiver: \t");
 		subject = new JLabel("   Subject: \t");
 		date = new JLabel("   Date: \t");
 		labelPanel.add(sender);
-		labelPanel.add(receiver);
-		labelPanel.add(subject);
+//		labelPanel.add(receiver);
 		labelPanel.add(date);
+		labelPanel.add(subject);
 		rightBorder.add(labelPanel, BorderLayout.NORTH);
 		rightBorder.add(area);
 		
