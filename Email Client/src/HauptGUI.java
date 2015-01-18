@@ -66,8 +66,11 @@ public class HauptGUI {
 		
 		for (int i = 0; i < get.nachrichten.length; i++) {
 			getfrom[i] = get.getfrom(i);
-			drow1.add(get.getfrom(i));
 		}
+
+		drow1.add(getfrom[0]);
+		drow1.add(getfrom[1]);
+		
 		dtable1.addRow(drow1);
 		dtable2.addRow(drow2);
 		table.setRowSelectionAllowed(true);
