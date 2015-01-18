@@ -16,7 +16,7 @@ public class filereader {
 	
 	public filereader(){
 		try {
-			File file = new File("/Users/furkanyucel/git/Java-Projekt_Email/src/email/test.txt");
+			File file = new File("./src/test.txt");
 			FileReader filereader = new FileReader(file);
 			BufferedReader bufferedreader = new BufferedReader(filereader);
 			StringBuffer stringbuffer = new StringBuffer();
