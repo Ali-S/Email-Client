@@ -14,11 +14,11 @@ public class start {
 		
 		// Starte Hauptfenster
 		//new HauptGUI(title);
-		/*
+		
 		filereader file = new filereader();
 		getinbox get = new getinbox(file.imap,file.email,file.password);
 		System.out.println("Subjects" + get.getsubject(0));
-		*/
+		
 		
 		System.out.println("LAUFT");
 	}
