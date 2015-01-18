@@ -1,8 +1,10 @@
 
 import java.awt.*;
 import java.util.Stack;
+import java.util.Vector;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 
 public class HauptGUI {
 	
@@ -11,6 +13,7 @@ public class HauptGUI {
 	private JMenu menu1, menu2;
 	private JMenuItem item1, item2;
 	private JTable table, table2;
+	private DefaultTableModel dtable1, dtable2;
 	private JScrollPane scroll, scroll2;
 	private JTabbedPane tabbed;
 	private JPanel tab1, tab2, tab3, areaPanel, rightBorder, labelPanel, backgr;
@@ -26,6 +29,7 @@ public class HauptGUI {
 	filereader file = new filereader();	
 	getinbox get = new getinbox(file.imap,file.email,file.password);
 
+	@SuppressWarnings("unchecked")
 	public HauptGUI(String title){
 		frame = new JFrame(title);
 		frame.getContentPane().setLayout(new BorderLayout());
@@ -51,17 +55,27 @@ public class HauptGUI {
 		String [] table2C = {"subject"};
 		Object [][] table2D = {subjects};
 		
+		dtable1 = new DefaultTableModel(0,0);
+		dtable2 = new DefaultTableModel(0,0);
+		table = new JTable(dtable1);
+		table2 = new JTable(dtable2);
+		dtable1.addColumn("table1C");
+		dtable2.addColumn("Subject");
+		Vector<String> drow1 = new Vector<String>();
+		Vector<String> drow2 = new Vector<String>();
+		
 		for (int i = 0; i < get.nachrichten.length; i++) {
 			subjects[i] = get.getsubject(i);
+			drow2.add(get.getsubject(i));
 			System.out.println(i+".Subject " + subjects[i]);
 		}
 		
 		for (int i = 0; i < get.nachrichten.length; i++) {
 			getfrom[i] = get.getfrom(i);
+			drow1.add(get.getfrom(i));
 		}
-		
-		table = new JTable(table1D, table1C);
-		table2 = new JTable(table2D, table2C);
+		dtable1.addRow(drow1);
+		dtable2.addRow(drow2);
 		table.setRowSelectionAllowed(true);
 		table2.setRowSelectionAllowed(true);
 		scroll = new JScrollPane(table, ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED,
