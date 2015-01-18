@@ -14,10 +14,12 @@ public class HauptGUI {
 	private JTabbedPane tabbed;
 	private JPanel tab1, tab2, tab3, areaPanel, rightBorder, labelPanel, backgr;
 	private JTextArea area;
-	private JLabel sender, receiver, subject, date;
+	private JLabel sender, receiver, date;
+	JLabel subject;
 	
 	public String[] mail = null;
 	public String[] from = null;
+	public String [] subjects;
 	
 	
 
@@ -39,17 +41,18 @@ public class HauptGUI {
 		bar.add(menu2);
 		frame.add(bar, BorderLayout.NORTH);
 		
-		/*
-		for (int i = 0; i < get.nachrichten.length; i++) {
-			mail[i] = get.getsubject(i);
-		}
+		subjects = new String[get.nachrichten.length];
 		
+		
+		for (int i = 0; i < get.nachrichten.length; i++) {
+			subjects[i] = get.getsubject(i);
+			System.out.println(i+".Subject " + subjects[i]);
+		}
+		/*
 		for (int i = 0; i < get.nachrichten.length; i++) {
 			from[i] = get.getfrom(i);
 		}
 		*/
-		
-		System.out.println("Subject: \n" + get.getsubject(0));
 		
 		String [] columns = {"sender", "subject"};
 		Object [][] data =  {{"test","test"},{"test", "email"}};
