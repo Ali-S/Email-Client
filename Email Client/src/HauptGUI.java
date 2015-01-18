@@ -122,15 +122,15 @@ public class HauptGUI {
 		area = new JTextArea("\n Text entry here: ", 50, 100);
 		areaPanel = new JPanel(new GridLayout());
 		areaPanel.add(area);
-		
+		// Tabelle für nur ein Select erlauben
 		table.setCellSelectionEnabled(true);
-
+		
 	    ListSelectionModel cellSelectionModel = table.getSelectionModel();
 	    cellSelectionModel.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 	    show_email = new JLabel();
 	    
 		table.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
-			
+			// Nach select den Inhalt der Email anzeigen
 			public void valueChanged(ListSelectionEvent event) {
 				int[] selectedrow = table.getSelectedRows();
 				if (!event.getValueIsAdjusting()) {
