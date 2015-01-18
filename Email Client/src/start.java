@@ -13,12 +13,14 @@ public class start {
 		//new anmelden("Please enter your E-Mail Server!",title);
 		
 		// Starte Hauptfenster
-		new HauptGUI(title);
+		//new HauptGUI(title);
 		/*
 		filereader file = new filereader();
 		getinbox get = new getinbox(file.imap,file.email,file.password);
 		System.out.println("Subjects" + get.getsubject(0));
 		*/
+		
+		System.out.println("LAUFT");
 	}
 
 }
