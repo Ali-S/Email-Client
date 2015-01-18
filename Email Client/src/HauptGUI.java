@@ -44,21 +44,22 @@ public class HauptGUI {
 		subjects = new String[get.nachrichten.length];
 		getfrom = new String[get.nachrichten.length];
 		
-		for (int i = 0; i < get.nachrichten.length; i++) {
-			subjects[i] = get.getsubject(i);
-			System.out.println(i+".Subject " + subjects[i]);
-		}
-		
-		for (int i = 0; i < get.nachrichten.length; i++) {
-			getfrom[i] = get.getfrom(i);
-		}
-		
 		
 		String [] table1C = {"sender"};
 		Object [][] table1D =  {getfrom};
 		
 		String [] table2C = {"subject"};
 		Object [][] table2D = {subjects};
+		
+		for (int i = 0; i < get.nachrichten.length; i++) {
+			subjects[i] = get.getsubject(i);
+			table1D.
+			System.out.println(i+".Subject " + subjects[i]);
+		}
+		
+		for (int i = 0; i < get.nachrichten.length; i++) {
+			getfrom[i] = get.getfrom(i);
+		}
 		
 		table = new JTable(table1D, table1C);
 		table2 = new JTable(table2D, table2C);
