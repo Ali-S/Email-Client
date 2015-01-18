@@ -5,6 +5,7 @@ public class TableModel extends AbstractTableModel{
 	
 	private Object[][] tableData;
 	public TableModel(){
+		
 	}
 	public void setValueAt (Object aValue, int rowIndex) {
 		tableData[rowIndex][0] = aValue;
