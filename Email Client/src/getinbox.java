@@ -29,7 +29,7 @@ public class getinbox{
 	        Store store = session.getStore("imaps");
 	        store.connect(imap,email, passwort);
 			
-			Folder emailfolder = store.getFolder("[Gmail]/Spam");
+			Folder emailfolder = store.getFolder("inbox");
 			emailfolder.open(Folder.READ_ONLY);
 			
 			Message[] mails = emailfolder.getMessages();
