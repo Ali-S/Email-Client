@@ -4,6 +4,7 @@ import java.util.Stack;
 import java.util.Vector;
 
 import javax.swing.*;
+import javax.swing.table.AbstractTableModel;
 import javax.swing.table.DefaultTableModel;
 
 public class HauptGUI {
@@ -31,6 +32,7 @@ public class HauptGUI {
 
 	@SuppressWarnings("unchecked")
 	public HauptGUI(String title){
+		
 		frame = new JFrame(title);
 		frame.getContentPane().setLayout(new BorderLayout());
 		
@@ -45,22 +47,21 @@ public class HauptGUI {
 		bar.add(menu2);
 		frame.add(bar, BorderLayout.NORTH);
 		
-		subjects = new String[get.nachrichten.length];
 		getfrom = new String[get.nachrichten.length];
+		subjects = new String[get.nachrichten.length];
 
+		String[] tableColumn = {"sender"};
+		Object[][] tableData = {getfrom};
 		
-		dtable1 = new DefaultTableModel(0,0);
-		dtable2 = new DefaultTableModel(0,0);
-		table = new JTable(dtable1);
-		table2 = new JTable(dtable2);
-		dtable1.addColumn("Sender");
-		dtable2.addColumn("Subject");
-		Vector<String> drow1 = new Vector<String>();
-		Vector<String> drow2 = new Vector<String>();
+		String[] table2Column = {"subject"};
+		Object[][] table2Data = {subjects};
+		
+		table = new JTable(tableData, tableColumn);
+		table2 = new JTable(table2Data, table2Column);
 		
 		for (int i = 0; i < get.nachrichten.length; i++) {
 			subjects[i] = get.getsubject(i);
-			drow2.add(get.getsubject(i));
+			
 			System.out.println(i+".Subject " + subjects[i]);
 		}
 		
@@ -68,11 +69,7 @@ public class HauptGUI {
 			getfrom[i] = get.getfrom(i);
 		}
 
-		drow1.add(getfrom[0]);
-		drow1.add(getfrom[1]);
 		
-		dtable1.addRow(drow1);
-		dtable2.addRow(drow2);
 		table.setRowSelectionAllowed(true);
 		table2.setRowSelectionAllowed(true);
 		scroll = new JScrollPane(table, ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED,
