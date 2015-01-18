@@ -9,7 +9,7 @@ public class save {
 	public save(String smtp, String imap,String email, String password) {
 		PrintWriter writer;
 		try {
-			writer = new PrintWriter(new File("/Users/furkanyucel/git/Java-Projekt_Email/src/email/test.txt"), "UTF-8");
+			writer = new PrintWriter(new File("./src/test.txt"), "UTF-8");
 			writer.println(smtp);
 			writer.println(imap);
 			writer.println(email);
