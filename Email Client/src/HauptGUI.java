@@ -3,7 +3,6 @@
 import java.awt.*;
 
 import javax.swing.*;
-import javax.swing.text.StyledEditorKit.ForegroundAction;
 
 public class HauptGUI {
 	
