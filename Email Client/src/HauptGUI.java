@@ -49,6 +49,8 @@ public class HauptGUI {
 		}
 		*/
 		
+		System.out.println("Subject: \n" + get.getsubject(0));
+		
 		String [] columns = {"sender", "subject"};
 		Object [][] data =  {{"test","test"},{"test", "email"}};
 		

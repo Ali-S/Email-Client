@@ -20,6 +20,7 @@ public class start {
 		//System.out.println("Subjects" + get.getsubject(0));
 		
 		
+		
 		System.out.println("LAUFT");
 	}
 

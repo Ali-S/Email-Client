@@ -15,10 +15,9 @@ import javax.mail.internet.InternetAddress;
 
 import com.sun.mail.imap.*;
 public class getinbox{
-	Message[] nachrichten = null;
+	Message[] nachrichten;
 	
 	public getinbox(String imap, String email, String passwort){
-		
 		try {
 			Properties props = System.getProperties();
 	        props.setProperty("mail.store.protocol", "imaps");
@@ -41,6 +40,7 @@ public class getinbox{
 				    System.out.println("Subject: " + message.getSubject());  
 				    System.out.println("From: " + message.getFrom()[0]);  
 				    System.out.println("Text: " + message.getContent().toString()); 
+				    nachrichten[i] = mails[i];
 			}
 			
 		} catch (NoSuchProviderException e) {
@@ -55,19 +55,19 @@ public class getinbox{
 		
 	}
 	
-//	public String getsubject(int i){
-//		Message message;
-//		if (nachrichten[i] == null) {
-//			System.out.println("Es befinden sich keine Nachrichten"); 
-//		} 
-//		message = nachrichten[i];
-//		try {
-//			return message.getSubject();
-//		} catch (MessagingException e) {
-//			e.printStackTrace();
-//			return "Fehlgeschlagen";
-//		}
-//	}
+	public String getsubject(int i){
+		Message message;
+		if (nachrichten[i] == null) {
+			System.out.println("Es befinden sich keine Nachrichten"); 
+		} 
+		message = nachrichten[i];
+		try {
+			return message.getSubject();
+		} catch (MessagingException e) {
+			e.printStackTrace();
+			return "Fehlgeschlagen";
+		}
+	}
 //	
 //	public String getfrom(int i){
 //		Message message;
