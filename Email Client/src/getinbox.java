@@ -37,7 +37,7 @@ public class getinbox{
 	contentemail content;
 	decodemultipart decode;
 	
-	public getinbox(String imap, String email, String passwort) throws IOException{
+	public getinbox(String imap, String email, String passwort){
 		try {
 			Properties props = System.getProperties();
 	        props.setProperty("mail.store.protocol", "imaps");
@@ -60,7 +60,6 @@ public class getinbox{
 				    System.out.println("Email Number " + (i + 1));  
 				    System.out.println("Subject: " + message.getSubject());  
 				    System.out.println("From: " + message.getFrom()[0]); 
-				    System.out.println("Content: "+ (decodemultipart(message)));
 					System.out.println("Contenttyp: " + message.getContentType());
 					nachrichten[i] = mails[i];
 			} 

@@ -41,7 +41,7 @@ public class HauptGUI{
 	getinbox get = new getinbox(file.imap,file.email,file.password);
 	decodemultipart decodemultipart;
 	@SuppressWarnings("unchecked")
-	public HauptGUI(String title) throws IOException{
+	public HauptGUI(String title){
 		
 		frame = new JFrame(title);
 		frame.getContentPane().setLayout(new BorderLayout());
@@ -146,24 +146,11 @@ public class HauptGUI{
 						areaPanel.add(show_email);
 				 		rightBorder.add(show_email);
 			            show_email.setVisible(true);
-			            System.out.println(selectedrow[i]);
-			            String test;
-			            try {
-							System.out.println(decodemultipart.decodemultipart(get.nachrichten[i]));
-						} catch (IOException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						} catch (MessagingException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
 						}
-						//System.out.println(MimeUtil.cleanContentType(get.getcontent(i), test));
-					}
-						
-				}
-			} 	 
-		}
-		);
+				} 	 
+			}
+		
+		});
 		rightBorder = new JPanel(new BorderLayout());
 		labelPanel = new JPanel(new GridLayout(3,1));
 		
