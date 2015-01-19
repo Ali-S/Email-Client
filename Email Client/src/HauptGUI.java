@@ -1,17 +1,23 @@
 
 import java.awt.*;
+import java.io.File;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.util.Stack;
 import java.util.Vector;
 
 import javax.mail.MessagingException;
+import javax.mail.internet.MimePart;
+import javax.mail.internet.MimeUtility;
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.AbstractTableModel;
 import javax.swing.table.DefaultTableModel;
 
-public class HauptGUI {
+import com.sun.mail.util.MimeUtil;
+
+public class HauptGUI{
 	
 	private JFrame frame;
 	private JMenuBar bar;
@@ -33,9 +39,9 @@ public class HauptGUI {
 
 	filereader file = new filereader();	
 	getinbox get = new getinbox(file.imap,file.email,file.password);
-
+	decodemultipart decodemultipart;
 	@SuppressWarnings("unchecked")
-	public HauptGUI(String title){
+	public HauptGUI(String title) throws IOException{
 		
 		frame = new JFrame(title);
 		frame.getContentPane().setLayout(new BorderLayout());
@@ -137,11 +143,21 @@ public class HauptGUI {
 					for (int i = 0; i < selectedrow.length; i++) {
 						area.setVisible(false);
 						show_email.setText(get.getcontent(selectedrow[i]));
-				 		areaPanel.add(show_email);
+						areaPanel.add(show_email);
 				 		rightBorder.add(show_email);
 			            show_email.setVisible(true);
 			            System.out.println(selectedrow[i]);
-						
+			            String test;
+			            try {
+							System.out.println(decodemultipart.decodemultipart(get.nachrichten[i]));
+						} catch (IOException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						} catch (MessagingException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+						//System.out.println(MimeUtil.cleanContentType(get.getcontent(i), test));
 					}
 						
 				}

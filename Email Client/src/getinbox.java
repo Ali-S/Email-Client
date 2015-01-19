@@ -16,6 +16,7 @@ import javax.mail.NoSuchProviderException;
 import javax.mail.Session;
 import javax.mail.Store;
 import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimePart;
 
 import com.sun.mail.handlers.text_html;
 import com.sun.mail.handlers.text_plain;
@@ -34,8 +35,9 @@ import org.w3c.dom.Text;
 public class getinbox{
 	Message[] nachrichten;
 	contentemail content;
+	decodemultipart decode;
 	
-	public getinbox(String imap, String email, String passwort){
+	public getinbox(String imap, String email, String passwort) throws IOException{
 		try {
 			Properties props = System.getProperties();
 	        props.setProperty("mail.store.protocol", "imaps");
@@ -57,7 +59,8 @@ public class getinbox{
 					System.out.println("---------------------------------");  
 				    System.out.println("Email Number " + (i + 1));  
 				    System.out.println("Subject: " + message.getSubject());  
-				    System.out.println("From: " + message.getFrom()[0]);  
+				    System.out.println("From: " + message.getFrom()[0]); 
+				    System.out.println("Content: "+ (decodemultipart(message)));
 					System.out.println("Contenttyp: " + message.getContentType());
 					nachrichten[i] = mails[i];
 			} 
@@ -107,12 +110,24 @@ public class getinbox{
 		}
 		message = nachrichten[i];
 		try {
-			return message.getContent().toString();
+			return (String)message.getContent().toString();
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;
 		}
 	}
+	public String getcontenttyp(int i){
+		Message message;
+		message = nachrichten[i];
+		try {
+			return message.getContentType();
+		} catch (MessagingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return (String) "Contenttyp cant be return\n";
+	}
+	
 }
 	
 

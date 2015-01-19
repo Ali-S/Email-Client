@@ -11,7 +11,7 @@ import org.omg.CosNaming.IstringHelper;
 
 public class decodemultipart {
 	String mail;
-	public String decodemultipart(Message message) throws IOException, MessagingException{
+	public decodemultipart(Message message) throws IOException, MessagingException{
 		if (message instanceof MimeMessage) {
 			MimeMessage m = (MimeMessage)message;
 			Object contentobject = m.getContent();
@@ -31,7 +31,7 @@ public class decodemultipart {
 					}
 				}
 				if(cleartextpart!=null){
-					return (String) cleartextpart.getContent();
+					return;
 				}
 				else if(htmltextpart!=null){
 					String html = (String) htmltextpart.getContent();
@@ -40,10 +40,10 @@ public class decodemultipart {
 				
 			}
 			else if(contentobject instanceof String){
-				return (String) contentobject;
+				return;
 			} else System.out.println("Dies ist kein MimeMessage\n");
 		}
-		return null;
+		return;
 		
 	}
 }
