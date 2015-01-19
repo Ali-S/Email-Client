@@ -1,6 +1,9 @@
+import javax.mail.Message;
+import javax.mail.MessagingException;
+
 
 public class contentemail {
-	public void getcontentmail(int i){
-		System.out.println();
+	public void getcontentmail(Message message) throws MessagingException{
+		System.out.println(message.getContentType());
 	}
 }
