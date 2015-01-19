@@ -60,28 +60,14 @@ public class getinbox{
 				    System.out.println("Email Number " + (i + 1));  
 				    System.out.println("Subject: " + message.getSubject());  
 				    System.out.println("From: " + message.getFrom()[0]);  
-				    if (message.isMimeType("multipart/ALTERNATIVE")) {
-				    	Multipart mp = (Multipart)message.getContent();
-		                int partsCount = mp.getCount();
-		                String content = ((String)mp.getBodyPart(partsCount -1).getContent());
-		                content.replaceAll("%", "%25");
-		                String content2 = MimeUtility.decodeText(content);
-		                Whitelist white = new Whitelist();
-					System.out.println(Jsoup.clean(content2, white));
-				    } else {
-
-					    System.out.println("Text: " + message.getContent().toString()); 
-					    
-					}System.out.println("Contenttyp: " + message.getContentType());
-				    nachrichten[i] = mails[i];
-			}
+					System.out.println("Contenttyp: " + message.getContentType());
+					nachrichten[i] = mails[i];			
+			} 
 			
 		} catch (NoSuchProviderException e) {
 			e.printStackTrace();
 			
 		} catch (MessagingException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		
