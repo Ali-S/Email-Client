@@ -52,8 +52,6 @@ public class getinbox{
 			Message[] mails = emailfolder.getMessages();
 			String [] subjects;
 			nachrichten = emailfolder.getMessages();
-
-			
 			for (int i = 0; i < mails.length; i++) {
 				Message message = mails[i];
 					System.out.println("---------------------------------");  
@@ -61,7 +59,7 @@ public class getinbox{
 				    System.out.println("Subject: " + message.getSubject());  
 				    System.out.println("From: " + message.getFrom()[0]);  
 					System.out.println("Contenttyp: " + message.getContentType());
-					nachrichten[i] = mails[i];			
+					nachrichten[i] = mails[i];
 			} 
 			
 		} catch (NoSuchProviderException e) {
