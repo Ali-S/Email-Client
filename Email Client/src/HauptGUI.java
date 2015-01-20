@@ -146,17 +146,7 @@ public class HauptGUI{
 					for (int i = 0; i < selectedrow.length; i++) {
 						Message mails = get.nachrichten[selectedrow[i]];
 						area.setVisible(false);
-						MimeMessage mime = (MimeMessage) mails;
-						try {
-							decodemultipart.decodemultipart(mails);
-							System.out.println(mime.getContent());
-						} catch (IOException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						} catch (MessagingException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						}
+						show_email.setText(get.getcontent(selectedrow[i]));
 						areaPanel.add(show_email);
 				 		rightBorder.add(show_email);
 			            show_email.setVisible(true);

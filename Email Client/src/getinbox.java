@@ -113,10 +113,6 @@ public class getinbox{
 		}
 		message = nachrichten[i];
 		try {
-			if(message instanceof MimeMessage){
-				contentmessage = decode.decodemultipart(message);
-				return contentmessage;
-			}
 			return (String)message.getContent().toString();
 		} catch (Exception e) {
 			System.out.println("Content konnte nicht gelesen werden \n");
