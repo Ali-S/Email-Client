@@ -16,6 +16,7 @@ import javax.mail.NoSuchProviderException;
 import javax.mail.Session;
 import javax.mail.Store;
 import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimePart;
 
 import com.sun.mail.handlers.text_html;
@@ -32,6 +33,8 @@ import org.jsoup.safety.Whitelist;
 import org.omg.CORBA.Any;
 import org.omg.CosNaming.NamingContextExtPackage.URLStringHelper;
 import org.w3c.dom.Text;
+
+
 public class getinbox{
 	Message[] nachrichten;
 	contentemail content;
@@ -104,13 +107,19 @@ public class getinbox{
 	
 	public String getcontent(int i) {
 		Message message;
+		String contentmessage;
 		if(nachrichten[i] == null) {
 			System.out.println("Es befinden sich keine Nachrichten\n");
 		}
 		message = nachrichten[i];
 		try {
+			if(message instanceof MimeMessage){
+				contentmessage = decode.decodemultipart(message);
+				return contentmessage;
+			}
 			return (String)message.getContent().toString();
 		} catch (Exception e) {
+			System.out.println("Content konnte nicht gelesen werden \n");
 			e.printStackTrace();
 			return null;
 		}

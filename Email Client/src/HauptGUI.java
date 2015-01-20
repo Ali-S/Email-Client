@@ -6,7 +6,9 @@ import java.io.UnsupportedEncodingException;
 import java.util.Stack;
 import java.util.Vector;
 
+import javax.mail.Message;
 import javax.mail.MessagingException;
+import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimePart;
 import javax.mail.internet.MimeUtility;
 import javax.swing.*;
@@ -40,6 +42,7 @@ public class HauptGUI{
 	filereader file = new filereader();	
 	getinbox get = new getinbox(file.imap,file.email,file.password);
 	decodemultipart decodemultipart;
+
 	@SuppressWarnings("unchecked")
 	public HauptGUI(String title){
 		
@@ -141,8 +144,19 @@ public class HauptGUI{
 				int[] selectedrow = table.getSelectedRows();
 				if (!event.getValueIsAdjusting()) {
 					for (int i = 0; i < selectedrow.length; i++) {
+						Message mails = get.nachrichten[selectedrow[i]];
 						area.setVisible(false);
-						show_email.setText(get.getcontent(selectedrow[i]));
+						MimeMessage mime = (MimeMessage) mails;
+						try {
+							decodemultipart.decodemultipart(mails);
+							System.out.println(mime.getContent());
+						} catch (IOException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						} catch (MessagingException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
 						areaPanel.add(show_email);
 				 		rightBorder.add(show_email);
 			            show_email.setVisible(true);
