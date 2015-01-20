@@ -29,6 +29,8 @@ import javax.swing.text.html.HTML;
 import javax.swing.text.html.HTMLDocument.HTMLReader;
 
 import org.jsoup.Jsoup;
+import org.jsoup.examples.HtmlToPlainText;
+import org.jsoup.nodes.Element;
 import org.jsoup.safety.Whitelist;
 import org.omg.CORBA.Any;
 import org.omg.CosNaming.NamingContextExtPackage.URLStringHelper;
@@ -105,7 +107,7 @@ public class getinbox{
 		}
 	}
 	
-	public String getcontent(int i) {
+	public String getcontent(int i) throws IOException, MessagingException {
 		Message message;
 		String contentmessage;
 		if(nachrichten[i] == null) {
@@ -113,11 +115,12 @@ public class getinbox{
 		}
 		message = nachrichten[i];
 		try {
-			return (String)message.getContent().toString();
+			Multipart mp = (Multipart) message.getContent();
+			Object p = mp.getBodyPart(i).getContent();
+			String q = p.toString();
+			return q;
 		} catch (Exception e) {
-			System.out.println("Content konnte nicht gelesen werden \n");
-			e.printStackTrace();
-			return null;
+			return (String) message.getContent().toString();
 		}
 	}
 	public String getcontenttyp(int i){

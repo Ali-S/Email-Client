@@ -30,8 +30,8 @@ public class HauptGUI{
 	private JScrollPane scroll, scroll2;
 	private JTabbedPane tabbed;
 	private JPanel tab1, tab2, tab3, areaPanel, rightBorder, labelPanel, backgr;
-	private JTextArea area;
-	private JLabel sender, receiver, subject, date,show_email;
+	private JTextArea area, show_email;
+	private JLabel sender, receiver, subject, date;
 	
 	public String[] mail = null;
 	public String[] from = null;
@@ -136,7 +136,7 @@ public class HauptGUI{
 		
 	    ListSelectionModel cellSelectionModel = table.getSelectionModel();
 	    cellSelectionModel.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-	    show_email = new JLabel();
+	    show_email = new JTextArea();
 	    
 		table.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
 			// Nach select den Inhalt der Email anzeigen
@@ -146,7 +146,15 @@ public class HauptGUI{
 					for (int i = 0; i < selectedrow.length; i++) {
 						Message mails = get.nachrichten[selectedrow[i]];
 						area.setVisible(false);
-						show_email.setText(get.getcontent(selectedrow[i]));
+						try {
+							show_email.setText(get.getcontent(selectedrow[i]));
+						} catch (IOException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						} catch (MessagingException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
 						areaPanel.add(show_email);
 				 		rightBorder.add(show_email);
 			            show_email.setVisible(true);
