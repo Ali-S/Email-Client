@@ -25,8 +25,7 @@ public class HauptGUI{
 	private JMenuBar bar;
 	private JMenu menu1, menu2;
 	private JMenuItem item1, item2, item3;
-	private JTable table, table2;
-	private DefaultTableModel dtable1, dtable2;
+	private JTable table;
 	private JScrollPane scroll, scroll2;
 	private JTabbedPane tabbed;
 	private JPanel tab1, tab2, tab3, areaPanel, rightBorder, labelPanel, backgr;
@@ -96,7 +95,6 @@ public class HauptGUI{
 		
 		
 		table = new JTable(fromdata, fr);
-		table2 = new JTable(subjectdata, sub);
 		
 		for (int i = 0; i < get.nachrichten.length; i++) {
 			subjects[i] = get.getsubject(i);
@@ -110,13 +108,9 @@ public class HauptGUI{
 
 		
 		table.setRowSelectionAllowed(true);
-		table2.setRowSelectionAllowed(true);
 		scroll = new JScrollPane(table, ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED,
 				ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 		scroll.setPreferredSize(new Dimension(200, 650));
-		scroll2 = new JScrollPane(table2, ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED,
-				ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-		scroll2.setPreferredSize(new Dimension(200, 650));
 		
 		
 		tabbed = new JTabbedPane();
