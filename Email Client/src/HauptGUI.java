@@ -24,7 +24,7 @@ public class HauptGUI{
 	private JFrame frame;
 	private JMenuBar bar;
 	private JMenu menu1, menu2;
-	private JMenuItem item1, item2;
+	private JMenuItem item1, item2, item3;
 	private JTable table, table2;
 	private DefaultTableModel dtable1, dtable2;
 	private JScrollPane scroll, scroll2;
@@ -51,6 +51,8 @@ public class HauptGUI{
 		bar = new JMenuBar();
 		menu1 = new JMenu("File");
 		item1 = new JMenuItem("Quit");
+		item3 = new JMenuItem("New E-Mail");
+		menu1.add(item3);
 		menu1.add(item1);
 		menu2 = new JMenu("Help");
 		item2 = new JMenuItem("About");
@@ -127,9 +129,31 @@ public class HauptGUI{
 		tabbed.addTab("Sent", tab2);
 		tabbed.addTab("Deleted", tab3);
 		
+		rightBorder = new JPanel(new BorderLayout());
+		labelPanel = new JPanel(new GridLayout(3,1));
+		
+		sender = new JLabel("   Sender: \t");
+//		receiver = new JLabel("   Receiver: \t");
+		subject = new JLabel("   Subject: \t");
+		date = new JLabel("   Date: \t");
+		labelPanel.add(sender);
+//		labelPanel.add(receiver);
+		labelPanel.add(date);
+		labelPanel.add(subject);
+		rightBorder.add(labelPanel, BorderLayout.NORTH);
+	
+		
+
+		
+		backgr = new JPanel(new BorderLayout());
+		backgr.add(tabbed, BorderLayout.WEST);
+		backgr.add(rightBorder, BorderLayout.CENTER);
+		
+		
 		area = new JTextArea("\n Text entry here: ", 50, 100);
 		areaPanel = new JPanel(new GridLayout());
 		areaPanel.add(area);
+		rightBorder.add(area);
 		// Tabelle für nur ein Select erlauben
 		table.setCellSelectionEnabled(true);
 		
@@ -145,6 +169,9 @@ public class HauptGUI{
 						Message mails = get.nachrichten[selectedrow[i]];
 						try {
 							area.setText(get.getcontent(selectedrow[i]));
+							sender.setText("Sender: \t" + get.getfrom(selectedrow[i]));
+							date.setText("Date: \t" + get.nachrichten[selectedrow[i]].getReceivedDate());
+							subject.setText("Subject: \t" + get.getsubject(selectedrow[i]));
 						} catch (IOException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
@@ -152,28 +179,12 @@ public class HauptGUI{
 							// TODO Auto-generated catch block
 							e.printStackTrace();
 						}
-						}
+					}
 				} 	 
 			}
 		
 		});
-		rightBorder = new JPanel(new BorderLayout());
-		labelPanel = new JPanel(new GridLayout(3,1));
-		
-		sender = new JLabel("   Sender: \t");
-//		receiver = new JLabel("   Receiver: \t");
-		subject = new JLabel("   Subject: \t");
-		date = new JLabel("   Date: \t");
-		labelPanel.add(sender);
-//		labelPanel.add(receiver);
-		labelPanel.add(date);
-		labelPanel.add(subject);
-		rightBorder.add(labelPanel, BorderLayout.NORTH);
-		rightBorder.add(area);
-		backgr = new JPanel(new BorderLayout());
-		backgr.add(tabbed, BorderLayout.WEST);
-		backgr.add(rightBorder, BorderLayout.CENTER);
-		
+
 		frame.getContentPane().add(backgr, BorderLayout.CENTER);
 		
 		frame.setSize(800, 480);
