@@ -1,8 +1,7 @@
 
 import java.awt.*;
-import java.io.File;
+import java.awt.event.ActionEvent;
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import java.util.Stack;
 import java.util.Vector;
 
@@ -26,7 +25,7 @@ public class HauptGUI{
 	private JMenu menu1, menu2;
 	private JMenuItem item1, item2, item3;
 	private JTable table;
-	private JScrollPane scroll, scroll2;
+	private JScrollPane scroll;
 	private JTabbedPane tabbed;
 	private JPanel tab1, tab2, tab3, areaPanel, rightBorder, labelPanel, backgr;
 	private JTextArea area;
@@ -41,7 +40,8 @@ public class HauptGUI{
 	filereader file = new filereader();	
 	getinbox get = new getinbox(file.imap,file.email,file.password);
 
-	@SuppressWarnings("unchecked")
+	
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public HauptGUI(String title){
 		
 		frame = new JFrame(title);
@@ -59,6 +59,16 @@ public class HauptGUI{
 		bar.add(menu1);
 		bar.add(menu2);
 		frame.add(bar, BorderLayout.NORTH);
+		item1.addActionListener(new java.awt.event.ActionListener() {
+	        public void actionPerformed(java.awt.event.ActionEvent evt) {
+	            System.exit(0);;
+	        }
+	    });
+		item3.addActionListener(new java.awt.event.ActionListener(){
+			public void actionPerformed(ActionEvent e) {
+				new guisende();
+		}
+		});
 		
 		getfrom = new String[get.nachrichten.length];
 		subjects = new String[get.nachrichten.length];
@@ -130,7 +140,7 @@ public class HauptGUI{
 		areaPanel = new JPanel(new GridLayout());
 		areaPanel.add(area);
 		rightBorder.add(area);
-		// Tabelle fŸr nur ein Select erlauben
+		// Tabelle fï¿½r nur ein Select erlauben
 		table.setCellSelectionEnabled(true);
 		
 	    ListSelectionModel cellSelectionModel = table.getSelectionModel();
@@ -171,6 +181,6 @@ public class HauptGUI{
 		
 	}
 	
-
+	
 
 }
