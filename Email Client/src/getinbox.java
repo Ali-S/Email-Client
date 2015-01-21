@@ -40,7 +40,6 @@ import org.w3c.dom.Text;
 public class getinbox{
 	Message[] nachrichten;
 	contentemail content;
-	decodemultipart decode;
 	
 	public getinbox(String imap, String email, String passwort){
 		try {

@@ -30,7 +30,7 @@ public class HauptGUI{
 	private JScrollPane scroll, scroll2;
 	private JTabbedPane tabbed;
 	private JPanel tab1, tab2, tab3, areaPanel, rightBorder, labelPanel, backgr;
-	private JTextArea area, show_email;
+	private JTextArea area;
 	private JLabel sender, receiver, subject, date;
 	
 	public String[] mail = null;
@@ -41,7 +41,6 @@ public class HauptGUI{
 
 	filereader file = new filereader();	
 	getinbox get = new getinbox(file.imap,file.email,file.password);
-	decodemultipart decodemultipart;
 
 	@SuppressWarnings("unchecked")
 	public HauptGUI(String title){
@@ -136,7 +135,6 @@ public class HauptGUI{
 		
 	    ListSelectionModel cellSelectionModel = table.getSelectionModel();
 	    cellSelectionModel.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-	    show_email = new JTextArea();
 	    
 		table.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
 			// Nach select den Inhalt der Email anzeigen
@@ -145,9 +143,8 @@ public class HauptGUI{
 				if (!event.getValueIsAdjusting()) {
 					for (int i = 0; i < selectedrow.length; i++) {
 						Message mails = get.nachrichten[selectedrow[i]];
-						area.setVisible(false);
 						try {
-							show_email.setText(get.getcontent(selectedrow[i]));
+							area.setText(get.getcontent(selectedrow[i]));
 						} catch (IOException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
@@ -155,9 +152,6 @@ public class HauptGUI{
 							// TODO Auto-generated catch block
 							e.printStackTrace();
 						}
-						areaPanel.add(show_email);
-				 		rightBorder.add(show_email);
-			            show_email.setVisible(true);
 						}
 				} 	 
 			}
