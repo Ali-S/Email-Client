@@ -78,6 +78,7 @@ public class HauptGUI{
 		
 		table = new JTable(fromdata, fr);
 		table.setRowHeight(75);
+		table.setAutoCreateRowSorter(true);
 		
 		for (int i = 0; i < get.nachrichten.length; i++) {
 			subjects[i] = get.getsubject(i);
@@ -104,7 +105,6 @@ public class HauptGUI{
 		tabbed.addTab("Inbox", tab1);
 		tabbed.addTab("Sent", tab2);
 		tabbed.addTab("Deleted", tab3);
-		
 		rightBorder = new JPanel(new BorderLayout());
 		labelPanel = new JPanel(new GridLayout(3,1));
 		
@@ -164,7 +164,7 @@ public class HauptGUI{
 
 		frame.getContentPane().add(backgr, BorderLayout.CENTER);
 		
-		frame.setSize(800, 480);
+		frame.setSize(800, 600);
 		frame.setLocationRelativeTo(null);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
