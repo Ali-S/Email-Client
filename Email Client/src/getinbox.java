@@ -28,10 +28,6 @@ import javax.mail.internet.MimeUtility;
 import javax.swing.text.html.HTML;
 import javax.swing.text.html.HTMLDocument.HTMLReader;
 
-import org.jsoup.Jsoup;
-import org.jsoup.examples.HtmlToPlainText;
-import org.jsoup.nodes.Element;
-import org.jsoup.safety.Whitelist;
 import org.omg.CORBA.Any;
 import org.omg.CosNaming.NamingContextExtPackage.URLStringHelper;
 import org.w3c.dom.Text;
