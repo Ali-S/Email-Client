@@ -172,6 +172,7 @@ public class HauptGUI{
 							sender.setText("   Sender: \t" + get.getfrom(selectedrow[i]));
 							date.setText("   Date: \t" + get.nachrichten[selectedrow[i]].getReceivedDate());
 							subject.setText("   Subject: \t" + get.getsubject(selectedrow[i]));
+							area.setEditable(false);
 						} catch (IOException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
