@@ -42,6 +42,7 @@ public class getinbox{
 		try {
 			Properties props = System.getProperties();
 	        props.setProperty("mail.store.protocol", "imaps");
+	        props.put("mail.imaps.ssl.trust", "*");
 
 	        Session session = Session.getDefaultInstance(props, null);
 
