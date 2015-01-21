@@ -169,9 +169,9 @@ public class HauptGUI{
 						Message mails = get.nachrichten[selectedrow[i]];
 						try {
 							area.setText(get.getcontent(selectedrow[i]));
-							sender.setText("Sender: \t" + get.getfrom(selectedrow[i]));
-							date.setText("Date: \t" + get.nachrichten[selectedrow[i]].getReceivedDate());
-							subject.setText("Subject: \t" + get.getsubject(selectedrow[i]));
+							sender.setText("   Sender: \t" + get.getfrom(selectedrow[i]));
+							date.setText("   Date: \t" + get.nachrichten[selectedrow[i]].getReceivedDate());
+							subject.setText("   Subject: \t" + get.getsubject(selectedrow[i]));
 						} catch (IOException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
