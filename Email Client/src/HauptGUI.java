@@ -60,12 +60,12 @@ public class HauptGUI{
 		bar.add(menu2);
 		frame.add(bar, BorderLayout.NORTH);
 		
-		getfrom = new String[get.nachrichten.length];
-		subjects = new String[get.nachrichten.length];
-
-		String[] tableColumn = {"sender"};
-		Object[][] tableData = {getfrom};
-		
+//		getfrom = new String[get.nachrichten.length];
+//		subjects = new String[get.nachrichten.length];
+//
+//		String[] tableColumn = {"sender"};
+//		Object[][] tableData = {getfrom};
+//		
 		String[] table2Column = {"subject"};
 		Object[][] table2Data = {subjects};
 		
