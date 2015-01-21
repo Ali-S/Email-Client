@@ -63,21 +63,6 @@ public class HauptGUI{
 		getfrom = new String[get.nachrichten.length];
 		subjects = new String[get.nachrichten.length];
 
-		String[] tableColumn = {"sender"};
-		Object[][] tableData = {getfrom};
-		
-//		String[] table2Column = {"subject"};
-//		Object[][] table2Data = {subjects};
-//		
-//		
-		Vector subjectdata = new Vector();
-		for (int i = 0; i < get.nachrichten.length; i++) {
-			Vector row = new Vector();
-			row.add(get.getsubject(i) +"\n"+ get.getfrom(i));
-			subjectdata.add(row);
-		}
-		CellRendererPane render = new CellRendererPane();
-		
 		Vector fromdata = new Vector();
 		for (int i = 0; i < get.nachrichten.length; i++) {
 			Vector row = new Vector();
@@ -86,12 +71,8 @@ public class HauptGUI{
 		}
 		
 		
-		Vector sub = new Vector();
-		sub.add("Subject");
-		
-		
 		Vector fr = new Vector();
-		fr.add("From");
+		fr.add("Inbox");
 		
 		
 		
@@ -111,7 +92,7 @@ public class HauptGUI{
 		
 		table.setRowSelectionAllowed(true);
 		scroll = new JScrollPane(table, ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED,
-				ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+				ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
 		scroll.setPreferredSize(new Dimension(200, 650));
 		
 		
