@@ -73,14 +73,15 @@ public class HauptGUI{
 		Vector subjectdata = new Vector();
 		for (int i = 0; i < get.nachrichten.length; i++) {
 			Vector row = new Vector();
-			row.add(get.getsubject(i));
+			row.add(get.getsubject(i) +"\n"+ get.getfrom(i));
 			subjectdata.add(row);
 		}
+		CellRendererPane render = new CellRendererPane();
 		
 		Vector fromdata = new Vector();
 		for (int i = 0; i < get.nachrichten.length; i++) {
 			Vector row = new Vector();
-			row.add(get.getfrom(i));
+			row.add("<html>" + get.getfrom(i) + "<br>" + "<br>" + get.getsubject(i) + "</html>");
 			fromdata.add(row);
 		}
 		
@@ -95,6 +96,7 @@ public class HauptGUI{
 		
 		
 		table = new JTable(fromdata, fr);
+		table.setRowHeight(75);
 		
 		for (int i = 0; i < get.nachrichten.length; i++) {
 			subjects[i] = get.getsubject(i);
