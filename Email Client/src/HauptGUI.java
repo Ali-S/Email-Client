@@ -116,7 +116,6 @@ public class HauptGUI{
 		tabbed = new JTabbedPane();
 		tab1 = new JPanel();
 		tab1.add(scroll);
-		tab1.add(scroll2);
 		tab2 = new JPanel();
 		tab3 = new JPanel();
 		tabbed.addTab("Inbox", tab1);
