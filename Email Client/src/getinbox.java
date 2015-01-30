@@ -106,20 +106,13 @@ public class getinbox{
 	
 	public String getcontent(int i) throws IOException, MessagingException {
 		Message message;
-		String contentmessage;
 		if(nachrichten[i] == null) {
 			System.out.println("Es befinden sich keine Nachrichten\n");
 		}
 		message = nachrichten[i];
-		try {
-			Multipart mp = (Multipart) message.getContent();
-			Object p = mp.getBodyPart(i).getContent();
-			String q = p.toString();
-			return q;
-		} catch (Exception e) {
-			return (String) message.getContent().toString();
-		}
+		return message.getContent().toString();
 	}
+	
 	public String getcontenttyp(int i){
 		Message message;
 		message = nachrichten[i];
