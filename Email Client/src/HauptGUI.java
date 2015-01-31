@@ -29,7 +29,8 @@ public class HauptGUI{
 	private JTabbedPane tabbed;
 	private JPanel tab1, tab2, tab3, areaPanel, rightBorder, labelPanel, backgr;
 	private JTextArea area;
-	private JLabel sender, receiver, subject, date;
+	private JLabel sender, receiver, subject, date, send_l;
+	private JButton send;
 	
 	public String[] mail = null;
 	public String[] from = null;
@@ -122,10 +123,14 @@ public class HauptGUI{
 //		receiver = new JLabel("   Receiver: \t");
 		subject = new JLabel("   Subject: \t");
 		date = new JLabel("   Date: \t");
+		send_l = new JLabel();
+		send = new JButton("new E-Mail");
+		send_l.add(send);
 		labelPanel.add(sender);
 //		labelPanel.add(receiver);
 		labelPanel.add(date);
 		labelPanel.add(subject);
+		labelPanel.add(send_l);
 		rightBorder.add(labelPanel, BorderLayout.NORTH);
 	
 		
@@ -140,7 +145,7 @@ public class HauptGUI{
 		areaPanel = new JPanel(new GridLayout());
 		areaPanel.add(area);
 		rightBorder.add(area);
-		// Tabelle f�r nur ein Select erlauben
+		// Tabelle fuer nur ein Select erlauben
 		table.setCellSelectionEnabled(true);
 		
 	    ListSelectionModel cellSelectionModel = table.getSelectionModel();
