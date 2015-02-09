@@ -60,7 +60,7 @@ public class guisende {
 		bccfield = new JTextField();
 		subjectfield = new JTextField();
 		
-		area = new JTextArea("Please enter your content",200,200);
+		area = new JTextArea("Please enter your content");
 		area.setLineWrap(true);
 		area.setWrapStyleWord(true);
 		
