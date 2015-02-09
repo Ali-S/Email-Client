@@ -40,6 +40,8 @@ public class guisende {
 	
 	private LineBorder border = new LineBorder(Color.BLACK); 
 	
+	filereader file = new filereader();
+	
 	public guisende(){
 		JFrame fenster = new JFrame("Send a new E-Mail");
 		fenster.setSize(width,height);
@@ -105,6 +107,8 @@ public class guisende {
 		fenster.setLocationRelativeTo(null);
 		fenster.setVisible(true);
 		fenster.setBackground(Color.white);
+
+
 		
 	}
 
@@ -112,8 +116,12 @@ public class guisende {
 	private class SendButtonHandler implements ActionListener{
 
 		public void actionPerformed(ActionEvent e) {
-			// TODO Auto-generated method stub
 			
+			to = tofield.getText();
+			subject = subjectfield.getText();
+			message = area.getText();
+			send send = new send(file.smtp, file.email, file.password,to, subject, message);
+
 		}
 	}
 
