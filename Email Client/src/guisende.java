@@ -45,8 +45,10 @@ public class guisende {
 		fenster. setSize(width,height);
 		
 		Container feld = fenster.getContentPane();
-		GridLayout flayout = new GridLayout(3, 2);
-		feld.setLayout(flayout);
+		BorderLayout borderlayout = new BorderLayout();
+		feld.setLayout(borderlayout);
+		GridLayout gridlayout = new GridLayout(4,1);
+		FlowLayout clayout = new  FlowLayout();
 		
 		tolabel = new JLabel("To: ");
 		cclabel = new JLabel("CC:");
@@ -58,7 +60,9 @@ public class guisende {
 		bccfield = new JTextField();
 		subjectfield = new JTextField();
 		
-		area = new JTextArea("",50,100);
+		area = new JTextArea("Please enter your content",200,200);
+		area.setLineWrap(true);
+		area.setWrapStyleWord(true);
 		
 		send = new JButton("Send");
 		sbhandler = new SendButtonHandler();
@@ -72,7 +76,7 @@ public class guisende {
 		JPanel contentpanel = new JPanel();
 		JPanel buttonpanel = new JPanel();
 		
-		infopanel.setLayout(flayout);
+		infopanel.setLayout(gridlayout);
 		
 		infopanel.add(tolabel);
 		infopanel.add(tofield);
@@ -85,6 +89,7 @@ public class guisende {
 		infopanel.setBackground(Color.white);
 		infopanel.setBorder(border);
 		
+		contentpanel.setLayout(clayout);
 		contentpanel.add(area);
 		contentpanel.setBorder(border);
 		
