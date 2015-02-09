@@ -10,6 +10,16 @@ import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
+/**
+ * The MainGUI class 
+ * 
+ * 
+ *
+ * @author Furkan Yuecel
+ * @author Suepriz Yaykan
+ * @author Ali Selvi
+ * @version 1.0
+ */
 public class HauptGUI{
 	
 	private JFrame frame;
