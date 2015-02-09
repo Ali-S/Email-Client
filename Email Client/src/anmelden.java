@@ -2,6 +2,17 @@
 import java.awt.Checkbox;
 
 import javax.swing.*;
+
+/**
+ * The class Anmelden 
+ * 
+ * 
+ *
+ * @author Furkan Yuecel
+ * @author Suepriz Yaykan
+ * @author Ali Selvi
+ * @version 1.0
+ */
 public class anmelden {
 
 	private String ssmtp;
@@ -10,16 +21,11 @@ public class anmelden {
 	private String spass;
 	
 	public anmelden(String meldung, String title){
-		// Textfield SMTP
+		
 		JTextField smtp = new JTextField("Please enter SMTP server", 25);
-		
-		// Textfield IMAP
 		JTextField imap = new JTextField("Please enter IMAP server", 25);
-		
-		// Textfield Email
 		JTextField email = new JTextField("Please enter E-Mail Adress",25);
 		
-		// Passwordfield
 		JPasswordField pass = new JPasswordField("",15);
 		
 		// Remember me 
