@@ -40,8 +40,10 @@ public class guisende {
 	
 	private LineBorder border = new LineBorder(Color.BLACK); 
 	
+	filereader file = new filereader();
+	JFrame fenster = new JFrame("Send a new E-Mail");
 	public guisende(){
-		JFrame fenster = new JFrame("Send a new E-Mail");
+
 		fenster.setSize(width,height);
 		
 		Container feld = fenster.getContentPane();
@@ -106,22 +108,28 @@ public class guisende {
 		fenster.setVisible(true);
 		fenster.setBackground(Color.white);
 		
+
+		
 	}
 
 	
 	private class SendButtonHandler implements ActionListener{
 
 		public void actionPerformed(ActionEvent e) {
-			// TODO Auto-generated method stub
 			
+			to = tofield.getText();
+			subject = subjectfield.getText();
+			message = area.getText();
+			send send = new send(file.smtp, file.email, file.password,to, subject, message);
+			fenster.dispose();;
 		}
 	}
 
 	private class CancelButtonHandler implements ActionListener{
 
 		public void actionPerformed(ActionEvent e) {
-			// TODO Auto-generated method stub
 			
+			fenster.dispose();
 		}
 	}
 	
