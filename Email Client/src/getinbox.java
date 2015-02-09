@@ -25,9 +25,11 @@ import com.sun.mail.imap.*;
 import com.sun.mail.util.DecodingException;
 
 import javax.mail.internet.MimeUtility;
+import javax.mail.search.AddressStringTerm;
+import javax.swing.JOptionPane;
 import javax.swing.text.html.HTML;
 import javax.swing.text.html.HTMLDocument.HTMLReader;
-
+import javax.swing.text.html.ListView;
 
 import org.omg.CORBA.Any;
 import org.omg.CosNaming.NamingContextExtPackage.URLStringHelper;
@@ -124,6 +126,19 @@ public class getinbox{
 		}
 		return (String) "Contenttyp cant be return\n";
 	}
+	
+	public Date getdate(int i){
+		Message message = nachrichten[i];
+		try {
+			return message.getReceivedDate();
+		} catch (MessagingException e) {
+			JOptionPane.showMessageDialog(null, "Keine Nachricht enthalten.");
+			e.printStackTrace();
+		} 
+		return null;
+	}
+
+	
 	
 }
 	
