@@ -35,12 +35,10 @@ public class anmelden {
 		Checkbox remember = new Checkbox("Remember me!");
 		
 		// Objecst they are listening on the popup frame
-		Object[] props = {title,"IMAP",imap,"SMTP",smtp,"E-Mail:",email,"Password:",pass,remember};
+		Object[] props = {title, "IMAP", imap, "SMTP", smtp, "E-Mail:", email, "Password:", pass, remember};
 		
 		// create the popupPane
-		JOptionPane fenster = new JOptionPane(props, 
-				JOptionPane.PLAIN_MESSAGE,
-				JOptionPane.DEFAULT_OPTION);
+		JOptionPane fenster = new JOptionPane(props, JOptionPane.PLAIN_MESSAGE,	JOptionPane.DEFAULT_OPTION);
 		fenster.createDialog(null,"Properties").setVisible(true);
 
 		setSsmtp(smtp.getText());
@@ -53,11 +51,10 @@ public class anmelden {
 			System.out.println(getSsmtp() + getSimap() + getSemail() + getSpass());
 			new save(getSsmtp(), getSimap(), getSemail(), getSpass());
 			new HauptGUI(title);
-			
-		} else {
+		}
+		else {
 			new HauptGUI(title);
 		}
-		
 	}
 	
 	public String getSsmtp() {

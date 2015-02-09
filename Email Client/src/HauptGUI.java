@@ -88,7 +88,6 @@ public class HauptGUI{
 		fr.add("Inbox");
 		
 		
-		
 		table = new JTable(fromdata, fr);
 		table.setRowHeight(75);
 		table.setAutoCreateRowSorter(true);
