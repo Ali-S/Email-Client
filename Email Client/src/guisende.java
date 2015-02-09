@@ -42,7 +42,7 @@ public class guisende {
 	
 	public guisende(){
 		JFrame fenster = new JFrame("Send a new E-Mail");
-		fenster. setSize(width,height);
+		fenster.setSize(width,height);
 		
 		Container feld = fenster.getContentPane();
 		BorderLayout borderlayout = new BorderLayout();
@@ -102,6 +102,7 @@ public class guisende {
 		feld.add(contentpanel,BorderLayout.CENTER);
 		feld.add(buttonpanel,BorderLayout.SOUTH);
 		feld.setBackground(Color.white);
+		fenster.setLocationRelativeTo(null);
 		fenster.setVisible(true);
 		fenster.setBackground(Color.white);
 		
