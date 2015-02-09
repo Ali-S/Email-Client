@@ -77,9 +77,9 @@ public class HauptGUI{
 		subjects = new String[get.nachrichten.length];
 
 		Vector fromdata = new Vector();
-		for (int e = get.nachrichten.length-1; e >= 0; e--) {
+		for (int i = 0; i < get.nachrichten.length; i++) {
 			Vector row = new Vector();
-			row.add("<html>" + get.getfrom(e) + "<br>" + "<br>" + get.getsubject(e) + "</html>");
+			row.add("<html>" + get.getfrom(i) + "<br>" + "<br>" + get.getsubject(i) + "</html>");
 			fromdata.add(row);
 		}
 		
@@ -107,7 +107,7 @@ public class HauptGUI{
 		table.setRowSelectionAllowed(true);
 		scroll = new JScrollPane(table, ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED,
 				ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
-		scroll.setPreferredSize(new Dimension(200, 650));
+		scroll.setPreferredSize(new Dimension(200,750));
 		
 		
 		tabbed = new JTabbedPane();
@@ -134,7 +134,6 @@ public class HauptGUI{
 		rightBorder.add(labelPanel, BorderLayout.NORTH);
 	
 		
-
 		
 		backgr = new JPanel(new BorderLayout());
 		backgr.add(tabbed, BorderLayout.WEST);
