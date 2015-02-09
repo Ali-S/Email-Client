@@ -25,9 +25,11 @@ import com.sun.mail.imap.*;
 import com.sun.mail.util.DecodingException;
 
 import javax.mail.internet.MimeUtility;
+import javax.mail.search.AddressStringTerm;
 import javax.swing.JOptionPane;
 import javax.swing.text.html.HTML;
 import javax.swing.text.html.HTMLDocument.HTMLReader;
+import javax.swing.text.html.ListView;
 
 import org.omg.CORBA.Any;
 import org.omg.CosNaming.NamingContextExtPackage.URLStringHelper;
@@ -134,6 +136,13 @@ public class getinbox{
 			e.printStackTrace();
 		} 
 		return null;
+	}
+
+	/**
+	 * Sort inbox 
+	 */
+	public void sort(){
+		
 	}
 	
 }
