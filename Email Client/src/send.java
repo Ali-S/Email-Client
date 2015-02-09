@@ -40,10 +40,10 @@ public class send {
 			
 		} catch (AddressException e) {
 			JOptionPane.showMessageDialog(null, "Please enter valid E-Mail adress.");
-			e.printStackTrace();
+//			e.printStackTrace();
 		} catch (MessagingException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, "Your E-Mail was not send.");
+//			e.printStackTrace();
 		}
 	}
 }

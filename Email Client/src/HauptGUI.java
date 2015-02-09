@@ -18,7 +18,7 @@ import javax.swing.event.ListSelectionListener;
  * @author Furkan Yuecel
  * @author Suepriz Yaykan
  * @author Ali Selvi
- * @version 1.0
+ * @version 0.8
  */
 public class HauptGUI{
 	
@@ -107,7 +107,7 @@ public class HauptGUI{
 		table.setRowSelectionAllowed(true);
 		scroll = new JScrollPane(table, ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED,
 				ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
-		scroll.setPreferredSize(new Dimension(200, 650));
+		scroll.setPreferredSize(new Dimension(200,750));
 		
 		
 		tabbed = new JTabbedPane();
@@ -134,7 +134,6 @@ public class HauptGUI{
 		rightBorder.add(labelPanel, BorderLayout.NORTH);
 	
 		
-
 		
 		backgr = new JPanel(new BorderLayout());
 		backgr.add(tabbed, BorderLayout.WEST);
