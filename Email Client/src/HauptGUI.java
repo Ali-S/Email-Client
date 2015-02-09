@@ -2,21 +2,13 @@
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.io.IOException;
-import java.util.Stack;
 import java.util.Vector;
 
 import javax.mail.Message;
 import javax.mail.MessagingException;
-import javax.mail.internet.MimeMessage;
-import javax.mail.internet.MimePart;
-import javax.mail.internet.MimeUtility;
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
-import javax.swing.table.AbstractTableModel;
-import javax.swing.table.DefaultTableModel;
-
-import com.sun.mail.util.MimeUtil;
 
 public class HauptGUI{
 	
@@ -27,7 +19,7 @@ public class HauptGUI{
 	private JTable table;
 	private JScrollPane scroll;
 	private JTabbedPane tabbed;
-	private JPanel tab1, tab2, tab3, areaPanel, rightBorder, labelPanel, backgr;
+	private JPanel tab1, tab2, areaPanel, rightBorder, labelPanel, backgr;
 	private JTextArea area;
 	private JLabel sender, receiver, subject, date, send_l;
 	private JButton send;
@@ -112,12 +104,10 @@ public class HauptGUI{
 		tab1 = new JPanel();
 		tab1.add(scroll);
 		tab2 = new JPanel();
-		tab3 = new JPanel();
 		tabbed.addTab("Inbox", tab1);
 		tabbed.addTab("Sent", tab2);
-		tabbed.addTab("Deleted", tab3);
 		rightBorder = new JPanel(new BorderLayout());
-		labelPanel = new JPanel(new GridLayout(3,1));
+		labelPanel = new JPanel(new GridLayout(4,1));
 		
 		sender = new JLabel("   Sender: \t");
 //		receiver = new JLabel("   Receiver: \t");
@@ -165,10 +155,8 @@ public class HauptGUI{
 							subject.setText("   Subject: \t" + get.getsubject(selectedrow[i]));
 							area.setEditable(false);
 						} catch (IOException e) {
-							// TODO Auto-generated catch block
 							e.printStackTrace();
 						} catch (MessagingException e) {
-							// TODO Auto-generated catch block
 							e.printStackTrace();
 						}
 					}

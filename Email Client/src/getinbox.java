@@ -1,39 +1,15 @@
 
-import java.awt.List;
-import java.awt.event.TextEvent;
 import java.io.IOException;
-import java.net.PasswordAuthentication;
-import java.net.URLDecoder;
-import java.net.URLEncoder;
 import java.util.*;
 
-import javax.mail.Address;
 import javax.mail.Folder;
 import javax.mail.Message;
 import javax.mail.MessagingException;
-import javax.mail.Multipart;
 import javax.mail.NoSuchProviderException;
 import javax.mail.Session;
 import javax.mail.Store;
 import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
-import javax.mail.internet.MimePart;
-
-import com.sun.mail.handlers.text_html;
-import com.sun.mail.handlers.text_plain;
-import com.sun.mail.imap.*;
-import com.sun.mail.util.DecodingException;
-
-import javax.mail.internet.MimeUtility;
-import javax.mail.search.AddressStringTerm;
 import javax.swing.JOptionPane;
-import javax.swing.text.html.HTML;
-import javax.swing.text.html.HTMLDocument.HTMLReader;
-import javax.swing.text.html.ListView;
-
-import org.omg.CORBA.Any;
-import org.omg.CosNaming.NamingContextExtPackage.URLStringHelper;
-import org.w3c.dom.Text;
 
 
 public class getinbox{
