@@ -48,7 +48,7 @@ public class guisende {
 		BorderLayout borderlayout = new BorderLayout();
 		feld.setLayout(borderlayout);
 		GridLayout gridlayout = new GridLayout(4,1);
-		FlowLayout clayout = new  FlowLayout();
+		GridLayout clayout = new GridLayout(1, 1);
 		
 		tolabel = new JLabel("To: ");
 		cclabel = new JLabel("CC:");
