@@ -18,7 +18,7 @@ import javax.swing.event.ListSelectionListener;
  * @author Furkan Yuecel
  * @author Suepriz Yaykan
  * @author Ali Selvi
- * @version 1.0
+ * @version 0.8
  */
 public class HauptGUI{
 	
