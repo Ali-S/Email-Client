@@ -45,13 +45,13 @@ public class HauptGUI{
 
 	
 	@SuppressWarnings({ "rawtypes", "unchecked" })
-	public HauptGUI(String title){
+	public HauptGUI(String title){								 		
 		
 		frame = new JFrame(title);
 		frame.getContentPane().setLayout(new BorderLayout());
 		
 		bar = new JMenuBar();
-		menu1 = new JMenu("File");
+		menu1 = new JMenu("file");
 		item1 = new JMenuItem("Quit");
 		item3 = new JMenuItem("New E-Mail");
 		menu1.add(item3);
