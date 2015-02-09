@@ -77,9 +77,9 @@ public class HauptGUI{
 		subjects = new String[get.nachrichten.length];
 
 		Vector fromdata = new Vector();
-		for (int i = 0; i < get.nachrichten.length; i++) {
+		for (int e = get.nachrichten.length-1; e >= 0; e--) {
 			Vector row = new Vector();
-			row.add("<html>" + get.getfrom(i) + "<br>" + "<br>" + get.getsubject(i) + "</html>");
+			row.add("<html>" + get.getfrom(e) + "<br>" + "<br>" + get.getsubject(e) + "</html>");
 			fromdata.add(row);
 		}
 		
