@@ -32,7 +32,7 @@ public class send {
 			msg.setRecipients(RecipientType.TO,InternetAddress.parse(to));
 			msg.setSubject(subject);
 			msg.setText(content);
-			System.out.println("\n"+to);
+			System.out.println("\n"+smtp);
 			Transport.send(msg);
 		} catch (AddressException e) {
 			JOptionPane.showMessageDialog(null, "Please enter valid E-Mail adress.");
