@@ -138,12 +138,7 @@ public class getinbox{
 		return null;
 	}
 
-	/**
-	 * Sort inbox 
-	 */
-	public void sort(){
-		
-	}
+	
 	
 }
 	
