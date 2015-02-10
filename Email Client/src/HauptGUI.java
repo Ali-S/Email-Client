@@ -25,7 +25,7 @@ public class HauptGUI{
 	private JFrame frame;
 	private JMenuBar bar;
 	private JMenu menu1, menu2;
-	private JMenuItem item1, item2, item3;
+	private JMenuItem item1, item2, item3, item4;
 	private JTable table;
 	private JScrollPane scroll;
 	private JTabbedPane tabbed;
@@ -33,12 +33,13 @@ public class HauptGUI{
 	private JTextArea area;
 	private JLabel sender, receiver, subject, date, send_l;
 	private JButton send;
+	private Vector fromdata;
 	
 	public String[] mail = null;
 	public String[] from = null;
 	public String [] subjects,getfrom;
 	
-	
+	int tabbedheight;
 
 	filereader file = new filereader();	
 	getinbox get = new getinbox(file.imap,file.email,file.password);
@@ -51,10 +52,12 @@ public class HauptGUI{
 		frame.getContentPane().setLayout(new BorderLayout());
 		
 		bar = new JMenuBar();
-		menu1 = new JMenu("file");
+		menu1 = new JMenu("File");
 		item1 = new JMenuItem("Quit");
 		item3 = new JMenuItem("New E-Mail");
+		item4 = new JMenuItem("Update");
 		menu1.add(item3);
+		menu1.add(item4);
 		menu1.add(item1);
 		menu2 = new JMenu("Help");
 		item2 = new JMenuItem("About");
@@ -73,9 +76,11 @@ public class HauptGUI{
 		}
 		});
 		
+		
+		
 		getfrom = new String[get.nachrichten.length];
 		subjects = new String[get.nachrichten.length];
-
+		
 		Vector fromdata = new Vector();
 		for (int i = 0; i < get.nachrichten.length; i++) {
 			Vector row = new Vector();
@@ -92,21 +97,13 @@ public class HauptGUI{
 		table.setRowHeight(75);
 		table.setAutoCreateRowSorter(true);
 		
-		for (int i = 0; i < get.nachrichten.length; i++) {
-			subjects[i] = get.getsubject(i);
-			
-			System.out.println(i+".Subject " + subjects[i]);
-		}
-		
-		for (int i = 0; i < get.nachrichten.length; i++) {
-			getfrom[i] = get.getfrom(i);
-		}
 
-		
+
 		table.setRowSelectionAllowed(true);
 		scroll = new JScrollPane(table, ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED,
 				ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
-		scroll.setPreferredSize(new Dimension(200,750));
+		scroll.setPreferredSize(new Dimension(200,600));
+
 		
 		
 		tabbed = new JTabbedPane();
