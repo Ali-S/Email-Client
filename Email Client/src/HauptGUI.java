@@ -38,7 +38,7 @@ public class HauptGUI{
 	public String[] from = null;
 	public String [] subjects,getfrom;
 	
-	
+	int tabbedheight;
 
 	filereader file = new filereader();	
 	getinbox get = new getinbox(file.imap,file.email,file.password);
@@ -103,11 +103,11 @@ public class HauptGUI{
 			getfrom[i] = get.getfrom(i);
 		}
 
-		
 		table.setRowSelectionAllowed(true);
 		scroll = new JScrollPane(table, ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED,
 				ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
-		scroll.setPreferredSize(new Dimension(200,750));
+		scroll.setPreferredSize(new Dimension(200,600));
+
 		
 		
 		tabbed = new JTabbedPane();
