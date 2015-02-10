@@ -51,7 +51,7 @@ public class HauptGUI{
 		frame.getContentPane().setLayout(new BorderLayout());
 		
 		bar = new JMenuBar();
-		menu1 = new JMenu("file");
+		menu1 = new JMenu("File");
 		item1 = new JMenuItem("Quit");
 		item3 = new JMenuItem("New E-Mail");
 		menu1.add(item3);
