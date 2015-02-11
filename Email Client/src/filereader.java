@@ -6,7 +6,7 @@ import java.io.FileReader;
 import java.io.IOException;
 
 /**
- * The class "filereader" writes and reads the login properties in a text file 
+ * The class "filereader" writes and reads the login properties at the test.txt 
  */
 public class filereader {
 	
@@ -22,7 +22,9 @@ public class filereader {
 	 */
 	public filereader(){
 		
-		
+		/**
+		 * 
+		 */
 		try {
 			File file = new File("./src/test.txt");
 			FileReader filereader = new FileReader(file);
@@ -43,6 +45,9 @@ public class filereader {
 		
 		textchar = text.toCharArray();
 		
+		/**
+		 * 
+		 */
 		StringBuilder sbsmtp = new StringBuilder();
 		StringBuilder sbimap = new StringBuilder();
 		StringBuilder sbemail = new StringBuilder();
