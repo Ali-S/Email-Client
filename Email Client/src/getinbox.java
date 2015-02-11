@@ -16,7 +16,6 @@ import javax.swing.JOptionPane;
 public class getinbox{
 	Message[] nachrichten;
 	Message message;
-	contentemail content;
 	String imap,smtp,email,password;
 	
 	public getinbox(String imap, String email, String passwort){
