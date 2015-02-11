@@ -4,10 +4,8 @@ import java.awt.Checkbox;
 import javax.swing.*;
 
 /**
- * The class Anmelden 
+ * The class Anmelden reads the login properties
  * 
- * 
- *
  * @author Furkan Yuecel
  * @author Suepriz Yaykan
  * @author Ali Selvi
@@ -15,78 +13,92 @@ import javax.swing.*;
  */
 public class anmelden {
 
-	private String ssmtp;
-	private String simap;
-	private String semail;
-	private String spass;
+	private String smtp;
+	private String imap;
+	private String email;
+	private String pass;
 	
-	public anmelden(String meldung, String title){
+	/**
+	 * GUI elements
+	 */
+	private final JTextField jSmtp = new JTextField("Please enter SMTP server", 25);
+	private final JTextField jImap = new JTextField("Please enter IMAP server", 25);
+	private final JTextField jEmail = new JTextField("Please enter E-Mail Adress",25);
+	private final JPasswordField jPass = new JPasswordField("",15);
+	private final Checkbox jRemember = new Checkbox("Remember me!");
+	
+	/**
+	 * Standard constructor to call the included features at the class "start".
+	 * "title" is g
+	 * 
+	 * @param title
+	 */
+	public anmelden(String title){
 		
-		JTextField smtp = new JTextField("Please enter SMTP server", 25);
-		JTextField imap = new JTextField("Please enter IMAP server", 25);
-		JTextField email = new JTextField("Please enter E-Mail Adress",25);
+		/**
+		 * Objects which are shown on the popup frame
+		 */
+		Object[] props = {title, "IMAP", jImap, "SMTP", jSmtp, "E-Mail:", jEmail, "Password:", jPass, jRemember};
 		
-		JPasswordField pass = new JPasswordField("",15);
-		
-		// Remember me 
-		Checkbox remember = new Checkbox("Remember me!");
-		
-		// Objecst they are listening on the popup frame
-		Object[] props = {title,"IMAP",imap,"SMTP",smtp,"E-Mail:",email,"Password:",pass,remember};
-		
-		// create the popupPane
-		JOptionPane fenster = new JOptionPane(props, 
-				JOptionPane.PLAIN_MESSAGE,
-				JOptionPane.DEFAULT_OPTION);
+		/**
+		 * Popup for entering the informations
+		 */
+		JOptionPane fenster = new JOptionPane(props, JOptionPane.PLAIN_MESSAGE,	JOptionPane.DEFAULT_OPTION);
 		fenster.createDialog(null,"Properties").setVisible(true);
-
-		setSsmtp(smtp.getText());
-		setSimap(imap.getText());
-		setSemail(email.getText());
-		setSpass(pass.getPassword());
 		
-		// checked for remember properties from email server 
-		if (remember.getState()) {
-			System.out.println(getSsmtp()+getSimap()+getSemail()+getSpass());
-			new save(getSsmtp(),getSimap(),getSemail(),getSpass());
+		/**
+		 * Setting the entered data
+		 */
+		setSsmtp(jSmtp.getText());
+		setSimap(jImap.getText());
+		setSemail(jEmail.getText());
+		setSpass(jPass.getPassword());
+		
+		/**
+		 * checking remember properties from mail server
+		 */
+		if (jRemember.getState()) {
+			System.out.println(getSsmtp() + getSimap() + getSemail() + getSpass());
+			new save(getSsmtp(),getSimap(), getSemail(), getSpass());
 			new HauptGUI(title);
 			
-		} else {
+		}
+		else {
 			new HauptGUI(title);
 		}
-		
 	}
 	
+	
 	public String getSsmtp() {
-		return ssmtp;
+		return smtp;
 	}
 
 	public void setSsmtp(String ssmtp) {
-		this.ssmtp = ssmtp;
+		this.smtp = ssmtp;
 	}
 
 	public String getSimap() {
-		return simap;
+		return imap;
 	}
 
 	public void setSimap(String simap) {
-		this.simap = simap;
+		this.imap = simap;
 	}
 
 	public String getSemail() {
-		return semail;
+		return email;
 	}
 
 	public void setSemail(String semail) {
-		this.semail = semail;
+		this.email = semail;
 	}
 
 	public String getSpass() {
-		return spass;
+		return pass;
 	}
 
 	public void setSpass(char[] password) {
-		this.spass = new String(password);
+		this.pass = new String(password);
 	}
 	
 }
