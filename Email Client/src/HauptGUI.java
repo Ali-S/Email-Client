@@ -36,7 +36,7 @@ public class HauptGUI{
 	private JTabbedPane tabbed;
 	private JPanel tab1, tab2, areaPanel, rightBorder, labelPanel, backgr;
 	private JTextArea area;
-	private JLabel sender, receiver, subject, date, send_l;
+	private JLabel sender, subject, date, send_l,standard;
 	private JButton send;
 	private Vector fromdata;
 	private ImageIcon image;
@@ -86,6 +86,7 @@ public class HauptGUI{
 		frame.add(bar, BorderLayout.NORTH);
 		fromdata = new Vector();
 		image = new ImageIcon("./src/java.png");
+		standard = new JLabel(image);
 		
 		/**
 	     * 
@@ -143,6 +144,7 @@ public class HauptGUI{
 				ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
 		scroll.setPreferredSize(new Dimension(200,600));
 
+
 		tabbed = new JTabbedPane();
 		tab1 = new JPanel();
 		tab1.add(scroll);
@@ -153,27 +155,34 @@ public class HauptGUI{
 		labelPanel = new JPanel(new GridLayout(4,1));
 		
 		sender = new JLabel("   Sender: \t");
-//		receiver = new JLabel("   Receiver: \t");
 		subject = new JLabel("   Subject: \t");
 		date = new JLabel("   Date: \t");
 		send_l = new JLabel();
 		send = new JButton("new E-Mail");
 		send_l.add(send);
 		labelPanel.add(sender);
-//		labelPanel.add(receiver);
 		labelPanel.add(date);
 		labelPanel.add(subject);
 		labelPanel.add(send_l);
+		
+		area = new JTextArea("\n No mail selected.", 40, 100);
+		areaPanel = new JPanel();
+		areaPanel.add(area);
+		areaPanel.add(standard);
+		standard.setVisible(true);
+		area.setVisible(false);
+		
+		standard.revalidate();
+		area.revalidate();
+		
 		rightBorder.add(labelPanel, BorderLayout.NORTH);
+		rightBorder.add(areaPanel,BorderLayout.CENTER);
 	
 		backgr = new JPanel(new BorderLayout());
 		backgr.add(tabbed, BorderLayout.WEST);
 		backgr.add(rightBorder, BorderLayout.CENTER);
 		
-		area = new JTextArea("\n No mail selected.", 50, 100);
-		areaPanel = new JPanel(new GridLayout());
-		areaPanel.add(area);
-		rightBorder.add(area);
+
 		// Tabelle fuer nur ein Select erlauben
 		table.setCellSelectionEnabled(true);
 		
@@ -188,6 +197,8 @@ public class HauptGUI{
 			public void valueChanged(ListSelectionEvent event) {
 				int[] selectedrow = table.getSelectedRows();
 				if (!event.getValueIsAdjusting()) {
+					standard.setVisible(false);
+					area.setVisible(true);
 					for (int i = 0; i < selectedrow.length; i++) {
 						Message mails = get.nachrichten[selectedrow[i]];
 						try {
@@ -208,8 +219,9 @@ public class HauptGUI{
 		});
 
 		frame.getContentPane().add(backgr, BorderLayout.CENTER);
-		
-		frame.setSize(800, 600);
+
+		frame.setResizable(true);
+		frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		frame.setLocationRelativeTo(null);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
