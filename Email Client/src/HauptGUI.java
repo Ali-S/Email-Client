@@ -67,51 +67,42 @@ public class HauptGUI{
 		bar.add(menu1);
 		bar.add(menu2);
 		frame.add(bar, BorderLayout.NORTH);
-		item1.addActionListener(new java.awt.event.ActionListener() {
+		fromdata = new Vector();
+		item1.addActionListener(new ActionListener() {
 	        public void actionPerformed(java.awt.event.ActionEvent evt) {
 	            System.exit(0);;
 	        }
 	    });
-		item3.addActionListener(new java.awt.event.ActionListener(){
+		
+		item3.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e) {
 				new guisende();
 		}
 		});
 		
 		item4.addActionListener(new ActionListener() {
-			
-			public void actionPerformed(ActionEvent arg0) {
-				getinbox gets = new getinbox(file.imap, file.email, file.password);
-				for (int j = 0; j < gets.nachrichten.length; j++) {
-					if (gets.getunreed(j) != null) {
 
-						Message nachricht = gets.getunreed(j);	
-						try {
-							fromdata.add("<html>" + nachricht.getSubject().toString() + "<br>" + "<br" + nachricht.getFrom());
-						} catch (MessagingException e) {
-							System.out.println("Net net");
-							e.printStackTrace();
-						}
-					}	else System.out.println("Funkt net");
-					} 
-					
+			public void actionPerformed(ActionEvent arg0) {
+				fromdata.removeAllElements();
+				System.out.println("Vector wurde gelöscht");
+				get = new getinbox(file.imap, file.email, file.password);
+				for (int j = 0; j < get.nachrichten.length; j++) {
+					Vector row = new Vector();
+					row.add("<html>" + get.getfrom(j) + "<br>" + "<br>" + get.getsubject(j) + "</html>");
+					fromdata.add(row);
+							
 				}
+			}	
 		});
+		
 		
 		getfrom = new String[get.nachrichten.length];
 		subjects = new String[get.nachrichten.length];
 		
-		Vector fromdata = new Vector();
 		for (int i = 0; i < get.nachrichten.length; i++) {
 			Vector row = new Vector();
 			row.add("<html>" + get.getfrom(i) + "<br>" + "<br>" + get.getsubject(i) + "</html>");
 			fromdata.add(row);
-			try {
-				get.nachrichten[i].setFlag(Flags.Flag.SEEN, true);
-			} catch (MessagingException e1) {
-				System.out.println("Erfolgreich markiert");
-				e1.printStackTrace();
-			}
 		}
 		
 		
