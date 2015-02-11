@@ -17,9 +17,14 @@ public class getinbox{
 	Message[] nachrichten;
 	Message message;
 	contentemail content;
+	String imap,smtp,email,password;
 	
 	public getinbox(String imap, String email, String passwort){
 		try {
+			this.imap = imap;
+			this.email = email;
+			this.password = passwort;
+			
 			Properties props = System.getProperties();
 	        props.setProperty("mail.store.protocol", "imaps");
 	        props.put("mail.imaps.ssl.trust", "*");
@@ -45,6 +50,7 @@ public class getinbox{
 					System.out.println("Contenttyp: " + message.getContentType());
 					nachrichten[i] = mails[i];
 			} 
+
 			
 		} catch (NoSuchProviderException e) {
 			e.printStackTrace();
@@ -113,19 +119,6 @@ public class getinbox{
 			JOptionPane.showMessageDialog(null, "Keine Nachricht enthalten.");
 			e.printStackTrace();
 		} 
-		return null;
-	}
-	
-	public Message getunreed(int i){
-		try {
-			if(message.isSet(Flags.Flag.SEEN)){
-				return null;
-			}
-			else return message;
-		} catch (MessagingException e) {
-			JOptionPane.showConfirmDialog(null, "Can not update");
-			e.printStackTrace();
-		}
 		return null;
 	}
 
