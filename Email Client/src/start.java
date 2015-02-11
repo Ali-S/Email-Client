@@ -7,7 +7,7 @@ import java.io.IOException;
 
 public class start {
 
-	static String title = "Java E-Mail-Client Connection Init Beta v.01";
+	static String title = "Java E-Mail-Client Connection Init Beta v.02";
 	
 	
 	public static void main(String[] args) throws IOException {
