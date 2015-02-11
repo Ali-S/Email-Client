@@ -2,12 +2,14 @@
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.beans.PropertyChangeListener;
 import java.io.IOException;
 import java.util.Vector;
 
 import javax.mail.Flags;
 import javax.mail.Message;
 import javax.mail.MessagingException;
+import javax.mail.internet.InternetAddress;
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -28,18 +30,19 @@ public class HauptGUI{
      * Declaration of GUI elements
      */
 	private JFrame frame;
-	private JMenuBar bar;
+	private JMenuBar bar,mailbar;
 	private JMenu menu1, menu2;
 	private JMenuItem item1, item2, item3, item4;
 	private JTable table;
 	private JScrollPane scroll;
 	private JTabbedPane tabbed;
-	private JPanel tab1, tab2, areaPanel, rightBorder, labelPanel, backgr;
+	private JPanel tab1, tab2, areaPanel, rightBorder, labelPanel, backgr,mailpanel;
 	private JTextArea area;
 	private JLabel sender, subject, date, send_l,standard;
-	private JButton send;
+	private JButton send,answer;
 	private Vector fromdata;
-	private ImageIcon image;
+	private ImageIcon image,icon;
+	private JToolBar toolbar;
 	
 	
 	public String[] mail = null;
@@ -71,6 +74,7 @@ public class HauptGUI{
 		frame.getContentPane().setLayout(new BorderLayout());
 		
 		bar = new JMenuBar();
+		mailbar = new JMenuBar();
 		menu1 = new JMenu("File");
 		item1 = new JMenuItem("Quit");
 		item3 = new JMenuItem("New E-Mail");
@@ -86,7 +90,9 @@ public class HauptGUI{
 		frame.add(bar, BorderLayout.NORTH);
 		fromdata = new Vector();
 		image = new ImageIcon("./src/java.png");
+		icon = new ImageIcon("./src/mail_answer.png");
 		standard = new JLabel(image);
+		
 		
 		/**
 	     * 
@@ -153,6 +159,7 @@ public class HauptGUI{
 		tabbed.addTab("Sent", tab2);
 		rightBorder = new JPanel(new BorderLayout());
 		labelPanel = new JPanel(new GridLayout(4,1));
+		mailpanel = new JPanel(new BorderLayout());
 		
 		sender = new JLabel("   Sender: \t");
 		subject = new JLabel("   Subject: \t");
@@ -165,15 +172,22 @@ public class HauptGUI{
 		labelPanel.add(subject);
 		labelPanel.add(send_l);
 		
+		toolbar = new JToolBar();
+		answer = new JButton();
+		answer.setIcon(icon);
+		toolbar.add(answer);
+		
 		area = new JTextArea("\n No mail selected.", 40, 100);
+		mailpanel.add(toolbar,BorderLayout.NORTH);
+		mailpanel.add(area,BorderLayout.CENTER);
 		areaPanel = new JPanel();
-		areaPanel.add(area);
+		areaPanel.add(mailpanel);
 		areaPanel.add(standard);
 		standard.setVisible(true);
-		area.setVisible(false);
+		mailpanel.setVisible(false);
 		
-		standard.revalidate();
-		area.revalidate();
+		
+
 		
 		rightBorder.add(labelPanel, BorderLayout.NORTH);
 		rightBorder.add(areaPanel,BorderLayout.CENTER);
@@ -198,15 +212,32 @@ public class HauptGUI{
 				int[] selectedrow = table.getSelectedRows();
 				if (!event.getValueIsAdjusting()) {
 					standard.setVisible(false);
-					area.setVisible(true);
+					mailpanel.setVisible(true);
 					for (int i = 0; i < selectedrow.length; i++) {
-						Message mails = get.nachrichten[selectedrow[i]];
+						final Message mails = get.nachrichten[selectedrow[i]];
 						try {
 							area.setText(get.getcontent(selectedrow[i]));
 							sender.setText("   Sender: \t" + get.getfrom(selectedrow[i]));
 							date.setText("   Date: \t" + get.nachrichten[selectedrow[i]].getReceivedDate());
 							subject.setText("   Subject: \t" + get.getsubject(selectedrow[i]));
 							area.setEditable(false);
+							
+							answer.addActionListener(new ActionListener() {
+								
+								public void actionPerformed(ActionEvent e) {
+									System.out.println("RRR");
+									try {
+										new reanswer(InternetAddress.toString(mails.getFrom()), mails.getSubject(), mails.getContent().toString());
+									} catch (MessagingException e1) {
+										// TODO Auto-generated catch block
+										e1.printStackTrace();
+									} catch (IOException e1) {
+										// TODO Auto-generated catch block
+										e1.printStackTrace();
+									}
+									
+								}
+							} );
 						} catch (IOException e) {
 							e.printStackTrace();
 						} catch (MessagingException e) {

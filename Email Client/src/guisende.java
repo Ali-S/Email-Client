@@ -30,7 +30,7 @@ public class guisende {
 	
 	private JLabel tolabel, cclabel, bcclabel, subjectlabel;
 	private JTextField tofield, ccfield, bccfield, subjectfield;
-	private String message, to, cc, bcc, subject; 
+	private String message, to, cc, bcc, subject,fielto; 
 	private JButton send, cancel;
 	private JTextArea area;
 	
@@ -48,6 +48,7 @@ public class guisende {
 	/**
 	 * 
 	 */
+
 	public guisende(){
 		fenster.setSize(width,height);
 		
@@ -62,10 +63,11 @@ public class guisende {
 		bcclabel = new JLabel("BCC:");
 		subjectlabel = new JLabel("Subject:");
 		
-		tofield = new JTextField();
-		ccfield = new JTextField();
-		bccfield = new JTextField();
-		subjectfield = new JTextField();
+		tofield = new JTextField(fielto);
+		ccfield = new JTextField("Enter adres");
+		bccfield = new JTextField("Enter adress");
+		subjectfield = new JTextField("Enter subject");
+		
 		
 		area = new JTextArea("Please enter your content");
 		area.setLineWrap(true);
@@ -124,7 +126,7 @@ public class guisende {
 			to = tofield.getText();
 			subject = subjectfield.getText();
 			message = area.getText();
-			send send = new send(file.smtp, file.email, file.password, to, subject, message);
+			new send(file.smtp, file.email, file.password, to, subject, message);
 			fenster.dispose();
 		}
 	}
