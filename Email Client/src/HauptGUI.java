@@ -24,6 +24,9 @@ import javax.swing.event.ListSelectionListener;
  */
 public class HauptGUI{
 	
+	/**
+     * Declaration of GUI elements
+     */
 	private JFrame frame;
 	private JMenuBar bar;
 	private JMenu menu1, menu2;
@@ -41,15 +44,24 @@ public class HauptGUI{
 	public String[] from = null;
 	public String [] subjects,getfrom;
 	
-	int tabbedheight;
-
+	/**
+     * 
+     */
 	filereader file = new filereader();	
 	getinbox get = new getinbox(file.imap,file.email,file.password);
 
-	
 	@SuppressWarnings({ "rawtypes", "unchecked" })
-	public HauptGUI(String title){								 		
+	
+	/**
+	 * The constructor 
+	 * 
+	 * @param title
+	 */
+	public HauptGUI(String title){
 		
+		/**
+	     * Initialization GUI elements
+	     */
 		frame = new JFrame(title);
 		frame.getContentPane().setLayout(new BorderLayout());
 		
@@ -68,9 +80,13 @@ public class HauptGUI{
 		bar.add(menu2);
 		frame.add(bar, BorderLayout.NORTH);
 		fromdata = new Vector();
+		
+		/**
+	     * 
+	     */
 		item1.addActionListener(new ActionListener() {
 	        public void actionPerformed(java.awt.event.ActionEvent evt) {
-	            System.exit(0);;
+	            System.exit(0);
 	        }
 	    });
 		
@@ -80,21 +96,21 @@ public class HauptGUI{
 		}
 		});
 		
+		/**
+	     * 
+	     */
 		item4.addActionListener(new ActionListener() {
-
 			public void actionPerformed(ActionEvent arg0) {
 				fromdata.removeAllElements();
-				System.out.println("Vector wurde gelöscht");
+				System.out.println("Vector wurde geloescht");
 				get = new getinbox(file.imap, file.email, file.password);
 				for (int j = 0; j < get.nachrichten.length; j++) {
 					Vector row = new Vector();
 					row.add("<html>" + get.getfrom(j) + "<br>" + "<br>" + get.getsubject(j) + "</html>");
 					fromdata.add(row);
-							
 				}
 			}	
 		});
-		
 		
 		getfrom = new String[get.nachrichten.length];
 		subjects = new String[get.nachrichten.length];
@@ -109,21 +125,18 @@ public class HauptGUI{
 		Vector fr = new Vector();
 		fr.add("Inbox");
 		
-		
-		
 		table = new JTable(fromdata, fr);
 		table.setRowHeight(75);
 		table.setAutoCreateRowSorter(true);
 		
-
-
+		/**
+	     * 
+	     */
 		table.setRowSelectionAllowed(true);
 		scroll = new JScrollPane(table, ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED,
 				ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
 		scroll.setPreferredSize(new Dimension(200,600));
 
-		
-		
 		tabbed = new JTabbedPane();
 		tab1 = new JPanel();
 		tab1.add(scroll);
@@ -147,14 +160,11 @@ public class HauptGUI{
 		labelPanel.add(send_l);
 		rightBorder.add(labelPanel, BorderLayout.NORTH);
 	
-		
-		
 		backgr = new JPanel(new BorderLayout());
 		backgr.add(tabbed, BorderLayout.WEST);
 		backgr.add(rightBorder, BorderLayout.CENTER);
 		
-		
-		area = new JTextArea("\n Text entry here: ", 50, 100);
+		area = new JTextArea("\n No mail selected.", 50, 100);
 		areaPanel = new JPanel(new GridLayout());
 		areaPanel.add(area);
 		rightBorder.add(area);
@@ -164,6 +174,9 @@ public class HauptGUI{
 	    ListSelectionModel cellSelectionModel = table.getSelectionModel();
 	    cellSelectionModel.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 	    
+	    /**
+	     * Shows the selected email in detail on GUI
+	     */
 		table.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
 			// Nach select den Inhalt der Email anzeigen
 			public void valueChanged(ListSelectionEvent event) {
@@ -196,7 +209,4 @@ public class HauptGUI{
 		frame.setVisible(true);
 		
 	}
-	
-	
-
 }
