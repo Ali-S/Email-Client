@@ -26,7 +26,7 @@ public class filereader {
 		 * 
 		 */
 		try {
-			File file = new File("./src/test.txt");
+			File file = new File("./src/props.txt");
 			FileReader filereader = new FileReader(file);
 			BufferedReader bufferedreader = new BufferedReader(filereader);
 			StringBuffer stringbuffer = new StringBuffer();
