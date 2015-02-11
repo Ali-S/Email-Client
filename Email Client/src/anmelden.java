@@ -13,19 +13,19 @@ import javax.swing.*;
  */
 public class anmelden {
 
-	private String ssmtp;
-	private String simap;
-	private String semail;
-	private String spass;
+	private String smtp;
+	private String imap;
+	private String email;
+	private String pass;
 	
 	/**
 	 * GUI elements
 	 */
-	private final JTextField smtp = new JTextField("Please enter SMTP server", 25);
-	private final JTextField imap = new JTextField("Please enter IMAP server", 25);
-	private final JTextField email = new JTextField("Please enter E-Mail Adress",25);
-	private final JPasswordField pass = new JPasswordField("",15);
-	private final Checkbox remember = new Checkbox("Remember me!");
+	private final JTextField jSmtp = new JTextField("Please enter SMTP server", 25);
+	private final JTextField jImap = new JTextField("Please enter IMAP server", 25);
+	private final JTextField jEmail = new JTextField("Please enter E-Mail Adress",25);
+	private final JPasswordField jPass = new JPasswordField("",15);
+	private final Checkbox jRemember = new Checkbox("Remember me!");
 	
 	/**
 	 * Standard constructor to call the included features at the class "start".
@@ -38,7 +38,7 @@ public class anmelden {
 		/**
 		 * Objects which are shown on the popup frame
 		 */
-		Object[] props = {title, "IMAP", imap, "SMTP", smtp, "E-Mail:", email, "Password:", pass, remember};
+		Object[] props = {title, "IMAP", jImap, "SMTP", jSmtp, "E-Mail:", jEmail, "Password:", jPass, jRemember};
 		
 		/**
 		 * Popup for entering the informations
@@ -49,15 +49,15 @@ public class anmelden {
 		/**
 		 * Setting the entered data
 		 */
-		setSsmtp(smtp.getText());
-		setSimap(imap.getText());
-		setSemail(email.getText());
-		setSpass(pass.getPassword());
+		setSsmtp(jSmtp.getText());
+		setSimap(jImap.getText());
+		setSemail(jEmail.getText());
+		setSpass(jPass.getPassword());
 		
 		/**
 		 * checking remember properties from mail server
 		 */
-		if (remember.getState()) {
+		if (jRemember.getState()) {
 			System.out.println(getSsmtp() + getSimap() + getSemail() + getSpass());
 			new save(getSsmtp(),getSimap(), getSemail(), getSpass());
 			new HauptGUI(title);
@@ -70,35 +70,35 @@ public class anmelden {
 	
 	
 	public String getSsmtp() {
-		return ssmtp;
+		return smtp;
 	}
 
 	public void setSsmtp(String ssmtp) {
-		this.ssmtp = ssmtp;
+		this.smtp = ssmtp;
 	}
 
 	public String getSimap() {
-		return simap;
+		return imap;
 	}
 
 	public void setSimap(String simap) {
-		this.simap = simap;
+		this.imap = simap;
 	}
 
 	public String getSemail() {
-		return semail;
+		return email;
 	}
 
 	public void setSemail(String semail) {
-		this.semail = semail;
+		this.email = semail;
 	}
 
 	public String getSpass() {
-		return spass;
+		return pass;
 	}
 
 	public void setSpass(char[] password) {
-		this.spass = new String(password);
+		this.pass = new String(password);
 	}
 	
 }
