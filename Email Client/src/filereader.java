@@ -5,7 +5,11 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 
+/**
+ * The class "filereader" writes and reads the login properties in a text file 
+ */
 public class filereader {
+	
 	public String text;
 	public String smtp;
 	public char[] textchar;
@@ -13,7 +17,12 @@ public class filereader {
 	public String email;
 	public String password;
 	
+	/**
+	 * 
+	 */
 	public filereader(){
+		
+		
 		try {
 			File file = new File("./src/test.txt");
 			FileReader filereader = new FileReader(file);
@@ -27,37 +36,38 @@ public class filereader {
 			}
 			filereader.close();
 			text = stringbuffer.toString();
-		} catch (IOException e) {
+		}
+		catch (IOException e) {
 			e.printStackTrace();
 		}
 		
 		textchar = text.toCharArray();
-		int i;
+		
 		StringBuilder sbsmtp = new StringBuilder();
 		StringBuilder sbimap = new StringBuilder();
 		StringBuilder sbemail = new StringBuilder();
 		StringBuilder sbpass = new StringBuilder();
 		
 		
-		// read smtp props from file 
-		for (i = 0;textchar[i] != '\n'; i++) {
+		/**
+		 * Reading smtp, imap, email and password information from text file
+		 */
+		int i;
+		for (i = 0; textchar[i] != '\n'; i++) {
 			sbsmtp.append(textchar[i]);
 		}
 		smtp = sbsmtp.toString();
 		
-		// read imap props from file 
-		for (i = i+1;textchar[i] != '\n'; i++) {
+		for (i = i+1; textchar[i] != '\n'; i++) {
 			sbimap.append(textchar[i]);
 		}
 		imap = sbimap.toString();
 		
-		//read email props from file
 		for (i = i+1; textchar[i] != '\n'; i++) {
 			sbemail.append(textchar[i]);
 		}
 		email = sbemail.toString();
 		
-		//read pass props from file
 		for (i = i+1; textchar[i] != '\n'; i++) {
 			sbpass.append(textchar[i]);
 		}
