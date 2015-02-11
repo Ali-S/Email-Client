@@ -28,7 +28,8 @@ public class anmelden {
 	private final Checkbox remember = new Checkbox("Remember me!");
 	
 	/**
-	 * The standard constructor calls the included features.
+	 * Standard constructor to call the included features at the class "start".
+	 * "title" is g
 	 * 
 	 * @param title
 	 */
