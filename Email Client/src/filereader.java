@@ -18,7 +18,7 @@ public class filereader {
 	public String password;
 	
 	/**
-	 * 
+	 * Constructor 
 	 */
 	public filereader(){
 		
