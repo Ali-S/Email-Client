@@ -64,6 +64,7 @@ public class anmelden {
 			
 		}
 		else {
+			
 			new HauptGUI(title);
 		}
 	}

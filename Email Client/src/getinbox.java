@@ -10,7 +10,10 @@ import javax.mail.NoSuchProviderException;
 import javax.mail.Session;
 import javax.mail.Store;
 import javax.mail.internet.InternetAddress;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JProgressBar;
 
 /**
  * The class "GetInbox" 
@@ -34,6 +37,20 @@ public class getinbox{
 			this.email = email;
 			this.password = passwort;
 			
+			
+			JFrame frameload = new JFrame();
+			frameload.setSize(300, 100);
+			frameload.setTitle("JProgressBar Beispiel");
+			JPanel panelload = new JPanel();
+			JProgressBar load = new JProgressBar(0, 100);
+			load.setValue(0);
+			load.setStringPainted(true);
+			panelload.add(load);
+			frameload.add(panelload);
+			frameload.setVisible(true);
+			frameload.setLocationRelativeTo(null);
+
+			
 			Properties props = System.getProperties();
 	        props.setProperty("mail.store.protocol", "imaps");
 	        props.put("mail.imaps.ssl.trust", "*");
@@ -50,12 +67,7 @@ public class getinbox{
 			String [] subjects;
 			nachrichten = emailfolder.getMessages();
 			for (int i = 0; i < mails.length; i++) {
-				message = mails[i];
-					System.out.println("---------------------------------");  
-				    System.out.println("Email Number " + (i + 1));  
-				    System.out.println("Subject: " + message.getSubject());  
-				    System.out.println("From: " + message.getFrom()[0]); 
-					System.out.println("Contenttyp: " + message.getContentType());
+					load.setValue(i);
 					nachrichten[i] = mails[i];
 			} 
 			
