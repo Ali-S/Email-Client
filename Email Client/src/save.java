@@ -21,7 +21,7 @@ public class save {
 	public save(String smtp, String imap,String email, String password) {
 		
 		/**
-		 * 
+		 * Save properties in "props.txt" file
 		 * 
 		*/
 		PrintWriter writer;

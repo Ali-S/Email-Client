@@ -22,11 +22,11 @@ public class send {
      *  Constructor to call the included features at the class "Send".
      *  
      * 
-     * @param smtp
-     * @param email
-     * @param password
-     * @param subject
-     * @param content
+     * @param smtp outgoing server
+     * @param email as username
+     * @param password from mail account
+     * @param subject 
+     * @param content message
      */
 	public send(String smtp, final String email, final String password, String to,String cc, String bcc
 			,String subject, String content){

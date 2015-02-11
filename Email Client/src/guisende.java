@@ -24,7 +24,8 @@ import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
 
 /**
- * 
+ * To send E-Mail with Gui
+ * Can entries sender data in form 
  */
 public class guisende {
 	
@@ -46,7 +47,7 @@ public class guisende {
 	JFrame fenster = new JFrame("Send a new E-Mail");
 
 	/**
-	 * 
+	 * Creating frame for send email
 	 */
 
 	public guisende(){
@@ -120,7 +121,7 @@ public class guisende {
 	private class SendButtonHandler implements ActionListener{
 		
 		/**
-		 * 
+		 * send email when ok Button is clicked
 		 */
 		public void actionPerformed(ActionEvent e) {
 			to = tofield.getText();
@@ -136,7 +137,7 @@ public class guisende {
 	private class CancelButtonHandler implements ActionListener{
 		
 		/**
-		 * 
+		 * canceled this frame
 		 */
 		public void actionPerformed(ActionEvent e) {		
 			fenster.dispose();

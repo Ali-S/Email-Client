@@ -15,12 +15,7 @@ public class start {
 	public static void main(String[] args) throws IOException {
 		// Teste anmelden Fenster
 		new anmelden("Please enter your E-Mail Server!");
-		
-		// Starte Hauptfenster
-//		new HauptGUI(title);
-		
-		//filereader file = new filereader();
-		//new getinbox(file.imap,file.email,file.password);
-		//System.out.println("Subjects" + get.getsubject(0));	
+
+	
 	}
 }

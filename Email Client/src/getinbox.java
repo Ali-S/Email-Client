@@ -27,9 +27,9 @@ public class getinbox{
 	 * Constructor which call the included features.
 	 * The parameters are 
 	 * 
-	 * @param imap
-	 * @param email
-	 * @param passwort
+	 * @param imap for incoming server
+	 * @param email as username 
+	 * @param passwort account passwort
 	 */
 	public getinbox(String imap, String email, String passwort){
 		try {
@@ -82,7 +82,7 @@ public class getinbox{
 	/**
 	 * Gets the subject and checks if there is any email
 	 * 
-	 * @param i
+	 * @param i for select subject from the selected mail
 	 */
 	public String getsubject(int i){
 		Message message;
@@ -101,7 +101,7 @@ public class getinbox{
 	/**
 	 * Gets the sender and checks if there is any email
 	 * 
-	 * @param i
+	 * @param i for select Sender Adres from the selected mail
 	 */
 	public String getfrom(int i){
 		Message message;
@@ -120,7 +120,7 @@ public class getinbox{
 	/**
 	 * Gets the content and checks if there is any email
 	 * 
-	 * @param i
+	 * @param i for select content of message from the selected mail
 	 */
 	public String getcontent(int i) throws IOException, MessagingException {
 		Message message;
@@ -132,25 +132,9 @@ public class getinbox{
 	}
 	
 	/**
-	 * Gets the content type and checks if there is any email
-	 * 
-	 * @param i
-	 */
-	public String getcontenttyp(int i){
-		Message message;
-		message = nachrichten[i];
-		try {
-			return message.getContentType();
-		} catch (MessagingException e) {
-			e.printStackTrace();
-		}
-		return (String) "Contenttyp cant be return\n";
-	}
-	
-	/**
 	 * Gets the date and checks if there is any email
 	 * 
-	 * @param i
+	 * @param i for select received date from the selected mail
 	 */
 	public Date getdate(int i){
 		Message message = nachrichten[i];

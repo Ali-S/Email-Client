@@ -23,7 +23,7 @@ public class filereader {
 	public filereader(){
 		
 		/**
-		 * 
+		 * Reading properties from "props.txt" file
 		 */
 		try {
 			File file = new File("./src/props.txt");
@@ -46,7 +46,8 @@ public class filereader {
 		textchar = text.toCharArray();
 		
 		/**
-		 * 
+		 * Initialize String Builder
+		 * to save properties from the file to attribute
 		 */
 		StringBuilder sbsmtp = new StringBuilder();
 		StringBuilder sbimap = new StringBuilder();

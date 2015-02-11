@@ -25,7 +25,6 @@ public class anmelden {
 	private final JTextField jImap = new JTextField("Please enter IMAP server", 25);
 	private final JTextField jEmail = new JTextField("Please enter E-Mail Adress",25);
 	private final JPasswordField jPass = new JPasswordField("",15);
-	private final Checkbox jRemember = new Checkbox("Remember me!");
 	
 	/**
 	 * Standard constructor to call the included features at the class "start".
@@ -38,7 +37,7 @@ public class anmelden {
 		/**
 		 * Objects which are shown on the popup frame
 		 */
-		Object[] props = {title, "IMAP", jImap, "SMTP", jSmtp, "E-Mail:", jEmail, "Password:", jPass, jRemember};
+		Object[] props = {title, "IMAP", jImap, "SMTP", jSmtp, "E-Mail:", jEmail, "Password:", jPass};
 		
 		/**
 		 * Popup for entering the informations
@@ -55,18 +54,13 @@ public class anmelden {
 		setSpass(jPass.getPassword());
 		
 		/**
-		 * checking remember properties from mail server
+		 * checking remember properties from mail server to save this
 		 */
-		if (jRemember.getState()) {
-			System.out.println(getSsmtp() + getSimap() + getSemail() + getSpass());
+		
 			new save(getSsmtp(),getSimap(), getSemail(), getSpass());
 			new HauptGUI(title);
 			
-		}
-		else {
-			
-			new HauptGUI(title);
-		}
+		
 	}
 	
 	

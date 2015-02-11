@@ -51,7 +51,7 @@ public class HauptGUI{
 	
 	
 	/**
-     * 
+     * Initialization this classes for getting properties and messages
      */
 	filereader file = new filereader();	
 	getinbox get = new getinbox(file.imap,file.email,file.password);
@@ -63,7 +63,7 @@ public class HauptGUI{
 	 * "title" is given
 	 * see
 	 * 
-	 * @param title
+	 * @param title 
 	 */
 	public HauptGUI(String title){
 		
