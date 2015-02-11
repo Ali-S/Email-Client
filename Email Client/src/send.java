@@ -56,14 +56,15 @@ public class send {
 			msg.setRecipients(RecipientType.TO,InternetAddress.parse(to));
 			msg.setSubject(subject);
 			msg.setText(content);
-			if(cc != null){
-				msg.addRecipients(RecipientType.CC, InternetAddress.parse(cc));
-			} 
-			else if(bcc != null){
-				msg.addRecipients(RecipientType.BCC, InternetAddress.parse(bcc));
+			if (cc == null && bcc == null) {
 				Transport.send(msg);
-			}
-			else Transport.send(msg);
+			} else if(cc != null) {
+				msg.addRecipients(RecipientType.CC, InternetAddress.parse(bcc));
+			} else if (bcc != null) {
+				msg.addRecipients(RecipientType.BCC, InternetAddress.parse(bcc)); 
+				Transport.send(msg);
+			} else 
+			Transport.send(msg);
 			
 			JOptionPane.showMessageDialog(null, "Your E-Mail is send.");
 			
