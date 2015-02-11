@@ -1,7 +1,5 @@
-import java.util.Date;
 import java.util.Properties;
 
-import javax.mail.Address;
 import javax.mail.Authenticator;
 import javax.mail.Message;
 import javax.mail.Message.RecipientType;
@@ -14,8 +12,24 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import javax.swing.JOptionPane;
 
+/**
+ * 
+ * 
+ */
 public class send {
-	public send(String smtp, final String email, final String password, String to,String subject, String content){
+	
+	/**
+     * Constructor
+     * 
+     * @param smtp
+     * @param email
+     * @param password
+     * @param subject
+     * @param content
+     */
+	public send(String smtp, final String email, final String password, String to
+			,String subject, String content){
+		
 		Properties properties = new Properties();
 		
 		properties.put("mail.smtp.auth", "true");
@@ -28,7 +42,10 @@ public class send {
 	             return new PasswordAuthentication(email, password);
 	          }
 	       });
-
+		
+		/**
+	     * 
+	     */
 		Message msg = new MimeMessage(session);
 		try {
 			msg.setFrom(new InternetAddress(email));
@@ -40,10 +57,9 @@ public class send {
 			
 		} catch (AddressException e) {
 			JOptionPane.showMessageDialog(null, "Please enter valid E-Mail adress.");
-//			e.printStackTrace();
+
 		} catch (MessagingException e) {
 			JOptionPane.showMessageDialog(null, "Your E-Mail was not send.");
-//			e.printStackTrace();
 		}
 	}
 }

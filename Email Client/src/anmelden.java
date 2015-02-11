@@ -19,7 +19,7 @@ public class anmelden {
 	private String pass;
 	
 	/**
-	 * GUI elements
+	 * Declaration and initialization of GUI elements
 	 */
 	private final JTextField jSmtp = new JTextField("Please enter SMTP server", 25);
 	private final JTextField jImap = new JTextField("Please enter IMAP server", 25);
