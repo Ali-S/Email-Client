@@ -67,7 +67,7 @@ public class HauptGUI{
 		frame.add(bar, BorderLayout.NORTH);
 		item1.addActionListener(new java.awt.event.ActionListener() {
 	        public void actionPerformed(java.awt.event.ActionEvent evt) {
-	            System.exit(0);
+	            System.exit(0);;
 	        }
 	    });
 		item3.addActionListener(new java.awt.event.ActionListener(){
@@ -91,6 +91,7 @@ public class HauptGUI{
 		
 		Vector fr = new Vector();
 		fr.add("Inbox");
+		
 		
 		
 		table = new JTable(fromdata, fr);

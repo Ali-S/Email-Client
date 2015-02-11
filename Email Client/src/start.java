@@ -1,19 +1,18 @@
 import java.io.IOException;
 
 /**
- * 
- * @Author Suepriz Yaykan, Ali Metehan Selvi, Muhammed Furkan Yuecel
+ * Author @ Suepriz Yaykan, Ali Metehan Selvi, Muhammed Furkan Yuecel
  */
 
 
 public class start {
 
-	static final String title = "Java E-Mail-Client Connection Init Beta v.01";
+	static String title = "Java E-Mail-Client Connection Init Beta v.02";
 	
 	
 	public static void main(String[] args) throws IOException {
 		// Teste anmelden Fenster
-		//new anmelden(title);
+		new anmelden("Please enter your E-Mail Server!",title);
 		
 		// Starte Hauptfenster
 		new HauptGUI(title);
