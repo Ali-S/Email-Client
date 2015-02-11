@@ -39,10 +39,13 @@ public class HauptGUI{
 	private JLabel sender, receiver, subject, date, send_l;
 	private JButton send;
 	private Vector fromdata;
+	private ImageIcon image;
+	
 	
 	public String[] mail = null;
 	public String[] from = null;
 	public String [] subjects,getfrom;
+	
 	
 	/**
      * 
@@ -80,6 +83,7 @@ public class HauptGUI{
 		bar.add(menu2);
 		frame.add(bar, BorderLayout.NORTH);
 		fromdata = new Vector();
+		image = new ImageIcon("./src/java.png");
 		
 		/**
 	     * 
