@@ -2,6 +2,7 @@
 import java.io.IOException;
 import java.util.*;
 
+import javax.mail.Flags;
 import javax.mail.Folder;
 import javax.mail.Message;
 import javax.mail.MessagingException;
@@ -14,6 +15,7 @@ import javax.swing.JOptionPane;
 
 public class getinbox{
 	Message[] nachrichten;
+	Message message;
 	contentemail content;
 	
 	public getinbox(String imap, String email, String passwort){
@@ -29,13 +31,13 @@ public class getinbox{
 	        store.connect(imap,email, passwort);
 			
 			Folder emailfolder = store.getFolder("inbox");
-			emailfolder.open(Folder.READ_ONLY);
+			emailfolder.open(Folder.READ_WRITE);
 			System.out.println("Vorder FORSCLEIFE");
 			Message[] mails = emailfolder.getMessages();
 			String [] subjects;
 			nachrichten = emailfolder.getMessages();
 			for (int i = 0; i < mails.length; i++) {
-				Message message = mails[i];
+				message = mails[i];
 					System.out.println("---------------------------------");  
 				    System.out.println("Email Number " + (i + 1));  
 				    System.out.println("Subject: " + message.getSubject());  
@@ -111,6 +113,19 @@ public class getinbox{
 			JOptionPane.showMessageDialog(null, "Keine Nachricht enthalten.");
 			e.printStackTrace();
 		} 
+		return null;
+	}
+	
+	public Message getunreed(int i){
+		try {
+			if(message.isSet(Flags.Flag.SEEN)){
+				return null;
+			}
+			else return message;
+		} catch (MessagingException e) {
+			JOptionPane.showConfirmDialog(null, "Can not update");
+			e.printStackTrace();
+		}
 		return null;
 	}
 

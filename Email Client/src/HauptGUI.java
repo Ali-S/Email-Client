@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.util.Vector;
 
+import javax.mail.Flags;
 import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.swing.*;
@@ -81,12 +82,20 @@ public class HauptGUI{
 			
 			public void actionPerformed(ActionEvent arg0) {
 				getinbox gets = new getinbox(file.imap, file.email, file.password);
-				for (int j = 0; j < gets.nachrichten.length ; j++) {
-//					Vector newrow = new Vector();
-//					fromdata.add(new Vector().add("<html>" + gets.getfrom(j) +"<br>" +"<br>"+ gets.getsubject(j)));
+				for (int j = 0; j < gets.nachrichten.length; j++) {
+					if (gets.getunreed(j) != null) {
+
+						Message nachricht = gets.getunreed(j);	
+						try {
+							fromdata.add("<html>" + nachricht.getSubject().toString() + "<br>" + "<br" + nachricht.getFrom());
+						} catch (MessagingException e) {
+							System.out.println("Net net");
+							e.printStackTrace();
+						}
+					}	else System.out.println("Funkt net");
+					} 
 					
 				}
-			}
 		});
 		
 		getfrom = new String[get.nachrichten.length];
@@ -97,6 +106,12 @@ public class HauptGUI{
 			Vector row = new Vector();
 			row.add("<html>" + get.getfrom(i) + "<br>" + "<br>" + get.getsubject(i) + "</html>");
 			fromdata.add(row);
+			try {
+				get.nachrichten[i].setFlag(Flags.Flag.SEEN, true);
+			} catch (MessagingException e1) {
+				System.out.println("Erfolgreich markiert");
+				e1.printStackTrace();
+			}
 		}
 		
 		
