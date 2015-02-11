@@ -1,14 +1,16 @@
 import java.io.IOException;
 
 /**
- * Author @ Suepriz Yaykan, Ali Metehan Selvi, Muhammed Furkan Yuecel
+ * 
+ * @author Furkan Yuecel
+ * @author Suepriz Yaykan
+ * @author Ali Selvi
  */
 
 
 public class start {
 
 	static String title = "Java E-Mail-Client Connection Init Beta v.02";
-	
 	
 	public static void main(String[] args) throws IOException {
 		// Teste anmelden Fenster
@@ -19,11 +21,6 @@ public class start {
 		
 		//filereader file = new filereader();
 		//new getinbox(file.imap,file.email,file.password);
-		//System.out.println("Subjects" + get.getsubject(0));
-		
-		
-		
-		System.out.println("LAUFT");
+		//System.out.println("Subjects" + get.getsubject(0));	
 	}
-
 }
