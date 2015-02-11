@@ -28,7 +28,7 @@ public class send {
      * @param subject
      * @param content
      */
-	public send(String smtp, final String email, final String password, String to
+	public send(String smtp, final String email, final String password, String to,String cc, String bcc
 			,String subject, String content){
 		
 		Properties properties = new Properties();
@@ -54,6 +54,12 @@ public class send {
 		try {
 			msg.setFrom(new InternetAddress(email));
 			msg.setRecipients(RecipientType.TO,InternetAddress.parse(to));
+			if(cc != null){
+				msg.addRecipients(RecipientType.CC, InternetAddress.parse(cc));
+			}
+			else if(bcc != null){
+				msg.addRecipients(RecipientType.BCC, InternetAddress.parse(bcc));
+			}
 			msg.setSubject(subject);
 			msg.setText(content);
 			Transport.send(msg);

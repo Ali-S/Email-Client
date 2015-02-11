@@ -225,7 +225,6 @@ public class HauptGUI{
 							answer.addActionListener(new ActionListener() {
 								
 								public void actionPerformed(ActionEvent e) {
-									System.out.println("RRR");
 									try {
 										new reanswer(InternetAddress.toString(mails.getFrom()), mails.getSubject(), mails.getContent().toString());
 									} catch (MessagingException e1) {

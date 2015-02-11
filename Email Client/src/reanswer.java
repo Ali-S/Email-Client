@@ -113,7 +113,7 @@ private class SendButtonHandler implements ActionListener{
 			to = tofield.getText();
 			subject = subjectfield.getText();
 			message = area.getText();
-			new send(file.smtp, file.email, file.password, to, subject, message);
+			new send(file.smtp, file.email, file.password, to,cc,bcc, subject, message);
 			fenster.dispose();
 		}
 	}
