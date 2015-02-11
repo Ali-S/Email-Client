@@ -18,18 +18,21 @@ public class anmelden {
 	private String semail;
 	private String spass;
 	
-	private JTextField smtp = new JTextField("Please enter SMTP server", 25);
-	private JTextField imap = new JTextField("Please enter IMAP server", 25);
-	private JTextField email = new JTextField("Please enter E-Mail Adress",25);
+	private final JTextField smtp = new JTextField("Please enter SMTP server", 25);
+	private final JTextField imap = new JTextField("Please enter IMAP server", 25);
+	private final JTextField email = new JTextField("Please enter E-Mail Adress",25);
+	private final JPasswordField pass = new JPasswordField("",15);
+	private final Checkbox remember = new Checkbox("Remember me!");
 	
+	/**
+	 * The standard constructor calls the included features.
+	 * 
+	 * @param title
+	 */
 	public anmelden(String title){
 		
-		JPasswordField pass = new JPasswordField("",15);
-		
-		Checkbox remember = new Checkbox("Remember me!");
-		
 		/**
-		 * Objects they are listening on the popup frame
+		 * Objects which are shown on the popup frame
 		 */
 		Object[] props = {title, "IMAP", imap, "SMTP", smtp, "E-Mail:", email, "Password:", pass, remember};
 		
@@ -40,7 +43,7 @@ public class anmelden {
 		fenster.createDialog(null,"Properties").setVisible(true);
 		
 		/**
-		 * 
+		 * Setting the entered data
 		 */
 		setSsmtp(smtp.getText());
 		setSimap(imap.getText());
@@ -51,19 +54,17 @@ public class anmelden {
 		 * checking remember properties from mail server
 		 */
 		if (remember.getState()) {
-			System.out.println(getSsmtp()+getSimap()+getSemail()+getSpass());
-			new save(getSsmtp(),getSimap(),getSemail(),getSpass());
+			System.out.println(getSsmtp() + getSimap() + getSemail() + getSpass());
+			new save(getSsmtp(),getSimap(), getSemail(), getSpass());
 			new HauptGUI(title);
 			
-		} else {
+		}
+		else {
 			new HauptGUI(title);
 		}
-		
 	}
 	
-	/**
-	 * Setter and getter functions
-	 */
+	
 	public String getSsmtp() {
 		return ssmtp;
 	}
