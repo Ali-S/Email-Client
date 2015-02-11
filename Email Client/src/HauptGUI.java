@@ -83,7 +83,7 @@ public class HauptGUI{
 				getinbox gets = new getinbox(file.imap, file.email, file.password);
 				for (int j = 0; j < gets.nachrichten.length ; j++) {
 //					Vector newrow = new Vector();
-					fromdata.add(new Vector().add("<html>" + gets.getfrom(j) +"<br>" +"<br>"+ gets.getsubject(j)));
+//					fromdata.add(new Vector().add("<html>" + gets.getfrom(j) +"<br>" +"<br>"+ gets.getsubject(j)));
 					
 				}
 			}
