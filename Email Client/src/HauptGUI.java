@@ -1,6 +1,7 @@
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.util.Vector;
 
@@ -76,7 +77,17 @@ public class HauptGUI{
 		}
 		});
 		
-		
+		item4.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent arg0) {
+				getinbox gets = new getinbox(file.imap, file.email, file.password);
+				for (int j = 0; j < gets.nachrichten.length ; j++) {
+					Vector newrow = new Vector();
+					newrow.add("<html>" + gets.getfrom(j) +"<br>" +"<br>"+ gets.getsubject(j) );
+					fromdata.add(newrow);
+				}
+			}
+		});
 		
 		getfrom = new String[get.nachrichten.length];
 		subjects = new String[get.nachrichten.length];
