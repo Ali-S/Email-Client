@@ -2,11 +2,9 @@
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.beans.PropertyChangeListener;
 import java.io.IOException;
 import java.util.Vector;
 
-import javax.mail.Flags;
 import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.internet.InternetAddress;
@@ -30,6 +28,7 @@ public class HauptGUI{
      * Declaration of GUI elements
      */
 	private JFrame frame;
+	@SuppressWarnings("unused")
 	private JMenuBar bar,mailbar;
 	private JMenu menu1, menu2;
 	private JMenuItem item1, item2, item3, item4;
@@ -40,6 +39,7 @@ public class HauptGUI{
 	private JTextArea area;
 	private JLabel sender, subject, date, send_l,standard;
 	private JButton send,answer;
+	@SuppressWarnings("rawtypes")
 	private Vector fromdata,sentdata;
 	private ImageIcon image,icon;
 	private JToolBar toolbar;
@@ -289,7 +289,6 @@ public class HauptGUI{
 					standard.setVisible(false);
 					mailpanel.setVisible(true);
 					for (int i = 0; i < selectedrow.length; i++) {
-						final Message mails = sent.nachrichten[i];
 						try {
 							area.setText(sent.getcontent(selectedrow[i]));
 							sender.setText("   Receiver: \t" + sent.getreceive(selectedrow[i]));

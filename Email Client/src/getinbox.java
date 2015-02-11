@@ -2,7 +2,6 @@
 import java.io.IOException;
 import java.util.*;
 
-import javax.mail.Flags;
 import javax.mail.Folder;
 import javax.mail.Message;
 import javax.mail.MessagingException;
@@ -63,7 +62,6 @@ public class getinbox{
 			Folder emailfolder = store.getFolder("inbox");
 			emailfolder.open(Folder.READ_WRITE);
 			Message[] mails = emailfolder.getMessages();
-			String [] subjects;
 			nachrichten = emailfolder.getMessages();
 			for (int i = 0; i < mails.length; i++) {
 					load.setValue(i);
