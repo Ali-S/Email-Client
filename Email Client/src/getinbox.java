@@ -40,7 +40,7 @@ public class getinbox{
 			
 			JFrame frameload = new JFrame();
 			frameload.setSize(300, 100);
-			frameload.setTitle("JProgressBar Beispiel");
+			frameload.setTitle("Loading E-Mails");
 			JPanel panelload = new JPanel();
 			JProgressBar load = new JProgressBar(0, 100);
 			load.setValue(0);
