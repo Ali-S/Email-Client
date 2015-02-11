@@ -29,7 +29,7 @@ public class getinbox{
 	 * 
 	 * @param imap for incoming server
 	 * @param email as username 
-	 * @param passwort account passwort
+	 * @param passwort account password
 	 */
 	public getinbox(String imap, String email, String passwort){
 		try {
@@ -62,7 +62,6 @@ public class getinbox{
 			
 			Folder emailfolder = store.getFolder("inbox");
 			emailfolder.open(Folder.READ_WRITE);
-			System.out.println("Vorder FORSCLEIFE");
 			Message[] mails = emailfolder.getMessages();
 			String [] subjects;
 			nachrichten = emailfolder.getMessages();
