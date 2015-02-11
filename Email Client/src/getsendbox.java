@@ -11,7 +11,6 @@ import javax.mail.Message.RecipientType;
 import javax.mail.internet.InternetAddress;
 import javax.swing.JOptionPane;
 
-import com.sun.mail.imap.IMAPFolder;
 
 
 public class getsendbox {

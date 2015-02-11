@@ -1,5 +1,4 @@
 
-import java.awt.Checkbox;
 
 import javax.swing.*;
 

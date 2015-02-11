@@ -18,6 +18,7 @@ import javax.swing.border.LineBorder;
 public class reanswer extends guisende{
 	private JLabel tolabel, cclabel, bcclabel, subjectlabel;
 	private JTextField tofield, ccfield, bccfield, subjectfield;
+	@SuppressWarnings("unused")
 	private String message, to, cc, bcc, subject,fielto; 
 	private JButton send, cancel;
 	private JTextArea area;
