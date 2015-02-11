@@ -1,4 +1,4 @@
-impa.googlemail.com
 smtp.googlemail.com
+imap.googlemail.com
 javaemailgruppe@gmail.com
 testpasswort

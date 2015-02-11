@@ -54,21 +54,24 @@ public class send {
 		try {
 			msg.setFrom(new InternetAddress(email));
 			msg.setRecipients(RecipientType.TO,InternetAddress.parse(to));
-			if(cc != null){
-				msg.addRecipients(RecipientType.CC, InternetAddress.parse(cc));
-			}
-			else if(bcc != null){
-				msg.addRecipients(RecipientType.BCC, InternetAddress.parse(bcc));
-			}
 			msg.setSubject(subject);
 			msg.setText(content);
-			Transport.send(msg);
+			if(cc != null){
+				msg.addRecipients(RecipientType.CC, InternetAddress.parse(cc));
+			} 
+			else if(bcc != null){
+				msg.addRecipients(RecipientType.BCC, InternetAddress.parse(bcc));
+				Transport.send(msg);
+			}
+			else Transport.send(msg);
+			
 			JOptionPane.showMessageDialog(null, "Your E-Mail is send.");
 			
 		} catch (AddressException e) {
 			JOptionPane.showMessageDialog(null, "Please enter valid E-Mail adress.");
 
 		} catch (MessagingException e) {
+			e.printStackTrace();
 			JOptionPane.showMessageDialog(null, "Your E-Mail was not send.");
 		}
 	}
