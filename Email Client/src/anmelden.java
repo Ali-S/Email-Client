@@ -4,7 +4,7 @@ import java.awt.Checkbox;
 import javax.swing.*;
 
 /**
- * The class Anmelden reads configurations properties 
+ * The class Anmelden reads the login properties
  * 
  * @author Furkan Yuecel
  * @author Suepriz Yaykan
@@ -18,6 +18,9 @@ public class anmelden {
 	private String semail;
 	private String spass;
 	
+	/**
+	 * GUI elements
+	 */
 	private final JTextField smtp = new JTextField("Please enter SMTP server", 25);
 	private final JTextField imap = new JTextField("Please enter IMAP server", 25);
 	private final JTextField email = new JTextField("Please enter E-Mail Adress",25);
