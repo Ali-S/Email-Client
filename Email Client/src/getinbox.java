@@ -12,12 +12,22 @@ import javax.mail.Store;
 import javax.mail.internet.InternetAddress;
 import javax.swing.JOptionPane;
 
-
+/**
+ * The class "GetInbox" 
+ */
 public class getinbox{
 	Message[] nachrichten;
 	Message message;
-	String imap,smtp,email,password;
+	String imap, smtp, email, password;
 	
+	/**
+	 * Constructor which call the included features.
+	 * The parameters are 
+	 * 
+	 * @param imap
+	 * @param email
+	 * @param passwort
+	 */
 	public getinbox(String imap, String email, String passwort){
 		try {
 			this.imap = imap;
@@ -29,10 +39,9 @@ public class getinbox{
 	        props.put("mail.imaps.ssl.trust", "*");
 
 	        Session session = Session.getDefaultInstance(props, null);
-
-				
+	        
 	        Store store = session.getStore("imaps");
-	        store.connect(imap,email, passwort);
+	        store.connect(imap, email, passwort);
 			
 			Folder emailfolder = store.getFolder("inbox");
 			emailfolder.open(Folder.READ_WRITE);
@@ -49,7 +58,6 @@ public class getinbox{
 					System.out.println("Contenttyp: " + message.getContentType());
 					nachrichten[i] = mails[i];
 			} 
-
 			
 		} catch (NoSuchProviderException e) {
 			e.printStackTrace();
@@ -57,10 +65,13 @@ public class getinbox{
 		} catch (MessagingException e) {
 			e.printStackTrace();
 		}
-		
-		
 	}
 	
+	/**
+	 * Gets the subject and checks if there is any email
+	 * 
+	 * @param i
+	 */
 	public String getsubject(int i){
 		Message message;
 		if (nachrichten[i] == null) {
@@ -75,6 +86,11 @@ public class getinbox{
 		}
 	}
 	
+	/**
+	 * Gets the sender and checks if there is any email
+	 * 
+	 * @param i
+	 */
 	public String getfrom(int i){
 		Message message;
 		if (nachrichten[i] == null) {
@@ -89,6 +105,11 @@ public class getinbox{
 		}
 	}
 	
+	/**
+	 * Gets the content and checks if there is any email
+	 * 
+	 * @param i
+	 */
 	public String getcontent(int i) throws IOException, MessagingException {
 		Message message;
 		if(nachrichten[i] == null) {
@@ -98,18 +119,27 @@ public class getinbox{
 		return message.getContent().toString();
 	}
 	
+	/**
+	 * Gets the content type and checks if there is any email
+	 * 
+	 * @param i
+	 */
 	public String getcontenttyp(int i){
 		Message message;
 		message = nachrichten[i];
 		try {
 			return message.getContentType();
 		} catch (MessagingException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return (String) "Contenttyp cant be return\n";
 	}
 	
+	/**
+	 * Gets the date and checks if there is any email
+	 * 
+	 * @param i
+	 */
 	public Date getdate(int i){
 		Message message = nachrichten[i];
 		try {
@@ -120,10 +150,6 @@ public class getinbox{
 		} 
 		return null;
 	}
-
-
-	
-	
 }
 	
 

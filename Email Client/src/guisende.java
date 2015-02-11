@@ -23,13 +23,15 @@ import javax.swing.JToolBar;
 import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
 
-
-
+/**
+ * 
+ */
 public class guisende {
-	private JLabel tolabel,cclabel,bcclabel,subjectlabel;
-	private JTextField tofield,ccfield,bccfield,subjectfield;
-	private String message,to,cc,bcc,subject; 
-	private JButton send,cancel;
+	
+	private JLabel tolabel, cclabel, bcclabel, subjectlabel;
+	private JTextField tofield, ccfield, bccfield, subjectfield;
+	private String message, to, cc, bcc, subject; 
+	private JButton send, cancel;
 	private JTextArea area;
 	
 	private SendButtonHandler sbhandler;
@@ -42,8 +44,11 @@ public class guisende {
 	
 	filereader file = new filereader();
 	JFrame fenster = new JFrame("Send a new E-Mail");
-	public guisende(){
 
+	/**
+	 * 
+	 */
+	public guisende(){
 		fenster.setSize(width,height);
 		
 		Container feld = fenster.getContentPane();
@@ -107,30 +112,30 @@ public class guisende {
 		fenster.setLocationRelativeTo(null);
 		fenster.setVisible(true);
 		fenster.setBackground(Color.white);
-		
-
-		
 	}
 
 	
 	private class SendButtonHandler implements ActionListener{
-
+		
+		/**
+		 * 
+		 */
 		public void actionPerformed(ActionEvent e) {
-			
 			to = tofield.getText();
 			subject = subjectfield.getText();
 			message = area.getText();
-			send send = new send(file.smtp, file.email, file.password,to, subject, message);
-			fenster.dispose();;
+			send send = new send(file.smtp, file.email, file.password, to, subject, message);
+			fenster.dispose();
 		}
 	}
 
 	private class CancelButtonHandler implements ActionListener{
-
-		public void actionPerformed(ActionEvent e) {
-			
+		
+		/**
+		 * 
+		 */
+		public void actionPerformed(ActionEvent e) {		
 			fenster.dispose();
 		}
 	}
-	
 }

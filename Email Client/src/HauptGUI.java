@@ -56,7 +56,9 @@ public class HauptGUI{
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	
 	/**
-	 * The constructor 
+	 * The constructor calls the included features.
+	 * "title" is given
+	 * see
 	 * 
 	 * @param title
 	 */

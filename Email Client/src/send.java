@@ -13,13 +13,14 @@ import javax.mail.internet.MimeMessage;
 import javax.swing.JOptionPane;
 
 /**
- * 
+ * The class "Send" ensures that email will send or not
  * 
  */
 public class send {
 	
 	/**
-     * Constructor
+     *  Constructor to call the included features at the class "Send".
+     *  
      * 
      * @param smtp
      * @param email
@@ -37,14 +38,17 @@ public class send {
 		properties.put("mail.smtp.host", smtp);
 		properties.put("mail.smtp.port", "587");
 		
-		Session session = Session.getInstance(properties,new Authenticator() {
+		/**
+	     * Verifying password
+	     */
+		Session session = Session.getInstance(properties, new Authenticator() {
 	         protected PasswordAuthentication getPasswordAuthentication() {
 	             return new PasswordAuthentication(email, password);
-	          }
+	         }
 	       });
 		
 		/**
-	     * 
+	     * Message configurations and sending
 	     */
 		Message msg = new MimeMessage(session);
 		try {
