@@ -33,14 +33,14 @@ public class HauptGUI{
 	private JMenuBar bar,mailbar;
 	private JMenu menu1, menu2;
 	private JMenuItem item1, item2, item3, item4;
-	private JTable table;
-	private JScrollPane scroll;
+	private JTable table,table2;
+	private JScrollPane scroll,scroll2;
 	private JTabbedPane tabbed;
 	private JPanel tab1, tab2, areaPanel, rightBorder, labelPanel, backgr,mailpanel;
 	private JTextArea area;
 	private JLabel sender, subject, date, send_l,standard;
 	private JButton send,answer;
-	private Vector fromdata;
+	private Vector fromdata,sentdata;
 	private ImageIcon image,icon;
 	private JToolBar toolbar;
 	
@@ -55,6 +55,7 @@ public class HauptGUI{
      */
 	filereader file = new filereader();	
 	getinbox get = new getinbox(file.imap,file.email,file.password);
+	getsendbox sent = new getsendbox(file.imap, file.email, file.password);
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	
@@ -89,6 +90,7 @@ public class HauptGUI{
 		bar.add(menu2);
 		frame.add(bar, BorderLayout.NORTH);
 		fromdata = new Vector();
+		sentdata = new Vector();
 		image = new ImageIcon("./src/java.png");
 		icon = new ImageIcon("./src/mail_answer.png");
 		standard = new JLabel(image);
@@ -119,7 +121,7 @@ public class HauptGUI{
 				get = new getinbox(file.imap, file.email, file.password);
 				for (int j = 0; j < get.nachrichten.length; j++) {
 					Vector row = new Vector();
-					row.add("<html>" + get.getfrom(j) + "<br>" + "<br>" + get.getsubject(j) + "</html>");
+					row.add("<html>" + get.getfrom(j) + "<br>" +get.getdate(j)+ "<br>" + get.getsubject(j) + "</html>");
 					fromdata.add(row);
 				}
 			}	
@@ -130,7 +132,7 @@ public class HauptGUI{
 		
 		for (int i = 0; i < get.nachrichten.length; i++) {
 			Vector row = new Vector();
-			row.add("<html>" + get.getfrom(i) + "<br>" + "<br>" + get.getsubject(i) + "</html>");
+			row.add("<html>" + get.getfrom(i) + "<br>" +get.getdate(i) + "<br>" + get.getsubject(i) + "</html>");
 			fromdata.add(row);
 		}
 		
@@ -138,23 +140,49 @@ public class HauptGUI{
 		Vector fr = new Vector();
 		fr.add("Inbox");
 		
+		
+		
 		table = new JTable(fromdata, fr);
 		table.setRowHeight(75);
 		table.setAutoCreateRowSorter(true);
+		
+		for (int i = 0; i < sent.nachrichten.length; i++) {
+			Vector row = new Vector();
+			row.add("<html>" + sent.getreceive(i) + "<br>" +sent.getdate(i)+ "<br>" + sent.getsubject(i) + "</html>");
+			sentdata.add(row);
+		}
+		
+		
+		Vector sr = new Vector();
+		sr.add("Sentbox");
+		
+		
+		
+		table2 = new JTable(sentdata, sr);
+		table2.setRowHeight(75);
+		table2.setAutoCreateRowSorter(true);
 		
 		/**
 	     * 
 	     */
 		table.setRowSelectionAllowed(true);
+		table2.setRowSelectionAllowed(true);
 		scroll = new JScrollPane(table, ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED,
 				ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
 		scroll.setPreferredSize(new Dimension(200,600));
 
+		
+		scroll2 = new JScrollPane(table2, ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED,
+				ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
+		scroll2.setPreferredSize(new Dimension(200,600));
 
+		
+		
 		tabbed = new JTabbedPane();
 		tab1 = new JPanel();
 		tab1.add(scroll);
 		tab2 = new JPanel();
+		tab2.add(scroll2);
 		tabbed.addTab("Inbox", tab1);
 		tabbed.addTab("Sent", tab2);
 		rightBorder = new JPanel(new BorderLayout());
@@ -199,9 +227,14 @@ public class HauptGUI{
 
 		// Tabelle fuer nur ein Select erlauben
 		table.setCellSelectionEnabled(true);
+		table2.setCellSelectionEnabled(true);
 		
 	    ListSelectionModel cellSelectionModel = table.getSelectionModel();
 	    cellSelectionModel.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+	    
+	    ListSelectionModel cellSelectionModel2 = table2.getSelectionModel();
+	    cellSelectionModel2.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+	    
 	    
 	    /**
 	     * Shows the selected email in detail on GUI
@@ -247,6 +280,36 @@ public class HauptGUI{
 			}
 		
 		});
+		
+		table2.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+			// Nach select den Inhalt der Email anzeigen
+			public void valueChanged(ListSelectionEvent event) {
+				int[] selectedrow = table2.getSelectedRows();
+				if (!event.getValueIsAdjusting()) {
+					standard.setVisible(false);
+					mailpanel.setVisible(true);
+					for (int i = 0; i < selectedrow.length; i++) {
+						final Message mails = sent.nachrichten[i];
+						try {
+							area.setText(sent.getcontent(selectedrow[i]));
+							sender.setText("   Receiver: \t" + sent.getreceive(selectedrow[i]));
+							date.setText("   Date: \t" + sent.nachrichten[selectedrow[i]].getSentDate());
+							subject.setText("   Subject: \t" + sent.getsubject(selectedrow[i]));
+							area.setEditable(false);
+							
+		
+						} catch (IOException e) {
+							e.printStackTrace();
+						} catch (MessagingException e) {
+							e.printStackTrace();
+						}
+					}
+				} 	 
+			}
+		
+		});
+
+		
 
 		frame.getContentPane().add(backgr, BorderLayout.CENTER);
 
