@@ -169,12 +169,12 @@ public class HauptGUI{
 		table2.setRowSelectionAllowed(true);
 		scroll = new JScrollPane(table, ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED,
 				ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
-		scroll.setPreferredSize(new Dimension(200,600));
+		scroll.setPreferredSize(new Dimension(200,700));
 
 		
 		scroll2 = new JScrollPane(table2, ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED,
 				ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
-		scroll2.setPreferredSize(new Dimension(200,600));
+		scroll2.setPreferredSize(new Dimension(200,700));
 
 		
 		
