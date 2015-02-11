@@ -2,3 +2,6 @@ smtp.googlemail.com
 imap.googlemail.com
 javaemailgruppe@gmail.com
 testpasswort
+
+
+
