@@ -4,10 +4,8 @@ import java.awt.Checkbox;
 import javax.swing.*;
 
 /**
- * The class Anmelden 
+ * The class Anmelden reads configurations properties 
  * 
- * 
- *
  * @author Furkan Yuecel
  * @author Suepriz Yaykan
  * @author Ali Selvi
@@ -20,32 +18,38 @@ public class anmelden {
 	private String semail;
 	private String spass;
 	
-	public anmelden(String meldung, String title){
-		
-		JTextField smtp = new JTextField("Please enter SMTP server", 25);
-		JTextField imap = new JTextField("Please enter IMAP server", 25);
-		JTextField email = new JTextField("Please enter E-Mail Adress",25);
+	private JTextField smtp = new JTextField("Please enter SMTP server", 25);
+	private JTextField imap = new JTextField("Please enter IMAP server", 25);
+	private JTextField email = new JTextField("Please enter E-Mail Adress",25);
+	
+	public anmelden(String title){
 		
 		JPasswordField pass = new JPasswordField("",15);
 		
-		// Remember me 
 		Checkbox remember = new Checkbox("Remember me!");
 		
-		// Objecst they are listening on the popup frame
-		Object[] props = {title,"IMAP",imap,"SMTP",smtp,"E-Mail:",email,"Password:",pass,remember};
+		/**
+		 * Objects they are listening on the popup frame
+		 */
+		Object[] props = {title, "IMAP", imap, "SMTP", smtp, "E-Mail:", email, "Password:", pass, remember};
 		
-		// create the popupPane
-		JOptionPane fenster = new JOptionPane(props, 
-				JOptionPane.PLAIN_MESSAGE,
-				JOptionPane.DEFAULT_OPTION);
+		/**
+		 * Popup for entering the informations
+		 */
+		JOptionPane fenster = new JOptionPane(props, JOptionPane.PLAIN_MESSAGE,	JOptionPane.DEFAULT_OPTION);
 		fenster.createDialog(null,"Properties").setVisible(true);
-
+		
+		/**
+		 * 
+		 */
 		setSsmtp(smtp.getText());
 		setSimap(imap.getText());
 		setSemail(email.getText());
 		setSpass(pass.getPassword());
 		
-		// checked for remember properties from email server 
+		/**
+		 * checking remember properties from mail server
+		 */
 		if (remember.getState()) {
 			System.out.println(getSsmtp()+getSimap()+getSemail()+getSpass());
 			new save(getSsmtp(),getSimap(),getSemail(),getSpass());
@@ -57,6 +61,9 @@ public class anmelden {
 		
 	}
 	
+	/**
+	 * Setter and getter functions
+	 */
 	public String getSsmtp() {
 		return ssmtp;
 	}
