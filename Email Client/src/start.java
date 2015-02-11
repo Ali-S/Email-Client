@@ -12,7 +12,7 @@ public class start {
 	
 	public static void main(String[] args) throws IOException {
 		// Teste anmelden Fenster
-		//new anmelden("Please enter your E-Mail Server!",title);
+		new anmelden("Please enter your E-Mail Server!",title);
 		
 		// Starte Hauptfenster
 		new HauptGUI(title);
