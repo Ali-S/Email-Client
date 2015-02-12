@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 
+import javax.swing.JOptionPane;
+
 /**
  * The class "save"  
  * 
@@ -28,12 +30,11 @@ public class save {
 		PrintWriter writer;
 		try {
 			File file = new File("./src/props.txt");
-			if(!file.exists()){
+			if(file.exists() == false){
 				try {
 					file.createNewFile();
 				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+					JOptionPane.showMessageDialog(null,"Fehler");
 				}
 			}
 			writer = new PrintWriter((file), "UTF-8");
@@ -43,6 +44,7 @@ public class save {
 			writer.println(password);
 			writer.close();
 		} catch (FileNotFoundException e) {
+			JOptionPane.showMessageDialog(null, "File not Found");
 			System.out.println("File not Found!");
 			e.printStackTrace();
 		} catch (UnsupportedEncodingException e) {
