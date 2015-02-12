@@ -68,6 +68,7 @@ public class Send {
 			
 		} catch (AddressException e) {
 			JOptionPane.showMessageDialog(null, "Please enter valid E-Mail adress.");
+			e.printStackTrace();
 
 		} catch (MessagingException e) {
 			e.printStackTrace();

@@ -60,8 +60,8 @@ public class GuiSend {
 		subjectlabel = new JLabel("Subject: ");
 		
 		tofield = new JTextField(fielto);
-		ccfield = new JTextField("Enter address");
-		bccfield = new JTextField("Enter address");
+		ccfield = new JTextField("");
+		bccfield = new JTextField("");
 		subjectfield = new JTextField("Enter subject");
 		
 		
