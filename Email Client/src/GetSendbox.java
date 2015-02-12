@@ -13,9 +13,9 @@ import javax.swing.JOptionPane;
 
 
 
-public class getsendbox {
+public class GetSendbox {
 	Message[] nachrichten;
-	public getsendbox(String imap, String email, String password){
+	public GetSendbox(String imap, String email, String password){
 
 		Properties props = new Properties();
 

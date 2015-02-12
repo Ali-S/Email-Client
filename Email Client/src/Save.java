@@ -11,7 +11,7 @@ import javax.swing.JOptionPane;
  * The class "save"  
  * 
  */
-public class save {
+public class Save {
 	
 	/**
 	 * Constructor
@@ -21,7 +21,7 @@ public class save {
      * @param email
      * @param password
      */
-	public save(String smtp, String imap,String email, String password) {
+	public Save(String smtp, String imap,String email, String password) {
 		
 		/**
 		 * Save properties in "props.txt" file

@@ -15,7 +15,7 @@ import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
 
 
-public class reanswer extends guisende{
+public class Reanswer extends GuiSend{
 	private JLabel tolabel, cclabel, bcclabel, subjectlabel;
 	private JTextField tofield, ccfield, bccfield, subjectfield;
 	@SuppressWarnings("unused")
@@ -31,14 +31,14 @@ public class reanswer extends guisende{
 	
 	private LineBorder border = new LineBorder(Color.BLACK); 
 	
-	filereader file = new filereader();
+	Filereader file = new Filereader();
 	JFrame fenster = new JFrame("Send a new E-Mail");
 
 	/**
 	 * 
 	 */
 
-	public reanswer(String to, String subject, String content){
+	public Reanswer(String to, String subject, String content){
 			fenster.setSize(width,height);
 			
 			Container feld = fenster.getContentPane();
@@ -114,7 +114,7 @@ private class SendButtonHandler implements ActionListener{
 			to = tofield.getText();
 			subject = subjectfield.getText();
 			message = area.getText();
-			new send(file.smtp, file.email, file.password, to,cc,bcc, subject, message);
+			new Send(file.smtp, file.email, file.password, to,cc,bcc, subject, message);
 			fenster.dispose();
 		}
 	}

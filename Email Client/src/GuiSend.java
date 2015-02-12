@@ -19,7 +19,7 @@ import javax.swing.border.LineBorder;
  * To send E-Mail with Gui
  * Can entries sender data in form 
  */
-public class guisende {
+public class GuiSend {
 	
 	private JLabel tolabel, cclabel, bcclabel, subjectlabel;
 	private JTextField tofield, ccfield, bccfield, subjectfield;
@@ -35,14 +35,14 @@ public class guisende {
 	
 	private LineBorder border = new LineBorder(Color.BLACK); 
 	
-	filereader file = new filereader();
+	Filereader file = new Filereader();
 	JFrame fenster = new JFrame("Send a new E-Mail");
 
 	/**
 	 * Creating frame for send email
 	 */
 
-	public guisende(){
+	public GuiSend(){
 		fenster.setSize(width,height);
 		
 		Container feld = fenster.getContentPane();
@@ -121,7 +121,7 @@ public class guisende {
 			message = area.getText();
 			cc = ccfield.getText();
 			bcc = bccfield.getText();
-			new send(file.smtp, file.email, file.password, to,cc,bcc,subject, message);
+			new Send(file.smtp, file.email, file.password, to,cc,bcc,subject, message);
 			fenster.dispose();
 		}
 	}

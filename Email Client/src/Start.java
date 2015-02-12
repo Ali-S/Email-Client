@@ -8,12 +8,12 @@ import java.io.IOException;
  */
 
 
-public class start {
+public class Start {
 
 	static String title = "Java E-Mail-Client Connection Init Beta v.02";
 	
 	public static void main(String[] args) throws IOException {
-		new HauptGUI(title);
+		new MainGUI(title);
 		
 	
 	}

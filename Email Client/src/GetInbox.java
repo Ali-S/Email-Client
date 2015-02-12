@@ -17,7 +17,7 @@ import javax.swing.JProgressBar;
 /**
  * The class "GetInbox" 
  */
-public class getinbox{
+public class GetInbox{
 	Message[] nachrichten;
 	Message message;
 	String imap, smtp, email, password;
@@ -30,7 +30,7 @@ public class getinbox{
 	 * @param email as username 
 	 * @param passwort account password
 	 */
-	public getinbox(String imap, String email, String passwort){
+	public GetInbox(String imap, String email, String passwort){
 		try {
 			this.imap = imap;
 			this.email = email;

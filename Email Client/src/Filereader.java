@@ -1,5 +1,4 @@
 
-
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -8,7 +7,7 @@ import java.io.IOException;
 /**
  * The class "filereader" writes and reads the login properties at the test.txt 
  */
-public class filereader {
+public class Filereader {
 	
 	public String text;
 	public String smtp;
@@ -20,7 +19,7 @@ public class filereader {
 	/**
 	 * Constructor 
 	 */
-	public filereader(){
+	public Filereader(){
 		
 		/**
 		 * Reading properties from "props.txt" file

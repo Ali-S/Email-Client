@@ -16,7 +16,7 @@ import javax.swing.JOptionPane;
  * The class "Send" ensures that email will send or not
  * 
  */
-public class send {
+public class Send {
 	
 	/**
      *  Constructor to call the included features at the class "Send".
@@ -28,7 +28,7 @@ public class send {
      * @param subject 
      * @param content message
      */
-	public send(String smtp, final String email, final String password, String to,String cc, String bcc
+	public Send(String smtp, final String email, final String password, String to,String cc, String bcc
 			,String subject, String content){
 		
 		Properties properties = new Properties();

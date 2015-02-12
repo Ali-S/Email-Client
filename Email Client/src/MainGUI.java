@@ -22,7 +22,7 @@ import javax.swing.event.ListSelectionListener;
  * @author Ali Selvi
  * @version 0.8
  */
-public class HauptGUI{
+public class MainGUI{
 	
 	/**
      * Declaration of GUI elements
@@ -49,7 +49,7 @@ public class HauptGUI{
 	public String[] from = null;
 	public String [] subjects,getfrom;
 	
-	anmelden melde = new anmelden("Login");
+	Login melde = new Login("Login");
 	
 	public String imap = melde.imap;
 	public String smtp = melde.smtp;
@@ -61,8 +61,8 @@ public class HauptGUI{
      * Initialization this classes for getting properties and messages
      */
 	
-	getinbox get = new getinbox(imap,email,password);
-	getsendbox sent = new getsendbox(imap,email,password);
+	GetInbox get = new GetInbox(imap,email,password);
+	GetSendbox sent = new GetSendbox(imap,email,password);
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	
@@ -73,7 +73,7 @@ public class HauptGUI{
 	 * 
 	 * @param title 
 	 */
-	public HauptGUI(String title){
+	public MainGUI(String title){
 		/**
 	     * Initialization GUI elements
 	     */
@@ -113,7 +113,7 @@ public class HauptGUI{
 		
 		item3.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e) {
-				new guisende();
+				new GuiSend();
 		}
 		});
 		
@@ -124,7 +124,7 @@ public class HauptGUI{
 			public void actionPerformed(ActionEvent arg0) {
 				fromdata.removeAllElements();
 				System.out.println("Vector wurde geloescht");
-				get = new getinbox(imap, email, password);
+				get = new GetInbox(imap, email, password);
 				for (int j = 0; j < get.nachrichten.length; j++) {
 					Vector row = new Vector();
 					row.add("<html>" + get.getfrom(j) + "<br>" +get.getdate(j)+ "<br>" + get.getsubject(j) + "</html>");
@@ -265,7 +265,7 @@ public class HauptGUI{
 								
 								public void actionPerformed(ActionEvent e) {
 									try {
-										new reanswer(InternetAddress.toString(mails.getFrom()), mails.getSubject(), mails.getContent().toString());
+										new Reanswer(InternetAddress.toString(mails.getFrom()), mails.getSubject(), mails.getContent().toString());
 									} catch (MessagingException e1) {
 										// TODO Auto-generated catch block
 										e1.printStackTrace();
