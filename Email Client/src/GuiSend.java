@@ -35,7 +35,6 @@ public class GuiSend {
 	
 	private LineBorder border = new LineBorder(Color.BLACK); 
 	
-	Filereader file = new Filereader();
 	JFrame fenster = new JFrame("Send a new E-Mail");
 
 	/**

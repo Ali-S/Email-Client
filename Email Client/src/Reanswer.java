@@ -33,7 +33,7 @@ public class Reanswer{
 	
 	private LineBorder border = new LineBorder(Color.BLACK); 
 	
-	Filereader file = new Filereader();
+//	Filereader file = new Filereader();
 	JFrame fenster = new JFrame("Send a new E-Mail");
 
 	/**
