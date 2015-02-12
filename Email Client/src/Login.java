@@ -2,7 +2,7 @@
 import javax.swing.*;
 
 /**
- * The class Anmelden reads the login properties
+ * The class "Login" reads the login properties
  * 
  */
 public class Login {
@@ -22,9 +22,8 @@ public class Login {
 	
 	/**
 	 * Standard constructor to call the included features at the class "start".
-	 * "title" is g
 	 * 
-	 * @param title
+	 * @param title is given by the class "start"
 	 */
 	public Login(String title){
 		

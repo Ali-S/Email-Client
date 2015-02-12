@@ -15,12 +15,6 @@ import javax.swing.event.ListSelectionListener;
 /**
  * The MainGUI class 
  * 
- * 
- *
- * @author Furkan Yuecel
- * @author Suepriz Yaykan
- * @author Ali Selvi
- * @version 0.8
  */
 public class MainGUI{
 	
@@ -29,25 +23,24 @@ public class MainGUI{
      */
 	private JFrame frame;
 	@SuppressWarnings("unused")
-	private JMenuBar bar,mailbar;
+	private JMenuBar bar, mailbar;
 	private JMenu menu1, menu2;
 	private JMenuItem item1, item2, item3, item4;
-	private JTable table,table2;
-	private JScrollPane scroll,scroll2;
+	private JTable table, table2;
+	private JScrollPane scroll, scroll2;
 	private JTabbedPane tabbed;
-	private JPanel tab1, tab2, areaPanel, rightBorder, labelPanel, backgr,mailpanel;
+	private JPanel tab1, tab2, areaPanel, rightBorder, labelPanel, backgr, mailpanel;
 	private JTextArea area;
-	private JLabel sender, subject, date, send_l,standard;
-	private JButton send,answer;
+	private JLabel sender, subject, date, send_l, standard;
+	private JButton send, answer;
 	@SuppressWarnings("rawtypes")
-	private Vector fromdata,sentdata;
-	private ImageIcon image,icon;
+	private Vector fromdata, sentdata;
+	private ImageIcon image, icon;
 	private JToolBar toolbar;
-	
 	
 	public String[] mail = null;
 	public String[] from = null;
-	public String [] subjects,getfrom;
+	public String [] subjects, getfrom;
 	
 	Login melde = new Login("Login");
 	
@@ -56,11 +49,9 @@ public class MainGUI{
 	public String email = melde.email;
 	public String password = melde.pass.toString();
 	
-	
 	/**
-     * Initialization this classes for getting properties and messages
+     * Initialization of this classes for getting properties and messages
      */
-	
 	GetInbox get = new GetInbox(imap,email,password);
 	GetSendbox sent = new GetSendbox(imap,email,password);
 
@@ -68,12 +59,11 @@ public class MainGUI{
 	
 	/**
 	 * The constructor calls the included features.
-	 * "title" is given
-	 * see
 	 * 
-	 * @param title 
+	 * @param title is given by "start"
 	 */
 	public MainGUI(String title){
+		
 		/**
 	     * Initialization GUI elements
 	     */
@@ -101,10 +91,6 @@ public class MainGUI{
 		icon = new ImageIcon(getClass().getClassLoader().getResource("mail_answer.png"));
 		standard = new JLabel(image);
 		
-		
-		/**
-	     * 
-	     */
 		item1.addActionListener(new ActionListener() {
 	        public void actionPerformed(java.awt.event.ActionEvent evt) {
 	            System.exit(0);
@@ -117,13 +103,9 @@ public class MainGUI{
 		}
 		});
 		
-		/**
-	     * 
-	     */
 		item4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				fromdata.removeAllElements();
-				System.out.println("Vector wurde geloescht");
 				get = new GetInbox(imap, email, password);
 				for (int j = 0; j < get.nachrichten.length; j++) {
 					Vector row = new Vector();
@@ -142,11 +124,8 @@ public class MainGUI{
 			fromdata.add(row);
 		}
 		
-		
 		Vector fr = new Vector();
 		fr.add("Inbox");
-		
-		
 		
 		table = new JTable(fromdata, fr);
 		table.setRowHeight(75);
@@ -158,11 +137,8 @@ public class MainGUI{
 			sentdata.add(row);
 		}
 		
-		
 		Vector sr = new Vector();
 		sr.add("Sentbox");
-		
-		
 		
 		table2 = new JTable(sentdata, sr);
 		table2.setRowHeight(75);
@@ -177,13 +153,10 @@ public class MainGUI{
 				ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
 		scroll.setPreferredSize(new Dimension(200,700));
 
-		
 		scroll2 = new JScrollPane(table2, ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED,
 				ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
 		scroll2.setPreferredSize(new Dimension(200,700));
 
-		
-		
 		tabbed = new JTabbedPane();
 		tab1 = new JPanel();
 		tab1.add(scroll);
@@ -220,9 +193,6 @@ public class MainGUI{
 		standard.setVisible(true);
 		mailpanel.setVisible(false);
 		
-		
-
-		
 		rightBorder.add(labelPanel, BorderLayout.NORTH);
 		rightBorder.add(areaPanel,BorderLayout.CENTER);
 	
@@ -230,8 +200,6 @@ public class MainGUI{
 		backgr.add(tabbed, BorderLayout.WEST);
 		backgr.add(rightBorder, BorderLayout.CENTER);
 		
-
-		// Tabelle fuer nur ein Select erlauben
 		table.setCellSelectionEnabled(true);
 		table2.setCellSelectionEnabled(true);
 		
@@ -241,12 +209,14 @@ public class MainGUI{
 	    ListSelectionModel cellSelectionModel2 = table2.getSelectionModel();
 	    cellSelectionModel2.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 	    
-	    
 	    /**
 	     * Shows the selected email in detail on GUI
 	     */
 		table.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
-			// Nach select den Inhalt der Email anzeigen
+			
+			/**
+		     * Shows content of an email after clicking on it
+		     */
 			public void valueChanged(ListSelectionEvent event) {
 				int[] selectedrow = table.getSelectedRows();
 				if (!event.getValueIsAdjusting()) {
@@ -263,17 +233,18 @@ public class MainGUI{
 							
 							answer.addActionListener(new ActionListener() {
 								
+								/**
+							     * 
+							     */
 								public void actionPerformed(ActionEvent e) {
 									try {
-										new Reanswer(InternetAddress.toString(mails.getFrom()), mails.getSubject(), mails.getContent().toString());
+										new Reanswer(InternetAddress.toString(mails.getFrom()), 
+												mails.getSubject(),	mails.getContent().toString());
 									} catch (MessagingException e1) {
-										// TODO Auto-generated catch block
 										e1.printStackTrace();
 									} catch (IOException e1) {
-										// TODO Auto-generated catch block
 										e1.printStackTrace();
 									}
-									
 								}
 							} );
 						} catch (IOException e) {
@@ -288,7 +259,10 @@ public class MainGUI{
 		});
 		
 		table2.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
-			// Nach select den Inhalt der Email anzeigen
+			
+			/**
+		     * Shows content of an email after clicking on it
+		     */
 			public void valueChanged(ListSelectionEvent event) {
 				int[] selectedrow = table2.getSelectedRows();
 				if (!event.getValueIsAdjusting()) {
@@ -301,7 +275,6 @@ public class MainGUI{
 							date.setText("   Date: \t" + sent.nachrichten[selectedrow[i]].getSentDate());
 							subject.setText("   Subject: \t" + sent.getsubject(selectedrow[i]));
 							area.setEditable(false);
-							
 		
 						} catch (IOException e) {
 							e.printStackTrace();
@@ -313,8 +286,6 @@ public class MainGUI{
 			}
 		
 		});
-
-		
 
 		frame.getContentPane().add(backgr, BorderLayout.CENTER);
 

@@ -1,6 +1,7 @@
 import java.io.IOException;
 
 /**
+ * Entry point
  * 
  * @author Furkan Yuecel
  * @author Suepriz Yaykan
@@ -14,7 +15,5 @@ public class Start {
 	
 	public static void main(String[] args) throws IOException {
 		new MainGUI(title);
-		
-	
 	}
 }

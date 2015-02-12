@@ -5,7 +5,7 @@ import java.io.FileReader;
 import java.io.IOException;
 
 /**
- * The class "filereader" writes and reads the login properties at the test.txt 
+ * The class "Filereader" writes and reads the login properties at the test.txt 
  */
 public class Filereader {
 	
@@ -17,7 +17,7 @@ public class Filereader {
 	public String password;
 	
 	/**
-	 * Constructor 
+	 * Constructor which call the included features.
 	 */
 	public Filereader(){
 		
@@ -26,9 +26,11 @@ public class Filereader {
 		 */
 		try {
 			File file = new File("./bin/props.txt");
+			
 			if(file.exists() == false){
 				file.createNewFile();
 			}
+			
 			FileReader filereader = new FileReader(file);
 			BufferedReader bufferedreader = new BufferedReader(filereader);
 			StringBuffer stringbuffer = new StringBuffer();
@@ -38,6 +40,7 @@ public class Filereader {
 				stringbuffer.append(line);
 				stringbuffer.append("\n");
 			}
+			
 			filereader.close();
 			text = stringbuffer.toString();
 		}

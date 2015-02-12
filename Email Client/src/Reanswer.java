@@ -14,7 +14,9 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
 
-
+/**
+ * 
+ */
 public class Reanswer extends GuiSend{
 	private JLabel tolabel, cclabel, bcclabel, subjectlabel;
 	private JTextField tofield, ccfield, bccfield, subjectfield;
@@ -37,7 +39,6 @@ public class Reanswer extends GuiSend{
 	/**
 	 * 
 	 */
-
 	public Reanswer(String to, String subject, String content){
 			fenster.setSize(width,height);
 			
@@ -48,14 +49,14 @@ public class Reanswer extends GuiSend{
 			GridLayout clayout = new GridLayout(1, 1);
 			
 			tolabel = new JLabel("To: ");
-			cclabel = new JLabel("CC:");
-			bcclabel = new JLabel("BCC:");
-			subjectlabel = new JLabel("Subject:");
+			cclabel = new JLabel("CC: ");
+			bcclabel = new JLabel("BCC: ");
+			subjectlabel = new JLabel("Subject: ");
 			
 			tofield = new JTextField(to);
 			ccfield = new JTextField();
 			bccfield = new JTextField();
-			subjectfield = new JTextField("RE:"+subject);
+			subjectfield = new JTextField("RE: " + subject);
 			
 			
 			area = new JTextArea("\n''"+content+"''");
@@ -108,13 +109,13 @@ public class Reanswer extends GuiSend{
 private class SendButtonHandler implements ActionListener{
 		
 		/**
-		 * 
+		 * sending mail by clicking
 		 */
 		public void actionPerformed(ActionEvent e) {
 			to = tofield.getText();
 			subject = subjectfield.getText();
 			message = area.getText();
-			new Send(file.smtp, file.email, file.password, to,cc,bcc, subject, message);
+			new Send(file.smtp, file.email, file.password, to, cc, bcc, subject, message);
 			fenster.dispose();
 		}
 	}
@@ -122,7 +123,7 @@ private class SendButtonHandler implements ActionListener{
 	private class CancelButtonHandler implements ActionListener{
 		
 		/**
-		 * 
+		 * cancels this frame
 		 */
 		public void actionPerformed(ActionEvent e) {		
 			fenster.dispose();
