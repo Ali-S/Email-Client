@@ -57,7 +57,7 @@ public class anmelden {
 		 */
 		
 			new save(getSsmtp(),getSimap(), getSemail(), getSpass());
-			new HauptGUI(title);
+			
 			
 		
 	}

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<jardesc>
+    <jar path="/Users/furkanyucel/Desktop/test.jar"/>
+    <options buildIfNeeded="true" compress="true" descriptionLocation="/Email Client/test.jardesc" exportErrors="true" exportWarnings="true" includeDirectoryEntries="false" overwrite="true" saveDescription="true" storeRefactorings="false" useSourceFolders="false"/>
+    <storedRefactorings deprecationInfo="true" structuralOnly="false"/>
+    <selectedProjects/>
+    <manifest generateManifest="true" mainClassHandleIdentifier="=Email Client/src&lt;{start.java[start" manifestLocation="" manifestVersion="1.0" reuseManifest="false" saveManifest="false" usesManifest="true">
+        <sealing sealJar="true">
+            <packagesToSeal/>
+            <packagesToUnSeal/>
+        </sealing>
+    </manifest>
+    <selectedElements exportClassFiles="true" exportJavaFiles="false" exportOutputFolder="false">
+        <javaElement handleIdentifier="=Email Client/src"/>
+        <file path="/Email Client/javax.mail.jar"/>
+        <file path="/Email Client/.classpath"/>
+        <file path="/Email Client/.project"/>
+        <file path="/Email Client/.gitignore"/>
+    </selectedElements>
+</jardesc>

@@ -14,7 +14,7 @@ public class start {
 	
 	public static void main(String[] args) throws IOException {
 		new anmelden("Please enter your E-Mail Server!");
-		
+		new HauptGUI(title);
 		
 	
 	}
