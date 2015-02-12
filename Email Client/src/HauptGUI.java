@@ -97,8 +97,8 @@ public class HauptGUI{
 		frame.add(bar, BorderLayout.NORTH);
 		fromdata = new Vector();
 		sentdata = new Vector();
-		image = new ImageIcon("./bin/java.png");
-		icon = new ImageIcon("./bin/mail_answer.png");
+		image = new ImageIcon(getClass().getClassLoader().getResource("java.png"));
+		icon = new ImageIcon(getClass().getClassLoader().getResource("mail_answer.png"));
 		standard = new JLabel(image);
 		
 		
