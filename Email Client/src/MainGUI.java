@@ -144,9 +144,6 @@ public class MainGUI{
 		table2.setRowHeight(75);
 		table2.setAutoCreateRowSorter(true);
 		
-		/**
-	     * 
-	     */
 		table.setRowSelectionAllowed(true);
 		table2.setRowSelectionAllowed(true);
 		scroll = new JScrollPane(table, ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED,
@@ -233,9 +230,6 @@ public class MainGUI{
 							
 							answer.addActionListener(new ActionListener() {
 								
-								/**
-							     * 
-							     */
 								public void actionPerformed(ActionEvent e) {
 									try {
 										new Reanswer(InternetAddress.toString(mails.getFrom()), 
