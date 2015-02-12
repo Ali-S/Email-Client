@@ -27,6 +27,9 @@ public class filereader {
 		 */
 		try {
 			File file = new File("./src/props.txt");
+			if(!file.exists()){
+				file.createNewFile();
+			}
 			FileReader filereader = new FileReader(file);
 			BufferedReader bufferedreader = new BufferedReader(filereader);
 			StringBuffer stringbuffer = new StringBuffer();
