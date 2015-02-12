@@ -14,8 +14,10 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
 
-
-public class reanswer extends guisende{
+/**
+ * The class "Reanswer" ensures to answer on specifically emails
+ */
+public class Reanswer extends GuiSend{
 	private JLabel tolabel, cclabel, bcclabel, subjectlabel;
 	private JTextField tofield, ccfield, bccfield, subjectfield;
 	@SuppressWarnings("unused")
@@ -31,14 +33,17 @@ public class reanswer extends guisende{
 	
 	private LineBorder border = new LineBorder(Color.BLACK); 
 	
-	filereader file = new filereader();
+	Filereader file = new Filereader();
 	JFrame fenster = new JFrame("Send a new E-Mail");
 
 	/**
+	 * Constructor calls the included features
 	 * 
+	 * @param to (receiver)
+	 * @param subject 
+	 * @param content 
 	 */
-
-	public reanswer(String to, String subject, String content){
+	public Reanswer(String to, String subject, String content){
 			fenster.setSize(width,height);
 			
 			Container feld = fenster.getContentPane();
@@ -48,14 +53,14 @@ public class reanswer extends guisende{
 			GridLayout clayout = new GridLayout(1, 1);
 			
 			tolabel = new JLabel("To: ");
-			cclabel = new JLabel("CC:");
-			bcclabel = new JLabel("BCC:");
-			subjectlabel = new JLabel("Subject:");
+			cclabel = new JLabel("CC: ");
+			bcclabel = new JLabel("BCC: ");
+			subjectlabel = new JLabel("Subject: ");
 			
 			tofield = new JTextField(to);
 			ccfield = new JTextField();
 			bccfield = new JTextField();
-			subjectfield = new JTextField("RE:"+subject);
+			subjectfield = new JTextField("RE: " + subject);
 			
 			
 			area = new JTextArea("\n''"+content+"''");
@@ -108,13 +113,13 @@ public class reanswer extends guisende{
 private class SendButtonHandler implements ActionListener{
 		
 		/**
-		 * 
+		 * sending mail by clicking
 		 */
 		public void actionPerformed(ActionEvent e) {
 			to = tofield.getText();
 			subject = subjectfield.getText();
 			message = area.getText();
-			new send(file.smtp, file.email, file.password, to,cc,bcc, subject, message);
+			new Send(file.smtp, file.email, file.password, to, cc, bcc, subject, message);
 			fenster.dispose();
 		}
 	}
@@ -122,7 +127,7 @@ private class SendButtonHandler implements ActionListener{
 	private class CancelButtonHandler implements ActionListener{
 		
 		/**
-		 * 
+		 * cancels this frame
 		 */
 		public void actionPerformed(ActionEvent e) {		
 			fenster.dispose();

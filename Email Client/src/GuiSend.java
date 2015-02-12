@@ -16,14 +16,14 @@ import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
 
 /**
- * To send E-Mail with Gui
- * Can entries sender data in form 
+ * To send E-Mails via the GUI
+ * 
  */
-public class guisende {
+public class GuiSend {
 	
 	private JLabel tolabel, cclabel, bcclabel, subjectlabel;
 	private JTextField tofield, ccfield, bccfield, subjectfield;
-	private String message, to, cc, bcc, subject,fielto; 
+	private String message, to, cc, bcc, subject, fielto; 
 	private JButton send, cancel;
 	private JTextArea area;
 	
@@ -35,18 +35,14 @@ public class guisende {
 	
 	private LineBorder border = new LineBorder(Color.BLACK); 
 	
+	Filereader file = new Filereader();
 	JFrame fenster = new JFrame("Send a new E-Mail");
-	public String smtp, email,password;
 
 	/**
-	 * Creating frame for send email
+	 * Constructor for creating a frame for sending emails
 	 */
-
-	public guisende(String smpt,String email, String password){
+	public GuiSend(){
 		fenster.setSize(width,height);
-		smtp = smpt;
-		this.email = email;
-		this.password = password;
 		
 		Container feld = fenster.getContentPane();
 		BorderLayout borderlayout = new BorderLayout();
@@ -55,13 +51,13 @@ public class guisende {
 		GridLayout clayout = new GridLayout(1, 1);
 		
 		tolabel = new JLabel("To: ");
-		cclabel = new JLabel("CC:");
-		bcclabel = new JLabel("BCC:");
-		subjectlabel = new JLabel("Subject:");
+		cclabel = new JLabel("CC: ");
+		bcclabel = new JLabel("BCC: ");
+		subjectlabel = new JLabel("Subject: ");
 		
 		tofield = new JTextField(fielto);
-		ccfield = new JTextField("Enter adres");
-		bccfield = new JTextField("Enter adress");
+		ccfield = new JTextField("Enter address");
+		bccfield = new JTextField("Enter address");
 		subjectfield = new JTextField("Enter subject");
 		
 		
@@ -110,14 +106,12 @@ public class guisende {
 		fenster.setLocationRelativeTo(null);
 		fenster.setVisible(true);
 		fenster.setBackground(Color.white);
-		
 	}
 
-	
 	private class SendButtonHandler implements ActionListener{
 		
 		/**
-		 * send email when ok Button is clicked
+		 * send email when OK Button is clicked
 		 */
 		public void actionPerformed(ActionEvent e) {
 			to = tofield.getText();
@@ -125,7 +119,7 @@ public class guisende {
 			message = area.getText();
 			cc = ccfield.getText();
 			bcc = bccfield.getText();
-			new send(smtp,email,password, to,cc,bcc,subject, message);
+			new Send(file.smtp, file.email, file.password, to,cc,bcc,subject, message);
 			fenster.dispose();
 		}
 	}
@@ -133,7 +127,7 @@ public class guisende {
 	private class CancelButtonHandler implements ActionListener{
 		
 		/**
-		 * canceled this frame
+		 * cancels this frame
 		 */
 		public void actionPerformed(ActionEvent e) {		
 			fenster.dispose();

@@ -1,3 +1,4 @@
+
 import java.io.IOException;
 import java.util.Date;
 import java.util.Properties;
@@ -11,11 +12,21 @@ import javax.mail.Message.RecipientType;
 import javax.mail.internet.InternetAddress;
 import javax.swing.JOptionPane;
 
-
-
-public class getsendbox {
+/**
+ * The class "GetSendbox" loads and stores the sended mails from the server 
+ * 
+ */
+public class GetSendbox {
 	Message[] nachrichten;
-	public getsendbox(String imap, String email, String password){
+	
+	/**
+	 * The class "GetSendbox"
+	 * 
+	 * @param imap 
+	 * @param email 
+	 * @param password 
+	 */
+	public GetSendbox(String imap, String email, String password){
 
 		Properties props = new Properties();
 
@@ -50,9 +61,9 @@ public class getsendbox {
 	}
 	
 	/**
-	 * Gets the sender and checks if there is any email
+	 * Gets the receiver and checks if there is any email
 	 * 
-	 * @param i for select Sender Adres from the selected mail
+	 * @param i for selecting sender from selected mail
 	 */
 	public String getreceive(int i){
 		Message message;
@@ -71,7 +82,7 @@ public class getsendbox {
 	/**
 	 * Gets the content and checks if there is any email
 	 * 
-	 * @param i for select content of message from the selected mail
+	 * @param i for selecting content from selected mail
 	 */
 	public String getcontent(int i) throws IOException, MessagingException {
 		Message message;
@@ -85,7 +96,7 @@ public class getsendbox {
 	/**
 	 * Gets the date and checks if there is any email
 	 * 
-	 * @param i for select send date from the selected mail
+	 * @param i for selecting send date from selected mail
 	 */
 	public Date getdate(int i){
 		Message message = nachrichten[i];

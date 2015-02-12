@@ -1,16 +1,11 @@
 
-
 import javax.swing.*;
 
 /**
- * The class Anmelden reads the login properties
+ * The class "Login" reads the login properties
  * 
- * @author Furkan Yuecel
- * @author Suepriz Yaykan
- * @author Ali Selvi
- * @version 1.0
  */
-public class anmelden {
+public class Login {
 
 	public String smtp;
 	public String imap;
@@ -27,11 +22,10 @@ public class anmelden {
 	
 	/**
 	 * Standard constructor to call the included features at the class "start".
-	 * "title" is g
 	 * 
-	 * @param title
+	 * @param title is given by the class "start"
 	 */
-	public anmelden(String title){
+	public Login(String title){
 		
 		/**
 		 * Objects which are shown on the popup frame

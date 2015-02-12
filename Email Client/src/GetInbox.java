@@ -15,27 +15,25 @@ import javax.swing.JPanel;
 import javax.swing.JProgressBar;
 
 /**
- * The class "GetInbox" 
+ * The class "GetInbox" loads and stores the received mails from the server 
  */
-public class getinbox{
+public class GetInbox{
 	Message[] nachrichten;
 	Message message;
 	String imap, smtp, email, password;
 	
 	/**
-	 * Constructor which call the included features.
-	 * The parameters are 
+	 * Constructor calls the included features.
 	 * 
-	 * @param imap for incoming server
-	 * @param email as username 
+	 * @param imap for server connection
+	 * @param email as username
 	 * @param passwort account password
 	 */
-	public getinbox(String imap, String email, String passwort){
+	public GetInbox(String imap, String email, String passwort){
 		try {
 			this.imap = imap;
 			this.email = email;
 			this.password = passwort;
-			
 			
 			JFrame frameload = new JFrame();
 			frameload.setSize(300, 100);
@@ -48,7 +46,6 @@ public class getinbox{
 			frameload.add(panelload);
 			frameload.setVisible(true);
 			frameload.setLocationRelativeTo(null);
-
 			
 			Properties props = System.getProperties();
 	        props.setProperty("mail.store.protocol", "imaps");
@@ -63,6 +60,7 @@ public class getinbox{
 			emailfolder.open(Folder.READ_WRITE);
 			Message[] mails = emailfolder.getMessages();
 			nachrichten = emailfolder.getMessages();
+			
 			for (int i = 0; i < mails.length; i++) {
 					load.setValue(i);
 					nachrichten[i] = mails[i];
@@ -79,7 +77,7 @@ public class getinbox{
 	/**
 	 * Gets the subject and checks if there is any email
 	 * 
-	 * @param i for select subject from the selected mail
+	 * @param i for selecting subject from a selected mail
 	 */
 	public String getsubject(int i){
 		Message message;
@@ -98,7 +96,7 @@ public class getinbox{
 	/**
 	 * Gets the sender and checks if there is any email
 	 * 
-	 * @param i for select Sender Adres from the selected mail
+	 * @param i for selecting sender from a selected mail
 	 */
 	public String getfrom(int i){
 		Message message;
@@ -117,7 +115,7 @@ public class getinbox{
 	/**
 	 * Gets the content and checks if there is any email
 	 * 
-	 * @param i for select content of message from the selected mail
+	 * @param i for selecting content from a selected mail
 	 */
 	public String getcontent(int i) throws IOException, MessagingException {
 		Message message;
@@ -131,7 +129,7 @@ public class getinbox{
 	/**
 	 * Gets the date and checks if there is any email
 	 * 
-	 * @param i for select received date from the selected mail
+	 * @param i for selecting receive date from a selected mail
 	 */
 	public Date getdate(int i){
 		Message message = nachrichten[i];
