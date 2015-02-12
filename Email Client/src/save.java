@@ -29,7 +29,7 @@ public class save {
 		*/
 		PrintWriter writer;
 		try {
-			File file = new File("./src/props.txt");
+			File file = new File("./bin/props.txt");
 			if(file.exists() == false){
 				try {
 					file.createNewFile();

@@ -49,13 +49,20 @@ public class HauptGUI{
 	public String[] from = null;
 	public String [] subjects,getfrom;
 	
+	anmelden melde = new anmelden("Login");
+	
+	public String imap = melde.imap;
+	public String smtp = melde.smtp;
+	public String email = melde.email;
+	public String password = melde.pass.toString();
+	
 	
 	/**
      * Initialization this classes for getting properties and messages
      */
-	filereader file = new filereader();	
-	getinbox get = new getinbox(file.imap,file.email,file.password);
-	getsendbox sent = new getsendbox(file.imap, file.email, file.password);
+	
+	getinbox get = new getinbox(imap,email,password);
+	getsendbox sent = new getsendbox(imap,email,password);
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	
@@ -67,7 +74,6 @@ public class HauptGUI{
 	 * @param title 
 	 */
 	public HauptGUI(String title){
-		
 		/**
 	     * Initialization GUI elements
 	     */
@@ -118,7 +124,7 @@ public class HauptGUI{
 			public void actionPerformed(ActionEvent arg0) {
 				fromdata.removeAllElements();
 				System.out.println("Vector wurde geloescht");
-				get = new getinbox(file.imap, file.email, file.password);
+				get = new getinbox(imap, email, password);
 				for (int j = 0; j < get.nachrichten.length; j++) {
 					Vector row = new Vector();
 					row.add("<html>" + get.getfrom(j) + "<br>" +get.getdate(j)+ "<br>" + get.getsubject(j) + "</html>");

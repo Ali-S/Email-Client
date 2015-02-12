@@ -26,8 +26,8 @@ public class filereader {
 		 * Reading properties from "props.txt" file
 		 */
 		try {
-			File file = new File("./src/props.txt");
-			if(!file.exists()){
+			File file = new File("./bin/props.txt");
+			if(file.exists() == false){
 				file.createNewFile();
 			}
 			FileReader filereader = new FileReader(file);

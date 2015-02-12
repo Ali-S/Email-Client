@@ -12,10 +12,10 @@ import javax.swing.*;
  */
 public class anmelden {
 
-	private String smtp;
-	private String imap;
-	private String email;
-	private String pass;
+	public String smtp;
+	public String imap;
+	public String email;
+	public String pass;
 	
 	/**
 	 * Declaration and initialization of GUI elements
@@ -51,14 +51,6 @@ public class anmelden {
 		setSimap(jImap.getText());
 		setSemail(jEmail.getText());
 		setSpass(jPass.getPassword());
-		
-		/**
-		 * checking remember properties from mail server to save this
-		 */
-		
-			new save(getSsmtp(),getSimap(), getSemail(), getSpass());
-			
-			
 		
 	}
 	
