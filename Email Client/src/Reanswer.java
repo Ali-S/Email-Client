@@ -33,7 +33,6 @@ public class Reanswer{
 	
 	private LineBorder border = new LineBorder(Color.BLACK); 
 	
-//	Filereader file = new Filereader();
 	JFrame fenster = new JFrame("Send a new E-Mail");
 
 	/**
@@ -122,7 +121,7 @@ private class SendButtonHandler implements ActionListener{
 			to = tofield.getText();
 			subject = subjectfield.getText();
 			message = area.getText();
-			new Send(file.smtp, file.email, file.password, to, cc, bcc, subject, message);
+			new Send(smtp, email, password, to, cc, bcc, subject, message);
 			fenster.dispose();
 		}
 	}
