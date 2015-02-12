@@ -35,15 +35,18 @@ public class guisende {
 	
 	private LineBorder border = new LineBorder(Color.BLACK); 
 	
-	filereader file = new filereader();
 	JFrame fenster = new JFrame("Send a new E-Mail");
+	public String smtp, email,password;
 
 	/**
 	 * Creating frame for send email
 	 */
 
-	public guisende(){
+	public guisende(String smpt,String email, String password){
 		fenster.setSize(width,height);
+		smtp = smpt;
+		this.email = email;
+		this.password = password;
 		
 		Container feld = fenster.getContentPane();
 		BorderLayout borderlayout = new BorderLayout();
@@ -107,6 +110,7 @@ public class guisende {
 		fenster.setLocationRelativeTo(null);
 		fenster.setVisible(true);
 		fenster.setBackground(Color.white);
+		
 	}
 
 	
@@ -121,7 +125,7 @@ public class guisende {
 			message = area.getText();
 			cc = ccfield.getText();
 			bcc = bccfield.getText();
-			new send(file.smtp, file.email, file.password, to,cc,bcc,subject, message);
+			new send(smtp,email,password, to,cc,bcc,subject, message);
 			fenster.dispose();
 		}
 	}

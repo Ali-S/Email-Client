@@ -113,7 +113,7 @@ public class HauptGUI{
 		
 		item3.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e) {
-				new guisende();
+				new guisende(smtp,email,password);
 		}
 		});
 		
@@ -265,7 +265,7 @@ public class HauptGUI{
 								
 								public void actionPerformed(ActionEvent e) {
 									try {
-										new reanswer(InternetAddress.toString(mails.getFrom()), mails.getSubject(), mails.getContent().toString());
+										new reanswer(smtp,email,password,InternetAddress.toString(mails.getFrom()), mails.getSubject(), mails.getContent().toString());
 									} catch (MessagingException e1) {
 										// TODO Auto-generated catch block
 										e1.printStackTrace();
