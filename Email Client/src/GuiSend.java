@@ -41,8 +41,13 @@ public class GuiSend {
 	/**
 	 * Constructor for creating a frame for sending emails
 	 */
-	public GuiSend(){
+	
+	private String smtp,email,password;
+	public GuiSend(String smtp, String email, String password){
 		fenster.setSize(width,height);
+		this.smtp = smtp;
+		this.email = email;
+		this.password = password;
 		
 		Container feld = fenster.getContentPane();
 		BorderLayout borderlayout = new BorderLayout();
@@ -119,7 +124,7 @@ public class GuiSend {
 			message = area.getText();
 			cc = ccfield.getText();
 			bcc = bccfield.getText();
-			new Send(file.smtp, file.email, file.password, to,cc,bcc,subject, message);
+			new Send(smtp,email,password, to,cc,bcc,subject, message);
 			fenster.dispose();
 		}
 	}

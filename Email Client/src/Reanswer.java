@@ -17,7 +17,7 @@ import javax.swing.border.LineBorder;
 /**
  * The class "Reanswer" ensures to answer on specifically emails
  */
-public class Reanswer extends GuiSend{
+public class Reanswer{
 	private JLabel tolabel, cclabel, bcclabel, subjectlabel;
 	private JTextField tofield, ccfield, bccfield, subjectfield;
 	@SuppressWarnings("unused")
@@ -43,9 +43,12 @@ public class Reanswer extends GuiSend{
 	 * @param subject 
 	 * @param content 
 	 */
-	public Reanswer(String to, String subject, String content){
+	public String smtp, email, password;
+	public Reanswer(String smtp, String email, String password,String to, String subject, String content){
 			fenster.setSize(width,height);
-			
+			this.smtp = smtp;
+			this.email = email;
+			this.password = password;
 			Container feld = fenster.getContentPane();
 			BorderLayout borderlayout = new BorderLayout();
 			feld.setLayout(borderlayout);

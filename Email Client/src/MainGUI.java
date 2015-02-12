@@ -99,7 +99,7 @@ public class MainGUI{
 		
 		item3.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e) {
-				new GuiSend();
+				new GuiSend(smtp,email,password);
 		}
 		});
 		
@@ -232,7 +232,7 @@ public class MainGUI{
 								
 								public void actionPerformed(ActionEvent e) {
 									try {
-										new Reanswer(InternetAddress.toString(mails.getFrom()), 
+										new Reanswer(smtp,email,password,InternetAddress.toString(mails.getFrom()), 
 												mails.getSubject(),	mails.getContent().toString());
 									} catch (MessagingException e1) {
 										e1.printStackTrace();
