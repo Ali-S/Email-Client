@@ -15,7 +15,7 @@ import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
 
 /**
- * 
+ * The class "Reanswer" ensures to answer on specifically emails
  */
 public class Reanswer extends GuiSend{
 	private JLabel tolabel, cclabel, bcclabel, subjectlabel;
@@ -37,7 +37,11 @@ public class Reanswer extends GuiSend{
 	JFrame fenster = new JFrame("Send a new E-Mail");
 
 	/**
+	 * Constructor calls the included features
 	 * 
+	 * @param to (receiver)
+	 * @param subject 
+	 * @param content 
 	 */
 	public Reanswer(String to, String subject, String content){
 			fenster.setSize(width,height);
